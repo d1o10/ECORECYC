@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffff"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/loginLogo"
+        android:layout_width="300dp"
+        android:layout_height="280dp"
+        android:src="@drawable/ecorecyclogologin"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/signinText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign in to continue"
+        android:layout_marginTop="260dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EMAIL"
+        android:textSize="16sp"
+        android:layout_below="@+id/signinText"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="60dp"
+        />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:paddingLeft="0dp"
+        android:layout_marginTop="5dp"
+        android:layout_gravity="center"
+        android:background="@drawable/button1"
+        android:layout_below="@+id/emailText"
+        android:layout_marginLeft="58dp"
+        />
+
+    <TextView
+        android:id="@+id/passwordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PASSWORD"
+        android:textSize="16sp"
+        android:layout_below="@+id/email"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="60dp"
+        />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:textColor="@color/black"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/button1"
+        android:layout_below="@+id/passwordText"
+        android:layout_marginLeft="58dp"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/password">
+
+        <!-- Remember Me CheckBox -->
+
+        <CheckBox
+            android:id="@+id/remembermeCheckbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="58dp"
+            android:layout_marginTop="5dp"
+            android:text="Remember Me"
+            android:textColor="@color/black"
+            android:textSize="10sp" />
+
+        <Button
+            android:id="@+id/forgotbtn"
+            android:layout_width="200dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="5dp"
+            android:backgroundTint="#0E983D"
+            android:layout_marginTop="5dp"
+            android:hint="Forgot Password?"
+            android:textColorHint="@color/black" /> <!-- Adjust this margin value as needed -->
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="70dp"
+        android:backgroundTint="#0E983D"
+        android:text="Login"
+        android:layout_below="@id/password"
+        android:layout_marginLeft="58dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="or sign in with "
+        android:layout_below="@id/btn_login"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+</RelativeLayout>
