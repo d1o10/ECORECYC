@@ -13,17 +13,23 @@ class ChooseRole : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_choose_role)
-        val selectUserBtn: Button = findViewById(R.id.radio_user)
-       /* selectUserBtn.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
+
+
+
+        val UserBtn: Button = findViewById(R.id.radio_user)
+        UserBtn.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
             intent.putExtra("USER_TYPE", "USER")
             startActivity(intent)
-        }*/
+        }
 
-        val selectResponderBtn: Button = findViewById(R.id.radio_junkshop_owner)
-       /* selectResponderBtn.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("USER_TYPE", "RESPONDER")
-            startActivity(intent)*/
+
+        val JunkOwnerBtn: Button = findViewById(R.id.radio_junkshop_owner)
+        JunkOwnerBtn.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            intent.putExtra("USER_TYPE", "USER")
+            startActivity(intent)
+        }
+
     }
 }
