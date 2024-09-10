@@ -11,7 +11,7 @@
         android:layout_height="280dp"
         android:src="@drawable/ecorecyclogo1"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="80dp"
         />
 
         <Button
@@ -19,8 +19,8 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:text="User"
-            android:backgroundTint="#0E983D"
-            android:layout_marginTop="12dp"
+            android:background="@drawable/button2"
+            android:layout_marginTop="20dp"
             />
 
     <Button
@@ -28,7 +28,7 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:backgroundTint="#0E983D"
+        android:background="@drawable/button2"
         android:text="Junkshop Owner" />
 
 

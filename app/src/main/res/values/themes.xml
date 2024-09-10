@@ -2,8 +2,14 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.Ecorecyc" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="materialButtonStyle">@style/MyButtonStyle</item>
     </style>
 
     <style name="Theme.Ecorecyc" parent="Base.Theme.Ecorecyc" />
+
+    <style name="MyButtonStyle" parent="Widget.Material3.Button">
+        <!-- Disable background tinting -->
+        <item name="backgroundTint">@null</item>
+    </style>
 </resources>
+

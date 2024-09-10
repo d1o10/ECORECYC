@@ -12,25 +12,28 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
+        <activity
+            android:name=".Register"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <!-- Remove intent-filter from Login activity -->
         <activity
             android:name=".Login"
-            android:exported="true">
-        </activity>
-
-        <!-- Remove intent-filter from ChooseRole activity -->
+            android:exported="true"></activity> <!-- Remove intent-filter from ChooseRole activity -->
         <activity
             android:name=".ChooseRole"
-            android:exported="true">
-        </activity>
-
-        <!-- Keep intent-filter only for MainActivity -->
+            android:exported="true"></activity> <!-- Keep intent-filter only for MainActivity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
