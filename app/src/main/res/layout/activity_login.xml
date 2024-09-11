@@ -43,20 +43,14 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@+id/emailText"
-        android:layout_gravity="center"
-        android:layout_marginLeft="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"
         android:background="@drawable/button1"
-        android:paddingLeft="0dp"
-        android:textColor="@color/black" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@id/emailText"
-        android:src="@drawable/email"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="18dp"/>
+        android:drawableStart="@drawable/emailicon"
+        android:drawablePadding="8dp"
+        android:textColor="@color/black"
+        android:paddingLeft="13dp"
+        />
 
     <TextView
         android:id="@+id/passwordText"
@@ -116,11 +110,11 @@
             android:layout_width="200dp"
             android:layout_height="45dp"
             android:layout_marginLeft="8dp"
-            android:backgroundTint= "@color/transpa"
             android:layout_marginTop="5dp"
+            android:backgroundTint="@color/transpa"
             android:hint="FORGOT PASSWORD?"
             android:textColorHint="@color/black"
-            android:textSize="13sp"/> <!-- Adjust this margin value as needed -->
+            android:textSize="13sp" /> <!-- Adjust this margin value as needed -->
     </LinearLayout>
 
 

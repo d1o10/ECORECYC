@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Marketplace">
+
+    <TextView
+        android:id="@+id/marketplaceText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Marketplace"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+         />
+
+    <ImageButton
+        android:id="@+id/sellItemBtn"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/marketplaceText"
+        android:src="@drawable/sellitemicon"
+        android:backgroundTint="#ffff"
+        android:layout_marginLeft="20dp"
+        android:scaleType="fitCenter"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sellItemBtn"
+        android:id="@+id/searchandchat"
+        >
+        <EditText
+            android:id="@+id/searchbox"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:background="@drawable/search" />
+
+        <ImageButton
+            android:id="@+id/chatBtn"
+            android:layout_width="45dp"
+            android:layout_height="30dp"
+            android:layout_alignTop="@id/searchbox"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@id/searchbox"
+            android:background="#ffff"
+            android:scaleType="fitCenter"
+            android:src="@drawable/filter"
+            />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchandchat"
+        android:text="Today's Item"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        />
+</RelativeLayout>

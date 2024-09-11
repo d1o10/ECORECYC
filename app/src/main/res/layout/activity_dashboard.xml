@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Dashboard">
+
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Location"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="30dp"
+        />
+
+    <Button
+        android:id="@+id/locationbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Banilad, Cebu City"
+        android:layout_below="@+id/locationText"
+        android:background="@color/transpa"
+        android:textColor="@color/black"
+        android:paddingLeft="30dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+        android:layout_below="@+id/locationbtn"
+        android:id="@+id/searchandchat"
+        >
+    <EditText
+        android:id="@+id/searchbox"
+        android:layout_width="290dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/search" />
+
+    <ImageButton
+        android:id="@+id/chatBtn"
+        android:layout_width="45dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@id/searchbox"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-10dp"
+        android:layout_toEndOf="@id/searchbox"
+        android:background="#ffff"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat" />
+</RelativeLayout>
+
+    <ImageButton
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_above="@id/searchandchat"
+        android:layout_marginLeft="340dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/profile"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchandchat"
+        android:text="Category"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"/>
+
+    <ImageButton
+        android:id="@+id/group_1"
+        android:layout_width="341dp"
+        android:layout_height="114dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="37dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="240dp"
+        android:background="@drawable/marketplace"
+        />
+
+    <ImageButton
+        android:id="@+id/group_2"
+        android:layout_width="341dp"
+        android:layout_height="114dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="400dp"
+        android:background="@drawable/recyclinghub"
+        />
+
+    <ImageButton
+        android:id="@+id/group_3"
+        android:layout_width="339dp"
+        android:layout_height="114dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="560dp"
+        android:background="@drawable/cleanup"
+        />
+
+
+
+</RelativeLayout>

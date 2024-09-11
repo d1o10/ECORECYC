@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <item
+
+            android:id="@+id/homeIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transpa"
+            android:clickable="true"
+            android:icon="@drawable/baseline_home_24"
+            />
+        <item
+            android:id="@+id/cartIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transpa"
+            android:clickable="true"
+            android:icon="@drawable/baseline_shopping_cart_24"
+            />
+        <item
+            android:id="@+id/notificationIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transpa"
+            android:clickable="true"
+            android:icon="@drawable/baseline_notifications_24"
+            />
+        <item
+            android:id="@+id/profileIcon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/transpa"
+            android:clickable="true"
+            android:icon="@drawable/profile"
+            />
+
+
+
+</menu>
