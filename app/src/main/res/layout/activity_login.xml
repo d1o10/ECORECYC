@@ -11,10 +11,10 @@
 
     <ImageView
         android:id="@+id/loginLogo"
-        android:layout_width="300dp"
-        android:layout_height="250dp"
-        android:src="@drawable/logologin"
-        android:layout_centerHorizontal="true"/>
+        android:layout_width="297dp"
+        android:layout_height="247dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logologin" />
 
     <TextView
         android:id="@+id/signinText"

@@ -31,7 +31,7 @@
             android:textColorHint="@color/black" />
 
         <Button
-            android:id="@+id/Signup"
+            android:id="@+id/loginregister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transpa"

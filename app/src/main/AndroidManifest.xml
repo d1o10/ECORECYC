@@ -12,31 +12,36 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
-        <activity
-            android:name=".Register"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <!-- Remove intent-filter from Login activity -->
-        <activity
-            android:name=".Login"
-            android:exported="true"></activity> <!-- Remove intent-filter from ChooseRole activity -->
-        <activity
-            android:name=".ChooseRole"
-            android:exported="true"></activity> <!-- Keep intent-filter only for MainActivity -->
+        <!-- MainActivity (Launcher Activity) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
+            <!-- Intent filter for the launcher activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
 
+        <!-- Login Activity -->
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+
+        <!-- Register Activity -->
+        <activity
+            android:name=".Register"
+            android:exported="true" />
+
+        <!-- Choose Role Activity -->
+        <activity
+            android:name=".ChooseRole"
+            android:exported="true" />
+
+        <!-- Dashboard Activity -->
+        <activity
+            android:name=".Dashboard"
+            android:exported="true" />
+    </application>
 </manifest>
