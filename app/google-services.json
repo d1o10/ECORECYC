@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "528958056891",
+    "project_id": "ecorecyc-f8760",
+    "storage_bucket": "ecorecyc-f8760.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:528958056891:android:7dfae4cd760313df747c9e",
+        "android_client_info": {
+          "package_name": "com.capstone.ecorecyc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArZBawVX-sd06JAr88A7-SY-c63HwCdg0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
