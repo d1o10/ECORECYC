@@ -17,6 +17,13 @@ class Login : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        val signupbtn: Button = findViewById(R.id.Signup)
+        signupbtn.setOnClickListener {
+            val intent = Intent(this, Register::class.java)
+            intent.putExtra("USER_TYPE", "USER")
+            startActivity(intent)
+        }
+
         // Initialize Firebase Auth
         auth = FirebaseAuth.getInstance()
 
