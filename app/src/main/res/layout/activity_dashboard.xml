@@ -70,7 +70,8 @@
         android:paddingLeft="30dp"
         android:layout_marginTop="20dp"
         android:textColor="@color/black"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:textStyle="bold"/>
 
     <ImageButton
         android:id="@+id/group_1"
@@ -80,7 +81,7 @@
         android:layout_marginLeft="37dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="240dp"
-        android:background="@drawable/marketplace"
+        android:background="@drawable/marketplacecat"
         />
 
     <ImageButton
@@ -91,7 +92,7 @@
         android:layout_marginLeft="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="400dp"
-        android:background="@drawable/recyclinghub"
+        android:background="@drawable/recyclingcat"
         />
 
     <ImageButton
@@ -102,7 +103,7 @@
         android:layout_marginLeft="40dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="560dp"
-        android:background="@drawable/cleanup"
+        android:background="@drawable/cleanupcat"
         />
 
 
