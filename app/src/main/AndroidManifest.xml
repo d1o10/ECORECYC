@@ -12,36 +12,47 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
-
-        <!-- MainActivity (Launcher Activity) -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ForgotPassword"
             android:exported="true">
-            <!-- Intent filter for the launcher activity -->
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SellAnItem"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-        <!-- Login Activity -->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- MainActivity (Launcher Activity) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+
+            <!-- Intent filter for the launcher activity -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- Login Activity -->
         <activity
             android:name=".Login"
-            android:exported="true" />
-
-        <!-- Register Activity -->
+            android:exported="true" /> <!-- Register Activity -->
         <activity
             android:name=".Register"
-            android:exported="true" />
-
-        <!-- Choose Role Activity -->
+            android:exported="true" /> <!-- Choose Role Activity -->
         <activity
             android:name=".ChooseRole"
-            android:exported="true" />
-
-        <!-- Dashboard Activity -->
+            android:exported="true" /> <!-- Dashboard Activity -->
         <activity
             android:name=".Dashboard"
             android:exported="true" />
     </application>
+
 </manifest>

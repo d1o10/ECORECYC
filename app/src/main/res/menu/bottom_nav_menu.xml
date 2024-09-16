@@ -36,7 +36,7 @@
             android:layout_weight="1"
             android:background="@color/transpa"
             android:clickable="true"
-            android:icon="@drawable/profile"
+            android:icon="@drawable/profile_icon"
             />
 
 

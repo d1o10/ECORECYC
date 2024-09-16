@@ -15,7 +15,7 @@
         android:layout_width="410dp"
         android:layout_height="420dp"
         android:layout_alignParentTop="true"
-        android:background="@drawable/ecorecyclogo"
+        android:background="@drawable/ecorecycmainlogo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.100"

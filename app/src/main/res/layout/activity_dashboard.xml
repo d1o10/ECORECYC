@@ -59,7 +59,7 @@
         android:layout_above="@id/searchandchat"
         android:layout_marginLeft="340dp"
         android:layout_marginBottom="20dp"
-        android:background="@drawable/profile"
+        android:background="@drawable/profile_icon"
         />
 
     <TextView
@@ -78,10 +78,11 @@
         android:layout_width="341dp"
         android:layout_height="114dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="37dp"
+        android:layout_marginLeft="25dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="240dp"
         android:background="@drawable/marketplacecat"
+        android:layout_centerHorizontal="true"
         />
 
     <ImageButton
@@ -89,10 +90,11 @@
         android:layout_width="341dp"
         android:layout_height="114dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="25dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="400dp"
         android:background="@drawable/recyclingcat"
+        android:layout_centerHorizontal="true"
         />
 
     <ImageButton
@@ -100,10 +102,11 @@
         android:layout_width="339dp"
         android:layout_height="114dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="40dp"
+        android:layout_marginLeft="25dp"
         android:layout_alignParentTop="true"
         android:layout_marginTop="560dp"
         android:background="@drawable/cleanupcat"
+        android:layout_centerHorizontal="true"
         />
 
 

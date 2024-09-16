@@ -13,7 +13,8 @@
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logoregister"/>
+        android:src="@drawable/logoregister"
+        android:scaleType="fitCenter"/>
     <LinearLayout
         android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
@@ -21,7 +22,7 @@
         android:layout_below="@+id/loginLogo"
         android:layout_gravity="center"
         android:layout_marginLeft="80dp"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="-10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -39,7 +40,8 @@
             android:onClick="onTextViewClicked"
             android:paddingLeft="1dp"
             android:text="Login"
-            android:textColor="#EFBD3A" />
+            android:textColor="#EFBD3A"
+            android:textSize="15sp"/>
 
     </LinearLayout>
 <!--USERNAME -->
@@ -60,20 +62,15 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@+id/usernameText"
-        android:layout_gravity="center"
-        android:layout_marginLeft="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"
         android:background="@drawable/button1"
-        android:paddingLeft="0dp"
-        android:textColor="@color/black" />
+        android:drawableStart="@drawable/profile_icon"
+        android:drawablePadding="8dp"
+        android:textColor="@color/black"
+        android:paddingLeft="13dp"
+        />
 
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@id/usernameText"
-        android:src="@drawable/usericon"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="18dp"/>
 
     <!-- EMAIL -->
     <TextView
@@ -93,21 +90,14 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_below="@+id/emailText"
-        android:layout_gravity="center"
-        android:layout_marginLeft="50dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="3dp"
         android:background="@drawable/button1"
-        android:paddingLeft="0dp"
-        android:textColor="@color/black" />
-
-    <ImageView
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@id/emailText"
-        android:src="@drawable/email"
-        android:layout_marginLeft="62dp"
-        android:layout_marginTop="18dp"/>
-
+        android:drawableStart="@drawable/emailicon"
+        android:drawablePadding="8dp"
+        android:textColor="@color/black"
+        android:paddingLeft="13dp"
+        />
 
     <!-- PASSWORD -->
 
@@ -133,18 +123,12 @@
         android:background="@drawable/button1"
         android:layout_below="@+id/passwordText"
         android:layout_marginLeft="50dp"
-        android:drawableRight="@drawable/baseline_visibility_off_24"
+        android:drawableStart="@drawable/password_icon"
+        android:drawableEnd="@drawable/baseline_remove_red_eye__visibility"
+        android:paddingLeft="10dp"
         android:paddingRight="15dp"
+        android:gravity="center_vertical"
         />
-
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:layout_below="@id/passwordText"
-        android:src="@drawable/passicon"
-        android:layout_marginLeft="53dp"
-        android:layout_marginTop="15dp"/>
-
     <Button
         android:id="@+id/btn_login"
         android:layout_width="300dp"

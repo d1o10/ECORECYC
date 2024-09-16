@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SellAnItem">
+
+
+    <Button
+        android:id="@+id/backbtnprof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@color/transpa"
+        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        android:paddingLeft="30dp" />
+    <TextView
+        android:id="@+id/newListing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Listing"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="60dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/uploadPhotos"
+        android:layout_below="@+id/newListing"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/upload_btn"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="30dp"
+            android:hint="Upload Photos"
+            android:textSize="17sp"
+            android:background="@drawable/backdrop2"
+            android:drawableLeft="@drawable/add_item"
+            android:paddingStart="105dp"
+            android:gravity="center_vertical" />
+
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/prod_Name"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/uploadPhotos"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Product Name"
+        tools:ignore="InvalidId" />
+
+    <EditText
+        android:id="@+id/price"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/prod_Name"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Price"
+        tools:ignore="InvalidId" />
+
+    <EditText
+        android:id="@+id/description"
+        android:layout_width="350dp"
+        android:layout_height="95dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/price"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Description"
+        tools:ignore="InvalidId" />
+
+    <EditText
+        android:id="@+id/condition"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/description"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Condition"
+        tools:ignore="InvalidId" />
+
+    <LinearLayout
+        android:id="@+id/item_location"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/condition"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/backdrop2">
+
+        <EditText
+            android:id="@+id/market_Location"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingLeft="25dp"
+            android:hint="Location"
+            android:background="@android:color/transparent"
+            tools:ignore="InvalidId" />
+        <Button
+            android:id="@+id/editLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Edit"
+            android:textColor="#1383B4"
+            android:padding="10dp"
+            android:background="@color/transpa"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/confirm_sell_item_btn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:background="@drawable/button2"
+        android:layout_marginTop="50dp"
+        android:layout_below="@id/item_location"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp"
+        />
+
+</RelativeLayout>

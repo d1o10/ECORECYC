@@ -5,7 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Marketplace">
+    tools:context=".Marketplace"
+    android:background="#ffff">
 
     <TextView
         android:id="@+id/marketplaceText"
@@ -33,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sellItemBtn"
-        android:id="@+id/searchandchat"
+        android:id="@+id/search_and_filter"
         >
         <EditText
             android:id="@+id/searchbox"
@@ -56,14 +57,87 @@
             />
     </RelativeLayout>
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchandchat"
+        android:layout_below="@+id/search_and_filter"
         android:text="Today's Item"
-        android:paddingLeft="30dp"
+        android:paddingLeft="32dp"
         android:layout_marginTop="30dp"
         android:textSize="16sp"
         android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/search_and_filter"
+        android:gravity="center_vertical"
+        android:layout_marginTop="18dp"
+        android:layout_marginLeft="225dp">
+
+        <ImageButton
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/location_icon"
+            android:background="@color/transpa"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Banilad, Cebu City"
+            android:textSize="14sp"
+            android:layout_marginStart="-10dp"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+
+    <ImageButton
+        android:id="@+id/backdrop_marketplace"
+        android:layout_width="176dp"
+        android:layout_height="138dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/backdrop"
+        />
+
+    <ImageButton
+        android:id="@+id/backdrop_marketplace1"
+        android:layout_width="176dp"
+        android:layout_height="138dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="270dp"
+        android:background="@drawable/backdrop"
+        />
+
+    <ImageButton
+        android:id="@+id/backdrop_marketplace3"
+        android:layout_width="176dp"
+        android:layout_height="138dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="460dp"
+        android:background="@drawable/backdrop"
+        />
+
+    <ImageButton
+        android:id="@+id/backdrop_marketplace4"
+        android:layout_width="176dp"
+        android:layout_height="138dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="460dp"
+        android:background="@drawable/backdrop"
         />
 </RelativeLayout>
