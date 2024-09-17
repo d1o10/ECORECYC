@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RecyclingHub">
+
+    <TextView
+        android:id="@+id/recyclingHubText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recycling Hub"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        />
+
+    <EditText
+        android:id="@+id/searchbox"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/search"
+        android:layout_below="@id/recyclingHubText"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/recyclingHubText"
+        android:gravity="center_vertical"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="235dp"
+       >
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/location_icon"
+            android:background="@color/transpa"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Liloan,Cebu City"
+            android:textSize="13sp"
+            android:textColor="#0E983D"
+            android:layout_marginStart="-10dp"
+             />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/todaysItemsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/searchbox"
+        android:text="Nearby Junkshops"
+        android:paddingLeft="32dp"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+
+
+    <ScrollView
+        android:id="@+id/listOfJunkshops"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/todaysItemsText"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_centerVertical="true"
+       >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <ImageButton
+                android:id="@+id/junkshop1"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button2"
+                android:textSize="10dp"
+                android:textColor="@color/white"
+
+                />
+
+            <ImageButton
+                android:id="@+id/junkshop2"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageButton
+                android:id="@+id/junkshop3"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageButton
+                android:id="@+id/junkshop4"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageButton
+                android:id="@+id/junkshop5"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <ImageButton
+                android:id="@+id/junkshop6"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+            <ImageButton
+                android:id="@+id/junkshop7"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

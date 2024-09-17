@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VolunteerCleanupEvent">
+
+    <Button
+        android:id="@+id/backbtnprof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@color/transpa"
+        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        android:paddingLeft="30dp" />
+    <TextView
+        android:id="@+id/volunteerTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Volunteer Clean-up Event"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="60dp" />
+
+
+    <ImageButton
+        android:id="@+id/event_img"
+        android:layout_width="330dp"
+        android:layout_height="150dp"
+        android:background="@drawable/backdrop"
+        android:textSize="10dp"
+        android:textColor="@color/white"
+        android:layout_below="@id/volunteerTxt"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="30dp"
+        />
+    <TextView
+        android:id="@+id/fillout_info_Txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fill out Information"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="60dp"
+        android:layout_below="@id/event_img"/>
+
+    <EditText
+        android:id="@+id/volunteer_Name"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/fillout_info_Txt"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Volunteer Name"
+        tools:ignore="InvalidId" />
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/volunteer_Name"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Location"
+        tools:ignore="InvalidId" />
+
+    <EditText
+        android:id="@+id/age"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/location"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Age"
+        tools:ignore="InvalidId" />
+
+    <EditText
+        android:id="@+id/gender"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/age"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Gender"
+        tools:ignore="InvalidId" />
+
+    <Button
+        android:id="@+id/confirm_volunteer_event_btn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:background="@drawable/button2"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/gender"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp"
+        />
+
+
+
+</RelativeLayout>

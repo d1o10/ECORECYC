@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CleanupEvents">
+
+    <TextView
+        android:id="@+id/cleanupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cleanup Events"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="30dp"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        />
+
+    <Button
+        android:id="@+id/organize_cleanup_btn"
+        android:layout_width="180dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:hint="Organize Cleanup"
+        android:textColorHint="@color/white"
+        android:background="@drawable/button2"
+        android:layout_below="@id/cleanupText"/>
+
+    <ImageButton
+        android:id="@+id/chatBtn"
+        android:layout_width="45dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="14dp"
+        android:layout_toEndOf="@id/organize_cleanup_btn"
+        android:background="#ffff"
+        android:scaleType="fitCenter"
+        android:src="@drawable/chat"
+        android:layout_below="@id/cleanupText"/>
+
+    <TextView
+        android:id="@+id/upcomingEventsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/organize_cleanup_btn"
+        android:text="Upcoming Events"
+        android:paddingLeft="32dp"
+        android:layout_marginTop="30dp"
+        android:textSize="16sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        />
+
+    <ScrollView
+        android:id="@+id/listOfJunkshops"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/upcomingEventsText"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="30dp"
+        android:layout_centerVertical="true"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <ImageButton
+                android:id="@+id/event1"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:background="@drawable/button2"
+                android:textSize="10dp"
+                android:textColor="@color/white"
+
+                />
+
+            <ImageButton
+                android:id="@+id/event1"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageButton
+                android:id="@+id/event3"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageButton
+                android:id="@+id/event4"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+            <ImageButton
+                android:id="@+id/event5"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+
+                />
+
+            <ImageButton
+                android:id="@+id/event6"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+            <ImageButton
+                android:id="@+id/event7"
+                android:layout_width="330dp"
+                android:layout_height="100dp"
+                android:text="Kitchen"
+                android:textColor="@color/white"
+                android:background="@drawable/button2"
+                android:layout_marginTop="20dp"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
