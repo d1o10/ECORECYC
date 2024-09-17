@@ -1,6 +1,9 @@
 package com.capstone.ecorecyc
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageButton
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -11,10 +14,12 @@ class Dashboard : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_dashboard)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val market: ImageButton = findViewById(R.id.marketplacebutton)
+        market.setOnClickListener {
+            val intent = Intent(this, Marketplace::class.java)
+            intent.putExtra("USER_TYPE", "USER")
+            startActivity(intent)
         }
     }
 }
