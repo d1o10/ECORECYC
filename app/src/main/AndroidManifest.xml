@@ -12,80 +12,78 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
-        <activity
-            android:name=".VolunteerCleanupEvent"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".OrganizeCleanupEvent"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".CleanupEvents"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".RecyclingHub"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- ForgotPassword Activity -->
-        <activity
-            android:name=".AddToCartMarketplace"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".ForgotPassword"
-            android:exported="true" /> <!-- SellAnItem Activity -->
-        <activity
-            android:name=".SellAnItem"
-            android:exported="true" /> <!-- MainActivity (Launcher Activity) -->
+        <!-- MainActivity (Launcher Activity) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Login Activity -->
+        </activity>
+
+        <!-- Login Activity -->
         <activity
             android:name=".Login"
-            android:exported="true" /> <!-- Register Activity -->
+            android:exported="true" />
+
+        <!-- Register Activity -->
         <activity
             android:name=".Register"
-            android:exported="true" /> <!-- Choose Role Activity -->
+            android:exported="true" />
+
+        <!-- ForgotPassword Activity -->
         <activity
-            android:name=".ChooseRole"
-            android:exported="true" /> <!-- Dashboard Activity -->
+            android:name=".ForgotPassword"
+            android:exported="true" />
+
+        <!-- Dashboard Activity -->
         <activity
             android:name=".Dashboard"
-            android:exported="true" /> <!-- Marketplace Activity -->
+            android:exported="true" />
+
+        <!-- Choose Role Activity -->
+        <activity
+            android:name=".ChooseRole"
+            android:exported="true" />
+
+        <!-- Marketplace Activity -->
         <activity
             android:name=".Marketplace"
+            android:exported="true" />
+
+        <!-- AddToCartMarketplace Activity -->
+        <activity
+            android:name=".AddToCartMarketplace"
+            android:exported="true" />
+
+        <!-- SellAnItem Activity -->
+        <activity
+            android:name=".SellAnItem"
+            android:exported="true" />
+
+        <!-- Cleanup Events Activities -->
+        <activity
+            android:name=".CleanupEvents"
+            android:exported="true" />
+
+        <activity
+            android:name=".OrganizeCleanupEvent"
+            android:exported="true" />
+
+        <activity
+            android:name=".VolunteerCleanupEvent"
+            android:exported="true" />
+
+        <!-- RecyclingHub Activity -->
+        <activity
+            android:name=".RecyclingHub"
+            android:exported="true" />
+
+        <!-- Navbar Activity -->
+        <activity
+            android:name=".Navbar"
             android:exported="true" />
 
     </application>

@@ -81,7 +81,7 @@
                 />
 
             <ImageButton
-                android:id="@+id/event1"
+                android:id="@+id/event2"
                 android:layout_width="330dp"
                 android:layout_height="100dp"
                 android:text="Kitchen"

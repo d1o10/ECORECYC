@@ -90,7 +90,7 @@
 
 
     <ImageButton
-        android:id="@+id/group_2"
+        android:id="@+id/recylinghubbutton"
         android:layout_width="341dp"
         android:layout_height="114dp"
         android:layout_alignParentLeft="true"
@@ -102,7 +102,7 @@
         />
 
     <ImageButton
-        android:id="@+id/group_3"
+        android:id="@+id/cleanupbtn"
         android:layout_width="339dp"
         android:layout_height="114dp"
         android:layout_alignParentLeft="true"

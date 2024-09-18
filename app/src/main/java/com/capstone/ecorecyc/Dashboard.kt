@@ -20,6 +20,20 @@ class Dashboard : AppCompatActivity() {
             val intent = Intent(this, Marketplace::class.java)
             intent.putExtra("USER_TYPE", "USER")
             startActivity(intent)
+
+            val recylingbtn: ImageButton = findViewById(R.id.recylinghubbutton)
+            recylingbtn.setOnClickListener {
+                val intent = Intent(this, RecyclingHub::class.java)
+                intent.putExtra("USER_TYPE", "USER")
+                startActivity(intent)
+
+                val cleanbtn: ImageButton = findViewById(R.id.cleanupbtn)
+                cleanbtn.setOnClickListener {
+                    val intent = Intent(this, CleanupEvents::class.java)
+                    intent.putExtra("USER_TYPE", "USER")
+                    startActivity(intent)
+                }
+            }
         }
     }
 }
