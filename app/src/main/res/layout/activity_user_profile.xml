@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0e983d"
+    tools:context=".UserProfile">
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@color/transpa"
+        />
+
+    <TextView
+        android:id="@+id/profileText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Profile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        />
+
+        <ImageView
+            android:id="@+id/profile_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/img_5"
+            android:layout_marginTop="120dp"
+            android:layout_centerHorizontal="true"
+            />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="700dp"
+    android:background="@drawable/edittextbackground2"
+    android:layout_marginTop="320dp">
+</LinearLayout>
+
+    <ImageButton
+        android:id="@+id/my_orders_btn"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/my_orders"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="30dp"
+        android:scaleType="fitCenter"
+        android:layout_marginTop="320dp"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="325dp"
+        />
+    <ImageButton
+        android:id="@+id/my_listings_btn"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:src="@drawable/my_listings"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="30dp"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/my_orders_btn"
+        android:layout_marginTop="-31dp"
+        />
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+            android:backgroundTint="@color/transpa"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="385dp"
+            />
+
+    <ImageButton
+        android:id="@+id/transactions_btn"
+        android:layout_width="220dp"
+        android:layout_height="150dp"
+        android:src="@drawable/transaction_history"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="25dp"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/my_listings_btn"
+        android:layout_marginTop="-50dp"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="460dp"
+        />
+
+    <ImageButton
+        android:id="@+id/settings_btn"
+        android:layout_width="130dp"
+        android:layout_height="100dp"
+        android:src="@drawable/settings"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="25dp"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/transactions_btn"
+        android:layout_marginTop="-60dp"
+        />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="250dp"
+        android:layout_marginTop="530dp"
+        />
+
+    <ImageButton
+        android:id="@+id/logout_btn"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:src="@drawable/logout"
+        android:backgroundTint="@color/transpa"
+        android:layout_marginStart="30dp"
+        android:scaleType="fitCenter"
+        android:layout_below="@+id/settings_btn"
+        android:layout_marginTop="-20dp"
+        />
+</RelativeLayout>
