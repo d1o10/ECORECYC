@@ -12,57 +12,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
-        <activity
-            android:name=".EditProfile"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".UserProfile"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity> <!-- MainActivity (Launcher Activity) -->
+        <!-- MainActivity (Launcher Activity) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Login Activity -->
+        </activity>
+
+        <!-- Other activities without LAUNCHER intent -->
+        <activity
+            android:name=".EditProfile"
+            android:exported="true" />
+        <activity
+            android:name=".UserProfile"
+            android:exported="true" />
         <activity
             android:name=".Login"
-            android:exported="true" /> <!-- Register Activity -->
+            android:exported="true" />
         <activity
             android:name=".Register"
-            android:exported="true" /> <!-- ForgotPassword Activity -->
+            android:exported="true" />
         <activity
             android:name=".ForgotPassword"
-            android:exported="true" /> <!-- Dashboard Activity -->
+            android:exported="true" />
         <activity
             android:name=".Dashboard"
-            android:exported="true" /> <!-- Choose Role Activity -->
+            android:exported="true" />
         <activity
             android:name=".ChooseRole"
-            android:exported="true" /> <!-- Marketplace Activity -->
+            android:exported="true" />
         <activity
             android:name=".Marketplace"
-            android:exported="true" /> <!-- AddToCartMarketplace Activity -->
+            android:exported="true" />
         <activity
             android:name=".AddToCartMarketplace"
-            android:exported="true" /> <!-- SellAnItem Activity -->
+            android:exported="true" />
         <activity
             android:name=".SellAnItem"
-            android:exported="true" /> <!-- Cleanup Events Activities -->
+            android:exported="true" />
         <activity
             android:name=".CleanupEvents"
             android:exported="true" />
@@ -71,13 +62,14 @@
             android:exported="true" />
         <activity
             android:name=".VolunteerCleanupEvent"
-            android:exported="true" /> <!-- RecyclingHub Activity -->
+            android:exported="true" />
         <activity
             android:name=".RecyclingHub"
-            android:exported="true" /> <!-- Navbar Activity -->
+            android:exported="true" />
         <activity
             android:name=".Navbar"
             android:exported="true" />
+
     </application>
 
 </manifest>
