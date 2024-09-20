@@ -22,5 +22,12 @@ class CleanupEvents : AppCompatActivity() {
             startActivity(intent)
         }
 
+        val volunteerbtn: ImageButton = findViewById(R.id.event1)
+        volunteerbtn.setOnClickListener {
+            val intent = Intent(this, VolunteerCleanupEvent::class.java)
+            intent.putExtra("USER_TYPE", "USER")
+            startActivity(intent)
+        }
+
     }
 }

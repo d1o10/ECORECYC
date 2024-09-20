@@ -33,6 +33,13 @@ class Dashboard : AppCompatActivity() {
                     intent.putExtra("USER_TYPE", "USER")
                     startActivity(intent)
                 }
+
+                val profbtn: ImageButton = findViewById(R.id.profilebtn)
+                profbtn.setOnClickListener {
+                    val intent = Intent(this, UserProfile::class.java)
+                    intent.putExtra("USER_TYPE", "USER")
+                    startActivity(intent)
+                }
             }
         }
     }

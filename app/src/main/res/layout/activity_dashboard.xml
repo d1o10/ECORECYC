@@ -63,6 +63,7 @@
 </RelativeLayout>
 
     <ImageButton
+        android:id="@+id/profilebtn"
         android:layout_width="45dp"
         android:layout_height="40dp"
         android:layout_above="@id/searchandchat"
