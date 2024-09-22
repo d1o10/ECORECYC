@@ -37,6 +37,23 @@
             android:layout_marginTop="120dp"
             android:layout_centerHorizontal="true"
             />
+    <TextView
+        android:id="@+id/profile_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_image"
+        android:text="Ariana Grande"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/profile_name"
+        android:text="grandeariana@gmail.com"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"/>
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="700dp"
