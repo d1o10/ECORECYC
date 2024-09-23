@@ -22,5 +22,7 @@ class Marketplace : AppCompatActivity() {
             intent.putExtra("USER_TYPE", "USER")
             startActivity(intent)
         }
+
     }
+
 }
