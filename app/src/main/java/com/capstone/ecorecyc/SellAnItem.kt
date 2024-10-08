@@ -105,6 +105,8 @@ class SellAnItem : AppCompatActivity() {
                         finish()
                     }.addOnFailureListener {
                         Toast.makeText(this, "Failed to upload item", Toast.LENGTH_SHORT).show()
+
+
                     }
                 }
             }

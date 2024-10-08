@@ -8,6 +8,14 @@
     tools:context=".Marketplace"
     android:background="#ffff">
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="190dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_and_filter"
+        android:layout_marginTop="56dp" />
+
     <TextView
         android:id="@+id/marketplaceText"
         android:layout_width="wrap_content"
@@ -97,47 +105,7 @@
     </LinearLayout>
 
 
-    <ImageButton
-        android:id="@+id/backdrop_marketplace"
-        android:layout_width="176dp"
-        android:layout_height="138dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="270dp"
-        android:background="@drawable/backdrop"
-        />
 
-    <ImageButton
-        android:id="@+id/backdrop_marketplace1"
-        android:layout_width="176dp"
-        android:layout_height="138dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="270dp"
-        android:background="@drawable/backdrop"
-        />
 
-    <ImageButton
-        android:id="@+id/backdrop_marketplace3"
-        android:layout_width="176dp"
-        android:layout_height="138dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="30dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="460dp"
-        android:background="@drawable/backdrop"
-        />
 
-    <ImageButton
-        android:id="@+id/backdrop_marketplace4"
-        android:layout_width="176dp"
-        android:layout_height="138dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="460dp"
-        android:background="@drawable/backdrop"
-        />
 </RelativeLayout>
