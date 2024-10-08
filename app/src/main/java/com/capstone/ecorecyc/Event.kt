@@ -8,3 +8,5 @@ data class Event(
     val imageUrl: String = ""  // Add imageUrl to the Event model
 )
 
+
+

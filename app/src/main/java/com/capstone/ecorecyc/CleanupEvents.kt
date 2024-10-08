@@ -7,17 +7,16 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ListenerRegistration
 
 class CleanupEvents : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var eventAdapter: EventAdapter
     private lateinit var eventList: MutableList<Event>
+    private val firestore = FirebaseFirestore.getInstance()
+    private var eventListener: ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,36 +35,36 @@ class CleanupEvents : AppCompatActivity() {
         eventAdapter = EventAdapter(eventList)
         recyclerView.adapter = eventAdapter
 
-        // Fetch events from Firebase when the activity starts
-        fetchEventsFromFirebase()
+        // Fetch events from Firestore when the activity starts
+        fetchEventsFromFirestore()
     }
 
     override fun onResume() {
         super.onResume()
         // Fetch events again when the activity resumes
-        fetchEventsFromFirebase()
+        fetchEventsFromFirestore()
     }
 
-    private fun fetchEventsFromFirebase() {
-        val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("cleanup_events")
+    override fun onDestroy() {
+        super.onDestroy()
+        // Remove Firestore listener when activity is destroyed
+        eventListener?.remove()
+    }
 
-        databaseRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-                eventList.clear() // Clear existing list before adding new data
-
-                for (eventSnapshot in dataSnapshot.children) {
-                    val event = eventSnapshot.getValue(Event::class.java)
-                    if (event != null) {
-                        eventList.add(event)
-                    }
+    private fun fetchEventsFromFirestore() {
+        eventListener = firestore.collection("cleanup_events")
+            .addSnapshotListener { snapshots, e ->
+                if (e != null) {
+                    Toast.makeText(this, "Failed to load events", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
                 }
 
+                eventList.clear() // Clear existing list before adding new data
+                for (doc in snapshots!!) {
+                    val event = doc.toObject(Event::class.java)
+                    eventList.add(event)
+                }
                 eventAdapter.notifyDataSetChanged() // Notify adapter of data change
             }
-
-            override fun onCancelled(databaseError: DatabaseError) {
-                Toast.makeText(this@CleanupEvents, "Failed to load events", Toast.LENGTH_SHORT).show()
-            }
-        })
     }
 }

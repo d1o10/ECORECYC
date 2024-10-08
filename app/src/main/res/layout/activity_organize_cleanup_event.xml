@@ -1,131 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrganizeCleanupEvent">
 
-    <RelativeLayout
-        android:id="@+id/main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"> <!-- Change height to wrap_content -->
+    <TextView
+        android:id="@+id/newListing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Organize Clean-up Events"
+        android:textStyle="bold"
+        android:textSize="19sp"
+        android:layout_marginTop="70dp"
+        android:layout_marginLeft="60dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/uploadPhotos"
+        android:layout_below="@id/newListing"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/confirm_cleanup_event_btn"
+            android:id="@+id/upload_btn"
             android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:text="Confirm"
-            android:background="@drawable/button2"
+            android:layout_height="55dp"
             android:layout_marginTop="30dp"
-            android:layout_below="@id/invitePeople"
-            android:layout_centerHorizontal="true"
-            android:textSize="17sp" />
+            android:text="Upload Photos"
+            android:textSize="17sp"
+            android:background="@drawable/backdrop2"
+            android:drawableLeft="@drawable/add_item"
+            android:paddingStart="105dp"
+            android:gravity="center_vertical" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/cleanup_Name"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/uploadPhotos"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Clean-up Name" />
+
+    <EditText
+        android:id="@+id/location"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/cleanup_Name"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Location" />
+
+    <TextView
+        android:id="@+id/date_picker"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/location"
+        android:layout_marginTop="20dp"
+        android:padding="10dp"
+        android:text="Select Date"
+        android:textAlignment="center"
+        android:textSize="17sp" />
+
+    <EditText
+        android:id="@+id/cleanup_description"
+        android:layout_width="350dp"
+        android:layout_height="98dp"
+        android:background="@drawable/backdrop2"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/date_picker"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Description" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cleanup_description"
+        android:id="@+id/invitePeople">
 
         <Button
-            android:id="@+id/backbtnprof"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:background="@color/transpa"
-            android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
-            android:paddingLeft="30dp" />
+            android:id="@+id/invitePeople_btn"
+            android:layout_width="35dp"
+            android:layout_height="30dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/invitepeople" />
 
         <TextView
-            android:id="@+id/newListing"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Organize Clean-up Events"
-            android:textStyle="bold"
-            android:textSize="19sp"
-            android:layout_marginTop="70dp"
-            android:layout_marginLeft="60dp" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/uploadPhotos"
-            android:layout_below="@+id/newListing"
-            android:layout_centerHorizontal="true"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/upload_btn"
-                android:layout_width="350dp"
-                android:layout_height="55dp"
-                android:layout_marginTop="30dp"
-                android:text="Upload Photos"
-                android:textSize="17sp"
-                android:background="@drawable/backdrop2"
-                android:drawableLeft="@drawable/add_item"
-                android:paddingStart="105dp"
-                android:gravity="center_vertical" />
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/cleanup_Name"
-            android:layout_width="350dp"
-            android:layout_height="58dp"
-            android:background="@drawable/backdrop2"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/uploadPhotos"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="25dp"
-            android:hint="Clean-up Name" />
-
-        <EditText
-            android:id="@+id/location"
-            android:layout_width="350dp"
-            android:layout_height="58dp"
-            android:background="@drawable/backdrop2"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/cleanup_Name"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="25dp"
-            android:hint="Location" />
-
-        <CalendarView
-            android:id="@+id/date_picker_actions"
-            android:layout_width="350dp"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:background="@drawable/backdrop2"
-            android:layout_below="@+id/location"
-            android:layout_marginTop="20dp" />
-
-        <EditText
-            android:id="@+id/cleanup_description"
-            android:layout_width="350dp"
-            android:layout_height="98dp"
-            android:background="@drawable/backdrop2"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@+id/date_picker_actions"
-            android:layout_marginTop="20dp"
-            android:paddingLeft="25dp"
-            android:hint="Description" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/cleanup_description"
-            android:id="@+id/invitePeople">
-
-            <Button
-                android:id="@+id/invitePeople_btn"
-                android:layout_width="35dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginTop="5dp"
-                android:background="@drawable/invitepeople" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/invitePeople_btn"
-                android:text="Invite People"
-                android:textSize="18sp"
-                android:layout_marginTop="7dp"
-                android:layout_marginStart="15sp" />
-        </RelativeLayout>
+            android:layout_toEndOf="@id/invitePeople_btn"
+            android:text="Invite People"
+            android:textSize="18sp"
+            android:layout_marginTop="7dp"
+            android:layout_marginStart="15sp" />
     </RelativeLayout>
-</ScrollView>
+
+    <Button
+        android:id="@+id/confirm_cleanup_event_btn"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:text="Confirm"
+        android:background="@drawable/button2"
+        android:layout_marginTop="30dp"
+        android:layout_below="@id/invitePeople"
+        android:layout_centerHorizontal="true"
+        android:textSize="17sp" />
+
+    <!-- ImageView to display selected image -->
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="350dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/confirm_cleanup_event_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:contentDescription="Selected Image"
+        android:scaleType="centerCrop" />
+</RelativeLayout>
