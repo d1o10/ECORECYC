@@ -34,7 +34,7 @@
         android:layout_below="@id/recyclingHubText"
         android:gravity="center_vertical"
         android:layout_marginTop="18dp"
-        android:layout_marginStart="235dp"
+        android:layout_marginStart="245dp"
        >
 
         <ImageButton

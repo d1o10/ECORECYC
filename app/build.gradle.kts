@@ -48,7 +48,6 @@ dependencies {
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.firebase.storage.ktx)
     implementation(libs.firebase.database.ktx)
-
     // Add Glide dependencies from version catalog
     implementation(libs.glide)
     implementation(libs.androidx.material3.android) // This should point to Glide

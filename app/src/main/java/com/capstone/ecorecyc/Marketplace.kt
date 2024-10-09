@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -22,10 +23,13 @@ class Marketplace : AppCompatActivity() {
         setContentView(R.layout.activity_marketplace)
 
         recyclerView = findViewById(R.id.recyclerView)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        // Set the layout manager to display a grid of 2 columns
+        recyclerView.layoutManager = GridLayoutManager(this, 2)
 
         fetchItems()
     }
+
 
 
 

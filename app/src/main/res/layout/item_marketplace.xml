@@ -10,8 +10,9 @@
     <ImageView
         android:id="@+id/itemImage"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:scaleType="centerCrop" />
+        android:layout_height="190dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/curved_image_bg"/>
 
     <TextView
         android:id="@+id/itemName"

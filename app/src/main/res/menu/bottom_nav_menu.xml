@@ -10,6 +10,7 @@
             android:background="@color/transpa"
             android:clickable="true"
             android:icon="@drawable/baseline_home_24"
+            android:title="Home"
             />
         <item
             android:id="@+id/cartIcon"
@@ -19,6 +20,7 @@
             android:background="@color/transpa"
             android:clickable="true"
             android:icon="@drawable/baseline_shopping_cart_24"
+            android:title="Cart"
             />
         <item
             android:id="@+id/notificationIcon"
@@ -28,6 +30,7 @@
             android:background="@color/transpa"
             android:clickable="true"
             android:icon="@drawable/baseline_notifications_24"
+            android:title="Notifications"
             />
         <item
             android:id="@+id/profileIcon"
@@ -36,8 +39,8 @@
             android:layout_weight="1"
             android:background="@color/transpa"
             android:clickable="true"
-            android:icon="@drawable/profile_icon"
-            />
+            android:icon="@drawable/profile"
+            android:title="Profile"/>
 
 
 

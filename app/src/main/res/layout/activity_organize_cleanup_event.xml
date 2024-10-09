@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     tools:context=".OrganizeCleanupEvent">
 
+    <Button
+        android:id="@+id/backbtnprof"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:background="@color/transpa"
+        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+        android:paddingLeft="30dp" />
     <TextView
         android:id="@+id/newListing"
         android:layout_width="wrap_content"
@@ -30,19 +38,21 @@
             android:layout_width="350dp"
             android:layout_height="55dp"
             android:layout_marginTop="30dp"
-            android:text="Upload Photos"
+            android:hint="Upload Photos"
+            android:elevation="5dp"
             android:textSize="17sp"
-            android:background="@drawable/backdrop2"
+            android:background="@drawable/filloutbg"
             android:drawableLeft="@drawable/add_item"
             android:paddingStart="105dp"
-            android:gravity="center_vertical" />
+            android:gravity="center_vertical"/>
     </LinearLayout>
 
     <EditText
         android:id="@+id/cleanup_Name"
         android:layout_width="350dp"
-        android:layout_height="58dp"
-        android:background="@drawable/backdrop2"
+        android:layout_height="55dp"
+        android:background="@drawable/filloutbg"
+        android:elevation="5dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/uploadPhotos"
         android:layout_marginTop="20dp"
@@ -52,8 +62,9 @@
     <EditText
         android:id="@+id/location"
         android:layout_width="350dp"
-        android:layout_height="58dp"
-        android:background="@drawable/backdrop2"
+        android:layout_height="55dp"
+        android:background="@drawable/filloutbg"
+        android:elevation="5dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/cleanup_Name"
         android:layout_marginTop="20dp"
@@ -63,23 +74,42 @@
     <TextView
         android:id="@+id/date_picker"
         android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/backdrop2"
+        android:layout_height="55dp"
+        android:background="@drawable/filloutbg"
+        android:elevation="5dp"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/location"
         android:layout_marginTop="20dp"
-        android:padding="10dp"
-        android:text="Select Date"
-        android:textAlignment="center"
-        android:textSize="17sp" />
+        android:paddingTop="15dp"
+        android:paddingLeft="25dp"
+        android:hint="Date"
+        android:textSize="17sp"
+        android:drawableEnd="@drawable/baseline_calendar_today_24"
+        />
+
+    <TextView
+        android:id="@+id/time_picker"
+        android:layout_width="350dp"
+        android:layout_height="55dp"
+        android:background="@drawable/filloutbg"
+        android:elevation="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/date_picker"
+        android:layout_marginTop="20dp"
+        android:paddingLeft="25dp"
+        android:hint="Time"
+        android:textSize="17sp"
+        android:paddingTop="15dp"
+        android:drawableEnd="@drawable/baseline_access_time_24" />
 
     <EditText
         android:id="@+id/cleanup_description"
         android:layout_width="350dp"
-        android:layout_height="98dp"
-        android:background="@drawable/backdrop2"
+        android:layout_height="90dp"
+        android:background="@drawable/filloutbg"
+        android:elevation="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/date_picker"
+        android:layout_below="@id/time_picker"
         android:layout_marginTop="20dp"
         android:paddingLeft="25dp"
         android:hint="Description" />
@@ -92,10 +122,10 @@
 
         <Button
             android:id="@+id/invitePeople_btn"
-            android:layout_width="35dp"
-            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:layout_height="25dp"
             android:layout_marginStart="40dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/invitepeople" />
 
         <TextView
@@ -104,7 +134,7 @@
             android:layout_toEndOf="@id/invitePeople_btn"
             android:text="Invite People"
             android:textSize="18sp"
-            android:layout_marginTop="7dp"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="15sp" />
     </RelativeLayout>
 
