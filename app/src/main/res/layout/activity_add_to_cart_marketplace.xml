@@ -102,15 +102,15 @@
             android:layout_height="50dp"
             android:layout_below="@id/displayItemInfo"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/backdrop2"
             android:hint="Add to Cart"
-            android:textColorHint="@color/black"/>
+            android:textColorHint="@color/black" />
 
         <Button
             android:layout_width="170dp"
             android:layout_height="50dp"
-            android:layout_marginTop="150dp"
+            android:layout_marginTop="100dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/button2"
             android:hint="Buy Now"

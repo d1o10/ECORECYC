@@ -1,17 +1,16 @@
 package com.capstone.ecorecyc
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide // Import Glide
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -23,8 +22,10 @@ class OrganizeCleanupEvent : AppCompatActivity() {
     private lateinit var locationEditText: EditText
     private lateinit var descriptionEditText: EditText
     private lateinit var dateTextView: TextView
+    private lateinit var timeTextView: TextView
     private lateinit var uploadButton: Button
     private lateinit var confirmButton: Button
+    private lateinit var imageView: ImageView // Declare ImageView
 
     private var imageUri: Uri? = null
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
@@ -37,15 +38,23 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         locationEditText = findViewById(R.id.location)
         descriptionEditText = findViewById(R.id.cleanup_description)
         dateTextView = findViewById(R.id.date_picker)
+        timeTextView = findViewById(R.id.time_picker)
         uploadButton = findViewById(R.id.upload_btn)
         confirmButton = findViewById(R.id.confirm_cleanup_event_btn)
+        imageView = findViewById(R.id.imageView) // Initialize ImageView
 
         // Register the launcher for selecting images
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val data = result.data
                 imageUri = data?.data // Get the image URI
-                Toast.makeText(this, "Image Selected", Toast.LENGTH_SHORT).show()
+                if (imageUri != null) {
+                    // Display the selected image in the ImageView
+                    Glide.with(this) // Use Glide to load the image
+                        .load(imageUri)
+                        .into(imageView)
+                    Toast.makeText(this, "Image Selected", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -62,6 +71,11 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         dateTextView.setOnClickListener {
             showDatePicker()
         }
+
+        // Time picker dialog for selecting time
+        timeTextView.setOnClickListener {
+            showTimePicker()
+        }
     }
 
     private fun openGallery() {
@@ -74,8 +88,9 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         val loc = locationEditText.text.toString().trim()
         val desc = descriptionEditText.text.toString().trim()
         val date = dateTextView.text.toString().trim()
+        val time = timeTextView.text.toString().trim()
 
-        if (name.isEmpty() || loc.isEmpty() || desc.isEmpty() || date.isEmpty() || imageUri == null) {
+        if (name.isEmpty() || loc.isEmpty() || desc.isEmpty() || date.isEmpty() || time.isEmpty() || imageUri == null) {
             Toast.makeText(this, "Please fill all fields and select an image", Toast.LENGTH_SHORT).show()
             return
         }
@@ -89,6 +104,7 @@ class OrganizeCleanupEvent : AppCompatActivity() {
                         cleanupName = name,
                         location = loc,
                         date = date,
+                        time = time,
                         description = desc,
                         imageUrl = downloadUrl.toString()
                     )
@@ -125,5 +141,19 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         }, year, month, day)
 
         datePickerDialog.show()
+    }
+
+    private fun showTimePicker() {
+        val calendar = Calendar.getInstance()
+        val hour = calendar.get(Calendar.HOUR_OF_DAY)
+        val minute = calendar.get(Calendar.MINUTE)
+
+        val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+            // Format the time and set it to the TextView
+            val selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
+            timeTextView.text = selectedTime
+        }, hour, minute, true)
+
+        timePickerDialog.show()
     }
 }
