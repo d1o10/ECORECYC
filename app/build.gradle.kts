@@ -50,10 +50,10 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     // Add Glide dependencies from version catalog
     implementation(libs.glide)
-    implementation(libs.androidx.material3.android) // This should point to Glide
     kapt(libs.glide.compiler)  // This should point to Glide's compiler
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 }
+

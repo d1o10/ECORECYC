@@ -6,14 +6,15 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.bumptech.glide.Glide // Import Glide
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import java.util.*
 
 class OrganizeCleanupEvent : AppCompatActivity() {
@@ -25,7 +26,7 @@ class OrganizeCleanupEvent : AppCompatActivity() {
     private lateinit var timeTextView: TextView
     private lateinit var uploadButton: Button
     private lateinit var confirmButton: Button
-    private lateinit var imageView: ImageView // Declare ImageView
+    private lateinit var imageView: ImageView
 
     private var imageUri: Uri? = null
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
@@ -41,16 +42,14 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         timeTextView = findViewById(R.id.time_picker)
         uploadButton = findViewById(R.id.upload_btn)
         confirmButton = findViewById(R.id.confirm_cleanup_event_btn)
-        imageView = findViewById(R.id.imageView) // Initialize ImageView
+        imageView = findViewById(R.id.imageView)
 
-        // Register the launcher for selecting images
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == RESULT_OK) {
                 val data = result.data
-                imageUri = data?.data // Get the image URI
+                imageUri = data?.data
                 if (imageUri != null) {
-                    // Display the selected image in the ImageView
-                    Glide.with(this) // Use Glide to load the image
+                    Glide.with(this)
                         .load(imageUri)
                         .into(imageView)
                     Toast.makeText(this, "Image Selected", Toast.LENGTH_SHORT).show()
@@ -58,21 +57,18 @@ class OrganizeCleanupEvent : AppCompatActivity() {
             }
         }
 
-        // Set up button listeners
         uploadButton.setOnClickListener {
-            openGallery() // Open the gallery to select an image
+            openGallery()
         }
 
         confirmButton.setOnClickListener {
-            uploadEvent() // Upload the event to Firebase
+            uploadEvent()
         }
 
-        // Date picker dialog for selecting date
         dateTextView.setOnClickListener {
             showDatePicker()
         }
 
-        // Time picker dialog for selecting time
         timeTextView.setOnClickListener {
             showTimePicker()
         }
@@ -95,32 +91,40 @@ class OrganizeCleanupEvent : AppCompatActivity() {
             return
         }
 
-        val storageRef = FirebaseStorage.getInstance().getReference("cleanup_events/${UUID.randomUUID()}.jpg")
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val userId = currentUser.uid
+        val storageRef = FirebaseStorage.getInstance().getReference("event_photos/${UUID.randomUUID()}.jpg")
         storageRef.putFile(imageUri!!)
             .addOnSuccessListener {
                 storageRef.downloadUrl.addOnSuccessListener { downloadUrl ->
-                    // Create an Event object
-                    val event = Event(
-                        cleanupName = name,
-                        location = loc,
-                        date = date,
-                        time = time,
-                        description = desc,
-                        imageUrl = downloadUrl.toString()
+                    val event = hashMapOf(
+                        "cleanupName" to name,
+                        "location" to loc,
+                        "date" to date,
+                        "time" to time,
+                        "description" to desc,
+                        "imageUrl" to downloadUrl.toString()
                     )
 
-                    // Save event to Firebase Realtime Database
-                    val databaseRef: DatabaseReference = FirebaseDatabase.getInstance().getReference("cleanup_events")
-                    val eventId = databaseRef.push().key
-                    databaseRef.child(eventId!!).setValue(event)
+                    val db = FirebaseFirestore.getInstance()
+                    db.collection("users").document(userId).collection("cleanup_events")
+                        .add(event)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
                                 Toast.makeText(this, "Event Created", Toast.LENGTH_SHORT).show()
-                                finish() // Navigate back to the previous activity
+                                finish()
                             } else {
-                                Toast.makeText(this, "Failed to create event", Toast.LENGTH_SHORT).show()
+                                Log.e("FirestoreError", task.exception?.message ?: "Unknown error")
+                                Toast.makeText(this, "Failed to create event: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                             }
                         }
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Failed to retrieve image URL", Toast.LENGTH_SHORT).show()
                 }
             }
             .addOnFailureListener {
@@ -135,7 +139,6 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         val day = calendar.get(Calendar.DAY_OF_MONTH)
 
         val datePickerDialog = DatePickerDialog(this, { _, selectedYear, selectedMonth, selectedDay ->
-            // Format the date and set it to the TextView
             val selectedDate = "${selectedDay}/${selectedMonth + 1}/$selectedYear"
             dateTextView.text = selectedDate
         }, year, month, day)
@@ -149,7 +152,6 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         val minute = calendar.get(Calendar.MINUTE)
 
         val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-            // Format the time and set it to the TextView
             val selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
             timeTextView.text = selectedTime
         }, hour, minute, true)

@@ -21,7 +21,9 @@ class EventAdapter(private val eventList: List<Event>) : RecyclerView.Adapter<Ev
         holder.location.text = event.location
         holder.description.text = event.description
         holder.date.text = event.date
+        holder.time.text = event.time // Bind the time
 
+        // Load the event image using Glide
         Glide.with(holder.itemView.context)
             .load(event.imageUrl)
             .into(holder.imageView)
@@ -36,6 +38,7 @@ class EventAdapter(private val eventList: List<Event>) : RecyclerView.Adapter<Ev
         val location: TextView = itemView.findViewById(R.id.location)
         val description: TextView = itemView.findViewById(R.id.description)
         val date: TextView = itemView.findViewById(R.id.date)
+        val time: TextView = itemView.findViewById(R.id.time) // Reference the new TextView for time
         val imageView: ImageView = itemView.findViewById(R.id.event_image)
     }
 }

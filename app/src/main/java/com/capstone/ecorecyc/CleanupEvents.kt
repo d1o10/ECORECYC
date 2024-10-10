@@ -7,6 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
@@ -35,36 +36,41 @@ class CleanupEvents : AppCompatActivity() {
         eventAdapter = EventAdapter(eventList)
         recyclerView.adapter = eventAdapter
 
-        // Fetch events from Firestore when the activity starts
         fetchEventsFromFirestore()
     }
 
     override fun onResume() {
         super.onResume()
-        // Fetch events again when the activity resumes
         fetchEventsFromFirestore()
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // Remove Firestore listener when activity is destroyed
         eventListener?.remove()
     }
 
     private fun fetchEventsFromFirestore() {
-        eventListener = firestore.collection("cleanup_events")
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val userId = currentUser.uid
+        eventListener = firestore.collection("users").document(userId)
+            .collection("cleanup_events")
             .addSnapshotListener { snapshots, e ->
                 if (e != null) {
                     Toast.makeText(this, "Failed to load events", Toast.LENGTH_SHORT).show()
                     return@addSnapshotListener
                 }
 
-                eventList.clear() // Clear existing list before adding new data
+                eventList.clear()
                 for (doc in snapshots!!) {
                     val event = doc.toObject(Event::class.java)
                     eventList.add(event)
                 }
-                eventAdapter.notifyDataSetChanged() // Notify adapter of data change
+                eventAdapter.notifyDataSetChanged()
             }
     }
 }
