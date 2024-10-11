@@ -35,6 +35,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -50,6 +53,8 @@ dependencies {
     implementation(libs.firebase.database.ktx)
     // Add Glide dependencies from version catalog
     implementation(libs.glide)
+    implementation(libs.androidx.navigation.fragment.ktx)
+    implementation(libs.androidx.navigation.ui.ktx)
     kapt(libs.glide.compiler)  // This should point to Glide's compiler
 
     testImplementation(libs.junit)

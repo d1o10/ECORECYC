@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
-
+    xmlns:tools="http://schemas.android.com/tools" >
     <!-- Add Internet Permission -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -16,33 +15,66 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
-        tools:targetApi="31">
-
+        tools:targetApi="31" >
+        <activity
+            android:name=".MainNavigation"
+            android:exported="false"
+            android:theme="@style/Theme.Ecorecyc" />
         <!-- MainActivity (Launcher Activity) -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Other activities -->
-        <activity android:name=".EditProfile" android:exported="true" />
-        <activity android:name=".UserProfile" android:exported="true" />
-        <activity android:name=".Login" android:exported="true" />
-        <activity android:name=".Register" android:exported="true" />
-        <activity android:name=".ForgotPassword" android:exported="true" />
-        <activity android:name=".Dashboard" android:exported="true" />
-        <activity android:name=".ChooseRole" android:exported="true" />
-        <activity android:name=".Marketplace" android:exported="true" />
-        <activity android:name=".AddToCartMarketplace" android:exported="true" />
-        <activity android:name=".SellAnItem" android:exported="true" />
-        <activity android:name=".CleanupEvents" android:exported="true" />
-        <activity android:name=".OrganizeCleanupEvent" android:exported="true" />
-        <activity android:name=".VolunteerCleanupEvent" android:exported="true" />
-        <activity android:name=".RecyclingHub" android:exported="true" />
-        <activity android:name=".Navbar" android:exported="true" />
+        </activity> <!-- Other activities -->
+        <activity
+            android:name=".EditProfile"
+            android:exported="true" />
+        <activity
+            android:name=".UserProfile"
+            android:exported="true" />
+        <activity
+            android:name=".Login"
+            android:exported="true" />
+        <activity
+            android:name=".Register"
+            android:exported="true" />
+        <activity
+            android:name=".ForgotPassword"
+            android:exported="true" />
+        <activity
+            android:name=".Dashboard"
+            android:exported="true" />
+        <activity
+            android:name=".ChooseRole"
+            android:exported="true" />
+        <activity
+            android:name=".Marketplace"
+            android:exported="true" />
+        <activity
+            android:name=".AddToCartMarketplace"
+            android:exported="true" />
+        <activity
+            android:name=".SellAnItem"
+            android:exported="true" />
+        <activity
+            android:name=".CleanupEvents"
+            android:exported="true" />
+        <activity
+            android:name=".OrganizeCleanupEvent"
+            android:exported="true" />
+        <activity
+            android:name=".VolunteerCleanupEvent"
+            android:exported="true" />
+        <activity
+            android:name=".RecyclingHub"
+            android:exported="true" />
+        <activity
+            android:name=".Navbar"
+            android:exported="true" />
     </application>
+
 </manifest>

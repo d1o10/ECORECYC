@@ -83,7 +83,7 @@ class Login : AppCompatActivity() {
                             }
 
                             // Navigate to the main app activity after login
-                            val intent = Intent(this, Dashboard::class.java)
+                            val intent = Intent(this, Navbar::class.java)
                             startActivity(intent)
                             finish() // Optional: Prevent the user from returning to the login screen
                         } else {

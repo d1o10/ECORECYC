@@ -1,6 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="180dp">
+
+        <EditText
+            android:id="@+id/searchbox"
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="140dp"
+            android:background="@drawable/search"
+            android:padding="10dp" />
+
+        <ImageButton
+            android:id="@+id/chatBtn"
+            android:layout_width="45dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="130dp"
+            android:background="@color/transpa"
+            android:scaleType="fitCenter"
+            android:src="@drawable/chat" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/locationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your Location"
+        android:layout_marginTop="70dp"
+        android:textColor="@color/black"
+        android:paddingLeft="30dp"
+        />
+
+    <Button
+        android:id="@+id/locationbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Banilad, Cebu City"
+        android:background="@color/transpa"
+        android:textColor="@color/black"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="80dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/searchandchat">
+    </RelativeLayout>
+
+    <ImageButton
+        android:id="@+id/profilebtn"
+        android:layout_width="45dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="320dp"
+        android:background="@drawable/img_5"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Category"
+        android:paddingLeft="30dp"
+        android:layout_marginTop="210dp"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"/>
+
+    <ImageButton
+        android:id="@+id/marketplacebutton"
+        android:layout_width="341dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="260dp"
+        android:background="@drawable/marketplacecat"
+        android:layout_centerHorizontal="true"
+        android:clickable="true"
+        android:focusable="true"
+        />
+
+    <ImageButton
+        android:id="@+id/recylinghubbutton"
+        android:layout_width="341dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="430dp"
+        android:background="@drawable/recyclingcat"
+        android:layout_centerHorizontal="true"
+        />
+
+    <ImageButton
+        android:id="@+id/cleanupbtn"
+        android:layout_width="339dp"
+        android:layout_height="120dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="600dp"
+        android:background="@drawable/cleanupcat"
+        android:layout_centerHorizontal="true"
+        />
+
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
