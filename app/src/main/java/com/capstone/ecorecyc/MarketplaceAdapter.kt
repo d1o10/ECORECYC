@@ -1,5 +1,6 @@
 package com.capstone.ecorecyc
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,9 +26,18 @@ class MarketplaceAdapter(private val itemList: List<Data.Item>) : RecyclerView.A
         val item = itemList[position]
         holder.itemName.text = item.name
         holder.itemPrice.text = item.price
-        Glide.with(holder.itemView.context)
-            .load(item.imageUrl)
-            .into(holder.itemImage)
+        Glide.with(holder.itemView.context).load(item.imageUrl).into(holder.itemImage)
+
+        // Set the onClickListener to open the ItemDetailsActivity
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = Intent(context, ItemDetails::class.java).apply {
+                putExtra("name", item.name)
+                putExtra("price", item.price)
+                putExtra("imageUrl", item.imageUrl)
+            }
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = itemList.size

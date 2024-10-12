@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-    <!-- Add Internet Permission -->
+
+    <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,73 +17,93 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
-        <activity
-            android:name=".PlaceOrder"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".MainNavigation"
-            android:exported="false"
-            android:theme="@style/Theme.Ecorecyc" /> <!-- MainActivity (Launcher Activity) -->
+        <!-- Main Activity (Launcher) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Other activities -->
+        </activity>
+
+        <!-- Other Activities -->
+        <activity
+            android:name=".CartActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ItemDetails"
+            android:exported="false" />
+
+        <activity
+            android:name=".PlaceOrder"
+            android:exported="true" />
+
+        <activity
+            android:name=".MainNavigation"
+            android:exported="false"
+            android:theme="@style/Theme.Ecorecyc" />
+
         <activity
             android:name=".EditProfile"
             android:exported="true" />
+
         <activity
             android:name=".UserProfile"
             android:exported="true" />
+
         <activity
             android:name=".Login"
             android:exported="true" />
+
         <activity
             android:name=".Register"
             android:exported="true" />
+
         <activity
             android:name=".ForgotPassword"
             android:exported="true" />
+
         <activity
             android:name=".Dashboard"
             android:exported="true" />
+
         <activity
             android:name=".ChooseRole"
             android:exported="true" />
+
         <activity
             android:name=".Marketplace"
             android:exported="true" />
+
         <activity
             android:name=".AddToCartMarketplace"
             android:exported="true" />
+
         <activity
             android:name=".SellAnItem"
             android:exported="true" />
+
         <activity
             android:name=".CleanupEvents"
             android:exported="true" />
+
         <activity
             android:name=".OrganizeCleanupEvent"
             android:exported="true" />
+
         <activity
             android:name=".VolunteerCleanupEvent"
             android:exported="true" />
+
         <activity
             android:name=".RecyclingHub"
             android:exported="true" />
+
         <activity
             android:name=".Navbar"
             android:exported="true" />
     </application>
-
 </manifest>

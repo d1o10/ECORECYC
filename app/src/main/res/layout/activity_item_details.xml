@@ -8,11 +8,10 @@
     tools:context=".AddToCartMarketplace">
 
     <ImageView
-        android:id="@+id/second_hand_item_pic"
+        android:id="@+id/itemImage"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:scaleType="centerCrop"/>
-
+        android:scaleType="centerCrop" />
 
     <ImageButton
         android:id="@+id/backBtn"
@@ -24,7 +23,7 @@
         android:background="@color/transpa" />
 
     <TextView
-        android:id="@+id/second_hand_item_price"
+        android:id="@+id/itemPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Price"
@@ -32,24 +31,24 @@
         android:layout_marginStart="20dp"
         android:textSize="18sp"
         android:textColor="@color/black"
-        android:layout_below="@id/second_hand_item_pic"/>
+        android:layout_below="@id/itemImage" />
 
     <TextView
-        android:id="@+id/second_hand_item_name"
+        android:id="@+id/itemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Item Name"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="300dp"
-        android:layout_below="@id/second_hand_item_pic"
+        android:layout_marginStart="250dp"
+        android:layout_below="@id/itemImage"
         android:textColor="@color/black" />
 
     <TextView
-        android:id="@+id/second_hand_item_description"
+        android:id="@+id/itemDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/second_hand_item_price"
+        android:layout_below="@id/itemPrice"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="Description"
@@ -60,9 +59,9 @@
         android:id="@+id/chatBtn"
         android:layout_width="45dp"
         android:layout_height="45dp"
-        android:layout_below="@id/second_hand_item_description"
-        android:layout_marginStart="310dp"
-        android:layout_marginTop="-20dp"
+        android:layout_below="@id/itemDescription"
+        android:layout_marginStart="360dp"
+        android:layout_marginTop="-00dp"
         android:background="#ffff"
         android:scaleType="fitCenter"
         android:src="@drawable/chat" />
@@ -71,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/second_hand_item_description">
+        android:layout_below="@id/itemDescription">
 
         <Button
             android:id="@+id/addToCartButton"
@@ -79,7 +78,7 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/backdrop2"
             android:text="Add to Cart"
             android:textColor="@color/black" />
@@ -89,7 +88,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="100dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/button2"
             android:text="Buy Now"
