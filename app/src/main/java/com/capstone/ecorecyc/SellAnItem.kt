@@ -8,7 +8,6 @@ import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
@@ -77,9 +76,8 @@ class SellAnItem : AppCompatActivity() {
         val productLocation = location.text.toString()
         val userId = FirebaseAuth.getInstance().currentUser?.uid // Get current user ID
 
-        if (productName.isEmpty() || productPrice.isEmpty() || productDescription.isEmpty() || productCondition.isEmpty() || imageUri == null) {
-            Toast.makeText(this, "Please fill all fields and select an image", Toast.LENGTH_SHORT)
-                .show()
+        if (productName.isEmpty() || productPrice.isEmpty() || productDescription.isEmpty() || productCondition.isEmpty() || productLocation.isEmpty() || imageUri == null) {
+            Toast.makeText(this, "Please fill all fields and select an image", Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -100,17 +98,13 @@ class SellAnItem : AppCompatActivity() {
                     )
 
                     firestore.collection("items").add(itemData).addOnSuccessListener {
-                        Toast.makeText(this, "Item uploaded successfully!", Toast.LENGTH_SHORT)
-                            .show()
+                        Toast.makeText(this, "Item uploaded successfully!", Toast.LENGTH_SHORT).show()
                         finish()
                     }.addOnFailureListener {
                         Toast.makeText(this, "Failed to upload item", Toast.LENGTH_SHORT).show()
-
-
                     }
                 }
             }
         }
     }
 }
-

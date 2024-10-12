@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddToCartMarketplace">
+    tools:context=".ItemDetails">
 
     <ImageView
         android:id="@+id/itemImage"
@@ -19,8 +19,8 @@
         android:layout_height="wrap_content"
         android:src="@drawable/baseline_arrow_back_24"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/transpa" />
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent" />
 
     <TextView
         android:id="@+id/itemPrice"
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Price"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="290dp"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_below="@id/itemImage" />
@@ -37,12 +37,12 @@
         android:id="@+id/itemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Item Name"
-        android:textSize="18sp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="250dp"
         android:layout_below="@id/itemImage"
-        android:textColor="@color/black" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="11dp"
+        android:text="Item Name"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/itemDescription"
@@ -55,22 +55,34 @@
         android:textColor="@color/black"
         android:textSize="18sp" />
 
-    <ImageButton
-        android:id="@+id/chatBtn"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+    <TextView
+        android:id="@+id/itemCondition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_below="@id/itemDescription"
-        android:layout_marginStart="360dp"
-        android:layout_marginTop="-00dp"
-        android:background="#ffff"
-        android:scaleType="fitCenter"
-        android:src="@drawable/chat" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Condition"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/itemLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemCondition"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="Location"
+        android:textColor="@color/black"
+        android:textSize="18sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@id/itemDescription">
+        android:layout_below="@id/itemLocation"
+        android:layout_marginTop="20dp">
 
         <Button
             android:id="@+id/addToCartButton"
@@ -78,7 +90,6 @@
             android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="100dp"
             android:background="@drawable/backdrop2"
             android:text="Add to Cart"
             android:textColor="@color/black" />
@@ -88,7 +99,6 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:layout_marginTop="100dp"
             android:layout_marginStart="15dp"
             android:background="@drawable/button2"
             android:text="Buy Now"

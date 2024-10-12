@@ -78,9 +78,6 @@
             android:name=".Marketplace"
             android:exported="true" />
 
-        <activity
-            android:name=".AddToCartMarketplace"
-            android:exported="true" />
 
         <activity
             android:name=".SellAnItem"

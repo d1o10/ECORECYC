@@ -6,7 +6,6 @@ import android.util.Log
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -15,8 +14,6 @@ class Marketplace : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private val firestore = FirebaseFirestore.getInstance()
     private val itemList = mutableListOf<Data.Item>()  // Use Data.Item
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +26,6 @@ class Marketplace : AppCompatActivity() {
 
         fetchItems()
     }
-
-
-
 
     private fun fetchItems() {
         firestore.collection("items").get().addOnSuccessListener { documents ->
@@ -52,8 +46,4 @@ class Marketplace : AppCompatActivity() {
             startActivity(intent)
         }
     }
-
-
 }
-
-
