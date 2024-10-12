@@ -111,7 +111,7 @@
             android:backgroundTint="@color/transpa"
             android:hint="FORGOT PASSWORD?"
             android:textColorHint="@color/black"
-            android:textSize="13sp" /> <!-- Adjust this margin value as needed -->
+            android:textSize="13sp" />
     </LinearLayout>
 
 

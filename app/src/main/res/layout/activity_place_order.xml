@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFCFC">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/placeOrder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".PlaceOrder"
+        >
+
+    <TextView
+        android:id="@+id/order_summary_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Order Summary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="40dp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/shield"
+            app:layout_constraintTop_toBottomOf="@+id/order_summary_text"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="65dp"
+            android:layout_marginTop="-1dp"
+            />
+    <TextView
+        android:id="@+id/info_encrypted_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your information is secure and encrypted."
+        android:textSize="12sp"
+        android:textColor="#0D99FF"
+        app:layout_constraintTop_toBottomOf="@+id/order_summary_text"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="95dp"
+        android:layout_marginTop="10dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/backbtnprof"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="-3dp"
+            android:background="@color/transpa"
+            android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/order_summary_text" />
+
+        <ImageView
+        android:id="@+id/line"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/backbtnprof"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/line"/>
+
+        <ImageView
+            android:id="@+id/locationIcon"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/location_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="5dp"
+            />
+        <TextView
+            android:id="@+id/address_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fretch Hugo (+63) 9452234066\nGov M. Cuenco, Cebu City, Philippines"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line"
+            android:textSize="12sp"
+            android:layout_marginStart="55dp"
+            android:layout_marginTop="8dp"
+            />
+
+        <ImageButton
+            android:layout_width="15dp"
+            android:layout_height="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/line"
+            android:background="@color/transpa"
+            android:src="@drawable/baseline_arrow_forward_ios_24"
+            android:layout_marginStart="360dp"
+            android:layout_marginTop="20dp"/>
+
+        <ImageView
+            android:id="@+id/line1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/locationIcon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/line"
+            tools:ignore="DuplicateIds" />
+
+        <RelativeLayout
+            android:id="@+id/checkoutInfo"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:elevation="5dp"
+            android:background="@drawable/edittextbackground"
+            app:layout_constraintTop_toBottomOf="@+id/line1">
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/img_5"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/seller_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="67dp"
+            android:text="Fretch Hugo"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="15dp"
+            app:layout_constraintStart_toStartOf="parent"
+           />
+
+            <ImageView
+                android:id="@id/itemImage"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:src="@drawable/ic_launcher_background"
+                android:layout_below="@+id/seller_name"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="65dp"
+                />
+
+            <TextView
+                android:id="@+id/second_hand_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Name   "
+                android:textSize="14sp"
+                android:layout_marginTop="55dp"
+                android:layout_marginStart="196dp"
+                />
+
+            <TextView
+                android:id="@+id/second_hand_item_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Price"
+                android:textSize="14sp"
+                android:layout_marginTop="85dp"
+                android:layout_marginStart="196dp"
+                />
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:id="@+id/message"
+                android:layout_below="@+id/itemImage" >
+
+                <!-- Optional Message -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="66dp"
+                    android:layout_marginTop="20dp"
+                    android:text="Message"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/optional_btn"
+                    android:layout_width="200dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="105dp"
+                    android:backgroundTint="@color/transpa"
+                    android:hint="Optional >"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/paymentMethod"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:elevation="5dp"
+            android:layout_marginTop="9dp"
+            android:background="@drawable/edittextbackground"
+            app:layout_constraintTop_toBottomOf="@+id/checkoutInfo">
+
+        <TextView
+            android:id="@+id/payment_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="66dp"
+            android:text="Payment Method"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+            <!-- GCASH -->
+            <LinearLayout
+                android:id="@+id/gcash"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/payment_text">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/gcash"
+                    android:scaleType="fitCenter"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="65dp"
+                    android:background="@color/transpa"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gcash"
+                    android:textSize="15sp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginStart="15dp"/>
+            </LinearLayout>
+
+
+            <!-- MAYA -->
+            <LinearLayout
+                android:id="@+id/maya"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/gcash">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/maya"
+                android:scaleType="fitCenter"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="65dp"
+                android:background="@color/transpa"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Maya"
+                    android:textSize="15sp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginStart="15dp"/>
+            </LinearLayout>
+
+
+            <!-- CASH ON DELIVERY -->
+            <LinearLayout
+                android:id="@+id/cash_on_delivery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@+id/maya">
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/cod"
+                android:scaleType="fitCenter"
+                android:background="@color/transpa"
+                android:layout_below="@+id/maya"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="65dp"
+                />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cash on Delivery (Cod)"
+                    android:textSize="15sp"
+                    android:layout_marginTop="27dp"
+                    android:layout_marginStart="15dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/total_checkout_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/paymentMethod"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/paymentMethod">
+
+            <!-- Total Price to Place Order -->
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="65dp"
+                android:text="Total"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginTop="15dp"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="total price"
+                android:layout_marginStart="180dp"
+                android:layout_marginTop="15dp"
+                />
+
+
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button2"
+            android:elevation="10dp"
+            android:layout_marginTop="35dp"
+            android:text="Place Order"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/total_checkout_price" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>

@@ -26,6 +26,7 @@ class OrganizeCleanupEvent : AppCompatActivity() {
     private lateinit var timeTextView: TextView
     private lateinit var uploadButton: Button
     private lateinit var confirmButton: Button
+    private lateinit var inviteButton: Button
     private lateinit var imageView: ImageView
 
     private var imageUri: Uri? = null
@@ -42,6 +43,7 @@ class OrganizeCleanupEvent : AppCompatActivity() {
         timeTextView = findViewById(R.id.time_picker)
         uploadButton = findViewById(R.id.upload_btn)
         confirmButton = findViewById(R.id.confirm_cleanup_event_btn)
+        inviteButton = findViewById(R.id.invitePeople_btn)
         imageView = findViewById(R.id.imageView)
 
         resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -63,6 +65,10 @@ class OrganizeCleanupEvent : AppCompatActivity() {
 
         confirmButton.setOnClickListener {
             uploadEvent()
+        }
+
+        inviteButton.setOnClickListener {
+            shareEventLink()
         }
 
         dateTextView.setOnClickListener {
@@ -132,6 +138,48 @@ class OrganizeCleanupEvent : AppCompatActivity() {
             }
     }
 
+    private fun shareEventLink() {
+        val name = cleanupNameEditText.text.toString().trim()
+        val loc = locationEditText.text.toString().trim()
+        val date = dateTextView.text.toString().trim()
+        val time = timeTextView.text.toString().trim()
+
+        if (name.isEmpty() || loc.isEmpty() || date.isEmpty() || time.isEmpty() || imageUri == null) {
+            Toast.makeText(this, "Please complete the event details and upload an image", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val storageRef = FirebaseStorage.getInstance().getReference("event_photos/${UUID.randomUUID()}.jpg")
+        storageRef.putFile(imageUri!!)
+            .addOnSuccessListener {
+                storageRef.downloadUrl.addOnSuccessListener { downloadUrl ->
+                    // Creating the event invitation link with the image
+                    val eventLink = "Join our clean-up event!\n\n" +
+                            "Event: $name\n" +
+                            "Location: $loc\n" +
+                            "Date: $date\n" +
+                            "Time: $time\n" +
+                            "Check out the event image here: $downloadUrl\n" +
+                            "For more info, contact me!"
+
+                    // Create an intent to share the event details along with the image link
+                    val shareIntent = Intent().apply {
+                        action = Intent.ACTION_SEND
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_TEXT, eventLink)
+                    }
+
+                    // Start the intent to share on available apps (like Messenger, etc.)
+                    startActivity(Intent.createChooser(shareIntent, "Invite via"))
+                }.addOnFailureListener {
+                    Toast.makeText(this, "Failed to retrieve image URL", Toast.LENGTH_SHORT).show()
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Image Upload Failed", Toast.LENGTH_SHORT).show()
+            }
+    }
+
     private fun showDatePicker() {
         val calendar = Calendar.getInstance()
         val year = calendar.get(Calendar.YEAR)
@@ -147,15 +195,30 @@ class OrganizeCleanupEvent : AppCompatActivity() {
     }
 
     private fun showTimePicker() {
+        var startTime: String = ""
+        var endTime: String = ""
+
         val calendar = Calendar.getInstance()
         val hour = calendar.get(Calendar.HOUR_OF_DAY)
         val minute = calendar.get(Calendar.MINUTE)
 
-        val timePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
-            val selectedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-            timeTextView.text = selectedTime
-        }, hour, minute, true)
+        val startTimePickerDialog = TimePickerDialog(this, { _, selectedHour, selectedMinute ->
+            val isPM = selectedHour >= 12
+            val formattedHour = if (selectedHour % 12 == 0) 12 else selectedHour % 12
+            val formattedTime = String.format("%02d:%02d %s", formattedHour, selectedMinute, if (isPM) "PM" else "AM")
+            startTime = formattedTime
 
-        timePickerDialog.show()
+            val endTimePickerDialog = TimePickerDialog(this, { _, endHour, endMinute ->
+                val isEndPM = endHour >= 12
+                val formattedEndHour = if (endHour % 12 == 0) 12 else endHour % 12
+                val formattedEndTime = String.format("%02d:%02d %s", formattedEndHour, endMinute, if (isEndPM) "PM" else "AM")
+                endTime = formattedEndTime
+
+                timeTextView.text = "$startTime - $endTime"
+            }, hour, minute, false)
+            endTimePickerDialog.show()
+
+        }, hour, minute, false)
+        startTimePickerDialog.show()
     }
 }
