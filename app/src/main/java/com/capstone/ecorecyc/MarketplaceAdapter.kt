@@ -35,6 +35,9 @@ class MarketplaceAdapter(private val itemList: List<Data.Item>) : RecyclerView.A
                 putExtra("name", item.name)
                 putExtra("price", item.price)
                 putExtra("imageUrl", item.imageUrl)
+                putExtra("description", item.description)  // Pass description
+                putExtra("condition", item.condition)      // Pass condition
+                putExtra("location", item.location)        // Pass location
             }
             context.startActivity(intent)
         }
