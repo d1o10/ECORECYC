@@ -43,14 +43,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sellItemBtn"
-        android:id="@+id/search_and_filter"
-        >
+        android:id="@+id/search_and_filter">
+
+
         <EditText
             android:id="@+id/searchbox"
             android:layout_width="290dp"
             android:layout_height="40dp"
             android:layout_marginStart="20dp"
-            android:background="@drawable/search" />
+            android:background="@drawable/search2"
+            android:hint="Search"
+            android:paddingStart="10dp"
+            android:inputType="text" />
+
 
         <ImageButton
             android:id="@+id/chatBtn"

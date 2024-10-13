@@ -15,7 +15,7 @@
             android:layout_height="40dp"
             android:layout_marginStart="30dp"
             android:layout_marginTop="140dp"
-            android:background="@drawable/search"
+            android:background="@drawable/search2"
             android:padding="10dp" />
 
         <ImageButton
