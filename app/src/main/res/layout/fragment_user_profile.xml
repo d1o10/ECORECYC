@@ -8,16 +8,6 @@
     android:background="#0e983d"
     tools:context=".UserProfileFragment">
 
-    <!-- Existing layout elements, unchanged -->
-    <ImageButton
-        android:id="@+id/backbtnprofile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/baseline_arrow_back_24"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/transpa" />
-
     <TextView
         android:id="@+id/profileText"
         android:layout_width="wrap_content"
@@ -36,6 +26,7 @@
         android:layout_marginTop="120dp"
         android:layout_centerHorizontal="true" />
 
+    <!-- Username TextView -->
     <TextView
         android:id="@+id/profile_name"
         android:layout_width="wrap_content"
@@ -47,7 +38,9 @@
         android:textColor="@color/white"
         android:textSize="16sp" />
 
+    <!-- Email TextView -->
     <TextView
+        android:id="@+id/profile_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/profile_name"
