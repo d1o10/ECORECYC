@@ -17,7 +17,7 @@
         android:layout_below="@id/search_and_filter"
         android:layout_marginTop="56dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
+        android:layout_marginRight="2dp"
        />
 
     <TextView

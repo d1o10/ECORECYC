@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="250dp"
     android:orientation="vertical"
     android:padding="8dp"
+    android:background="#FFFCFC"
     >
 
     <RelativeLayout
-        android:layout_width="190dp"
-        android:layout_height="220dp"
+        android:layout_width="180dp"
+        android:layout_height="230dp"
         android:background="@drawable/image_background_curve"
         android:orientation="vertical"
-        android:backgroundTint="#EFEEEE">
+        android:elevation="3dp">
 
         <ImageView
             android:id="@+id/itemImage"
-            android:layout_width="190dp"
+            android:layout_width="180dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
         />
@@ -24,13 +25,23 @@
             android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="7dp"
+            android:paddingTop="5dp"
             android:text="Item Name"
-
             android:textSize="16sp"
             android:textStyle="bold"
             android:layout_marginLeft="10dp"
             android:layout_below="@id/itemImage" />
+
+        <TextView
+            android:id="@+id/byUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:text="by User"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
+            android:layout_below="@id/itemName"/>
 
         <TextView
             android:id="@+id/itemPrice"
@@ -38,8 +49,8 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:text="Item Price"
-            android:textSize="14sp"
+            android:textSize="13sp"
             android:layout_marginLeft="10dp"
-            android:layout_below="@id/itemName" />
+            android:layout_below="@id/byUser" />
     </RelativeLayout>
 </LinearLayout>

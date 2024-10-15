@@ -18,7 +18,7 @@
         />
 
     <TextView
-        android:id="@+id/profileText"
+        android:id="@+id/edit_profileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit Profile"
@@ -27,5 +27,80 @@
         android:textSize="20dp"
         android:textColor="@color/black"
         />
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/img_5"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"/>
+    <Button
+        android:id="@+id/edit_profile_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit profile image"
+        android:textColor="#0D99FF"
+        android:layout_below="@id/profile_image"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:background="@color/transpa"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:background="#FFFFFF"
+        android:elevation="4dp"
+        android:layout_below="@+id/edit_profile_btn"
+        android:layout_marginTop="30dp">
+
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Full Name"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Email Address"
+        android:padding="12dp"
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/editTextChangePassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Change Password"
+                android:textColor="@color/black"
+                android:padding="12dp"
+                android:textSize="16sp"
+                android:layout_marginTop="16dp"
+                android:background="@color/transpa"/>
+
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="10dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="35dp"
+               android:layout_marginStart="200dp"
+                android:background="@color/transpa"
+                android:src="@drawable/baseline_arrow_forward_ios_24" />
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

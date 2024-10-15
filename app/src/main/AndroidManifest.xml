@@ -17,11 +17,17 @@
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
         <activity
-            android:name=".Chat"
+            android:name=".Settings"
             android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <!-- Main Activity (Launcher) -->
+        <activity
+            android:name=".Chat"
+            android:exported="true"></activity> <!-- Main Activity (Launcher) -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
