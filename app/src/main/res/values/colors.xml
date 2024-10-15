@@ -7,5 +7,13 @@
     <color name="primary_color">#0E983D</color>
     <color name="yellow">#EFBD3A</color>
 
+    <!-- Light Green -->
+    <color name="light_green">#90EE90</color>
+
+    <!-- Light Gray -->
+    <color name="light_gray">#D3D3D3</color>
+
+    <!-- Gray -->
+    <color name="gray">#808080</color>
 
 </resources>

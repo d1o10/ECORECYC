@@ -8,7 +8,3 @@ data class Event(
     val description: String = "",
     val imageUrl: String = ""
 )
-
-
-
-

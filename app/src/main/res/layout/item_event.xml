@@ -3,51 +3,62 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:background="@drawable/item_background"
+    android:layout_marginBottom="10dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    android:elevation="4dp">
 
     <ImageView
         android:id="@+id/event_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="80dp"
         android:scaleType="centerCrop"
         android:contentDescription="Event Image"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginEnd="16dp" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
 
+        <!-- Event Name -->
         <TextView
             android:id="@+id/cleanup_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:text="Cleanup Event Name"/>
+            android:textSize="16sp"
+            android:text="Cleanup Event Name" />
 
-        <TextView
-            android:id="@+id/location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Location"/>
-
-        <TextView
-            android:id="@+id/description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Description"/>
-
+        <!-- Event Date -->
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Date"/>
+            android:text="Date: May 30, 2024"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
 
-        <!-- New TextView for Time -->
+        <!-- Event Location -->
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Location: Dumlog, Talisay City, Cebu"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
+
+        <!-- Event Time -->
         <TextView
             android:id="@+id/time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time"/>
+            android:text="Time: 8:00 AM"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp" />
     </LinearLayout>
 </LinearLayout>
