@@ -112,68 +112,66 @@
             android:id="@+id/checkoutInfo"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:elevation="5dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/edittextbackground"
-            app:layout_constraintTop_toBottomOf="@+id/line1">
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="23dp"
-            android:layout_marginTop="10dp"
-            android:src="@drawable/img_5"
-            app:layout_constraintStart_toStartOf="parent"
-            />
+            android:elevation="5dp"
+            app:layout_constraintTop_toBottomOf="@+id/line1"
+            tools:layout_editor_absoluteX="-194dp">
 
-        <TextView
-            android:id="@+id/seller_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="67dp"
-            android:text="Fretch Hugo"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            android:layout_marginTop="15dp"
-            app:layout_constraintStart_toStartOf="parent"
-           />
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/img_5"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/seller_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="67dp"
+                android:layout_marginTop="15dp"
+                android:text="Fretch Hugo"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent" />
 
             <ImageView
                 android:id="@id/itemImage"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                android:src="@drawable/ic_launcher_background"
                 android:layout_below="@+id/seller_name"
-                android:layout_marginTop="10dp"
                 android:layout_marginStart="65dp"
-                />
+                android:layout_marginTop="10dp"
+                android:src="@drawable/ic_launcher_background" />
 
             <TextView
                 android:id="@+id/second_hand_item_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Item Name   "
-                android:textSize="14sp"
-                android:layout_marginTop="55dp"
                 android:layout_marginStart="196dp"
-                />
+                android:layout_marginTop="55dp"
+                android:text="Item Name   "
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/second_hand_item_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Price"
-                android:textSize="14sp"
-                android:layout_marginTop="85dp"
                 android:layout_marginStart="196dp"
-                />
+                android:layout_marginTop="85dp"
+                android:text="Price"
+                android:textSize="14sp" />
 
 
             <LinearLayout
+                android:id="@+id/message"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:id="@+id/message"
-                android:layout_below="@+id/itemImage" >
+                android:layout_below="@+id/itemImage"
+                android:orientation="horizontal">
 
                 <!-- Optional Message -->
                 <TextView
@@ -188,8 +186,8 @@
                     android:id="@+id/optional_btn"
                     android:layout_width="200dp"
                     android:layout_height="45dp"
-                    android:layout_marginTop="20dp"
                     android:layout_marginStart="105dp"
+                    android:layout_marginTop="20dp"
                     android:backgroundTint="@color/transpa"
                     android:hint="Optional >"
                     android:textSize="13sp" />

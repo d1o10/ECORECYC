@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Price"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="290dp"
+        android:layout_marginStart="310dp"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_below="@id/itemImage" />
@@ -82,14 +82,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/itemLocation"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="70dp">
 
         <Button
             android:id="@+id/addToCartButton"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:background="@drawable/backdrop2"
             android:text="Add to Cart"
             android:textColor="@color/black" />
@@ -99,7 +99,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="50dp"
-            android:layout_marginStart="15dp"
+            android:layout_marginStart="5dp"
             android:background="@drawable/button2"
             android:text="Buy Now"
             android:textColor="@color/white" />

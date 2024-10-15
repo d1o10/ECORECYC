@@ -4,5 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="transpa">#00FFFFFF</color>
     <color name="grey">#85929e</color>
+    <color name="primary_color">#0E983D</color>
+    <color name="yellow">#EFBD3A</color>
+
 
 </resources>

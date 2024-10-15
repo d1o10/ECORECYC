@@ -76,10 +76,11 @@
         android:layout_below="@+id/passwordText"
         android:layout_marginLeft="50dp"
         android:drawableStart="@drawable/password_icon"
-        android:drawableEnd="@drawable/baseline_remove_red_eye__visibility"
+        android:drawableEnd="@drawable/visibility_on"
         android:paddingLeft="5dp"
         android:paddingRight="15dp"
         android:gravity="center_vertical"
+        android:inputType="textPassword"
         android:layout_centerHorizontal="true"
         />
 
@@ -127,46 +128,58 @@
         android:layout_below="@id/password"
         android:layout_marginLeft="50dp"
         android:layout_centerHorizontal="true"/>
-
-    <EditText
-        android:layout_width="90dp"
+    
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="32dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/btn_login"
-        android:layout_marginLeft="50dp"
-        />
-
-    <EditText
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btn_login"
-        android:layout_marginLeft="250dp"
-        />
-    <TextView
-        android:id="@+id/signWithText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="or sign in with "
-        android:layout_below="@id/btn_login"
-        android:layout_marginTop="25dp"
+        android:indeterminateTint="@color/primary_color"
         android:layout_centerHorizontal="true"/>
 
-    <ImageButton
-        android:id="@+id/googleButton"
-        android:layout_width="40dp"
-        android:layout_height="60dp"
-        android:layout_below="@id/signWithText"
-        android:layout_centerHorizontal="true"
-        android:background="#ffff"
-        android:scaleType="fitCenter"
-        android:src="@drawable/gicon"
-        android:layout_marginTop="10dp"/>
+
+
+    <!--
+  <EditText
+      android:layout_width="90dp"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/btn_login"
+      android:layout_marginLeft="50dp"
+      />
+
+  <EditText
+      android:layout_width="100dp"
+      android:layout_height="wrap_content"
+      android:layout_below="@id/btn_login"
+      android:layout_marginLeft="250dp"
+      />
+  <TextView
+      android:id="@+id/signWithText"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="or sign in with "
+      android:layout_below="@id/btn_login"
+      android:layout_marginTop="25dp"
+      android:layout_centerHorizontal="true"/>
+
+  <ImageButton
+      android:id="@+id/googleButton"
+      android:layout_width="40dp"
+      android:layout_height="60dp"
+      android:layout_below="@id/signWithText"
+      android:layout_centerHorizontal="true"
+      android:background="#ffff"
+      android:scaleType="fitCenter"
+      android:src="@drawable/gicon"
+      android:layout_marginTop="10dp"/>
+  -->
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="horizontal"
-        android:layout_below="@+id/googleButton"
+        android:layout_below="@+id/progress_bar"
         android:layout_marginLeft="80dp">
 
         <TextView

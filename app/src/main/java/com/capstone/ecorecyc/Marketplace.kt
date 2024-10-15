@@ -1,10 +1,12 @@
 package com.capstone.ecorecyc
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +16,7 @@ class Marketplace : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchBox: EditText
+    private lateinit var sellItemBtn: ImageButton // Add reference for the sell button
     private val firestore = FirebaseFirestore.getInstance()
     private val itemList = mutableListOf<Data.Item>()
     private lateinit var adapter: MarketplaceAdapter
@@ -24,6 +27,7 @@ class Marketplace : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
         searchBox = findViewById(R.id.searchbox)
+        sellItemBtn = findViewById(R.id.sellItemBtn) // Initialize the button
 
         // Set the layout manager to display a grid of 2 columns
         recyclerView.layoutManager = GridLayoutManager(this, 2)
@@ -51,6 +55,13 @@ class Marketplace : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {}
         })
+
+        // Set click listener to the sell item button
+        sellItemBtn.setOnClickListener {
+            // Handle the action when the sell item button is clicked
+            val intent = Intent(this, SellAnItem::class.java)
+            startActivity(intent)
+        }
     }
 
     // Fetch all items from Firestore

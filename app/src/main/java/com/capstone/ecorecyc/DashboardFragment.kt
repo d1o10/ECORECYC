@@ -46,6 +46,13 @@ class DashboardFragment : Fragment() {
             startActivity(intent)
         }
 
+        // Add the chat button functionality
+        val chatBtn: ImageButton = view.findViewById(R.id.chatBtn)
+        chatBtn.setOnClickListener {
+            val intent = Intent(activity, Chat::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 }
