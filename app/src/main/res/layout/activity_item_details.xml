@@ -10,7 +10,7 @@
     <ImageView
         android:id="@+id/itemImage"
         android:layout_width="match_parent"
-        android:layout_height="450dp"
+        android:layout_height="380dp"
         android:scaleType="centerCrop" />
 
     <ImageButton
@@ -28,7 +28,7 @@
         android:layout_height="wrap_content"
         android:text="Price"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="310dp"
+        android:layout_marginStart="290dp"
         android:textSize="18sp"
         android:textColor="@color/black"
         android:layout_below="@id/itemImage" />
@@ -87,9 +87,9 @@
         <Button
             android:id="@+id/addToCartButton"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
+            android:layout_weight="1"
             android:background="@drawable/backdrop2"
             android:text="Add to Cart"
             android:textColor="@color/black" />

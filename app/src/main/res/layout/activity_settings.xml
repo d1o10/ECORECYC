@@ -61,6 +61,7 @@
             android:layout_marginStart="18dp"/>
 
         <ImageButton
+            android:id="@+id/ediprofilebutton"
             android:layout_width="15dp"
             android:layout_height="10dp"
             android:layout_alignParentEnd="true"

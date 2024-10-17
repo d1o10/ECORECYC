@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -45,12 +46,14 @@ class UserProfileFragment : Fragment() {
         loadUserProfile()
 
         // Settings button to navigate to EditProfile activity
-        val sett: ImageButton = view.findViewById(R.id.settings_btn)
+        val sett: Button = view.findViewById(R.id.settingarrowbtn)
         sett.setOnClickListener {
-            val intent = Intent(activity, EditProfile::class.java)
+            val intent = Intent(activity, Settings::class.java)
             intent.putExtra("USER_TYPE", "USER")
             startActivityForResult(intent, REQUEST_CODE_EDIT_PROFILE)
         }
+
+
 
         // Logout button to sign out the user
         val logoutBtn: ImageButton = view.findViewById(R.id.logout_btn)
