@@ -20,6 +20,8 @@ class Navbar : AppCompatActivity() {
             var selectedFragment: Fragment? = null
             when (item.itemId) {
                 R.id.homeIcon -> selectedFragment = DashboardFragment()
+                R.id.cartIcon -> selectedFragment = CartFragment()
+                R.id.notificationIcon -> selectedFragment = NotificationFragment()  // Assuming this fragment exists
                 R.id.profileIcon -> selectedFragment = UserProfileFragment()
             }
 
