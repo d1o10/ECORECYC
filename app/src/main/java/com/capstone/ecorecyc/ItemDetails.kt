@@ -1,8 +1,9 @@
 package com.capstone.ecorecyc
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -11,41 +12,76 @@ import com.bumptech.glide.Glide
 
 class ItemDetails : AppCompatActivity() {
 
+    private lateinit var itemImage: ImageView
+    private lateinit var itemName: TextView
+    private lateinit var itemPrice: TextView
+    private lateinit var itemDescription: TextView
+    private lateinit var itemCondition: TextView
+    private lateinit var itemLocation: TextView
+    private lateinit var addToCartButton: Button
+    private lateinit var buyNowButton: Button
+    private lateinit var backBtn: ImageButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_details)
 
-        val itemName: TextView = findViewById(R.id.itemName)
-        val itemPrice: TextView = findViewById(R.id.itemPrice)
-        val itemDescription: TextView = findViewById(R.id.itemDescription)
-        val itemCondition: TextView = findViewById(R.id.itemCondition)
-        val itemLocation: TextView = findViewById(R.id.itemLocation)
-        val itemImage: ImageView = findViewById(R.id.itemImage)
-        val addToCartButton: Button = findViewById(R.id.addToCartButton)
+        // Initialize views
+        itemImage = findViewById(R.id.itemImage)
+        itemName = findViewById(R.id.itemName)
+        itemPrice = findViewById(R.id.itemPrice)
+        itemDescription = findViewById(R.id.itemDescription)
+        itemCondition = findViewById(R.id.itemCondition)
+        itemLocation = findViewById(R.id.itemLocation)
+        addToCartButton = findViewById(R.id.addToCartButton)
+        buyNowButton = findViewById(R.id.buyNowButton)
+        backBtn = findViewById(R.id.backBtn)
 
-        // Get the passed item details
-        val name = intent.getStringExtra("name")
-        val price = intent.getStringExtra("price")
-        val description = intent.getStringExtra("description")
-        val condition = intent.getStringExtra("condition")
-        val location = intent.getStringExtra("location")
-        val imageUrl = intent.getStringExtra("imageUrl")
+        // Get the item details from the intent
+        val name = intent.getStringExtra("name") ?: ""
+        val price = intent.getStringExtra("price") ?: ""
+        val imageUrl = intent.getStringExtra("imageUrl") ?: ""
+        val description = intent.getStringExtra("description") ?: ""
+        val condition = intent.getStringExtra("condition") ?: ""
+        val location = intent.getStringExtra("location") ?: ""
 
-        // Log received data for debugging
-        Log.d("ItemDetails", "Name: $name, Price: $price, Description: $description, Condition: $condition, Location: $location")
+        // Set the retrieved data to the views
+        itemName.text = name
+        itemPrice.text = price
+        itemDescription.text = description
+        itemCondition.text = condition
+        itemLocation.text = location
 
-        // Display the item details
-        itemName.text = name ?: "No name available"
-        itemPrice.text = price ?: "No price available"
-        itemDescription.text = description ?: "Description"
-        itemCondition.text = condition ?: "Condition"
-        itemLocation.text = location ?: "Location "
+        // Load the image using Glide
         Glide.with(this).load(imageUrl).into(itemImage)
 
-        // Handle Add to Cart button click
+        // Set up button click listeners
         addToCartButton.setOnClickListener {
-            CartManager.addItemToCart(name, price, imageUrl)
-            Toast.makeText(this, "Item added to cart!", Toast.LENGTH_SHORT).show()
+            // Create a Data.Item object to add to the cart
+            val item = Data.Item(
+                name = name,
+                price = price,
+                imageUrl = imageUrl,
+                description = description,
+                condition = condition,
+                location = location
+            )
+            // Add item to cart
+            CartManager.addItem(item)
+
+            // Optionally show a toast message
+            Toast.makeText(this, "$name added to cart", Toast.LENGTH_SHORT).show()
+
+
+
+            buyNowButton.setOnClickListener {
+                // Handle buy now action
+                // e.g., proceed to checkout
+            }
+
+            backBtn.setOnClickListener {
+                finish() // Close the current activity
+            }
         }
     }
 }

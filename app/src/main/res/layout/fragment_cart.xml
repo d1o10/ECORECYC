@@ -1,68 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFCFC"
-    tools:context=".CartFragment">
-
-    <TextView
-        android:id="@+id/shopping_cart_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="26dp"
-        android:layout_marginEnd="171dp"
-        android:text="Shopping Cart"
-        android:textSize="18sp" />
-    <Button
-        android:id="@+id/backbtnprof"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="@color/transpa"
-        android:drawableLeft="@drawable/baseline_arrow_back_ios_24"
-        android:paddingLeft="30dp" />
-
-    <ImageView
-        android:id="@+id/line1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/backbtnprof"
-        android:src="@drawable/line"
-        tools:ignore="DuplicateIds" />
+    android:orientation="vertical">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/line1"
-        android:layout_marginTop="20dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/recyclerView"
-        android:layout_marginTop="2dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginTop="20dp"
-            android:text="Price"
-            android:textSize="16sp" />
-        <Button
-            android:layout_width="100dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="15dp"
-            android:background="@drawable/button2"
-            android:hint="Buy Now"
-            android:textSize="10dp"
-            android:textColorHint="@color/white"
-            />
-    </LinearLayout>
-
-
-</RelativeLayout>
+        android:layout_height="match_parent" />
+</LinearLayout>
