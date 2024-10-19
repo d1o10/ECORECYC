@@ -2,34 +2,41 @@ package com.capstone.ecorecyc
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.TypedValue
 import android.widget.Button
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 
 class ChooseRole : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_choose_role)
 
+        // Reference to the buttons
+        val userBtn: Button = findViewById(R.id.radio_user)
+        val junkOwnerBtn: Button = findViewById(R.id.radio_junkshop_owner)
 
+        // Apply the ripple effect programmatically to both buttons
+        applyRippleEffect(userBtn)
+        applyRippleEffect(junkOwnerBtn)
 
-        val UserBtn: Button = findViewById(R.id.radio_user)
-        UserBtn.setOnClickListener {
+        // Set onClickListeners
+        userBtn.setOnClickListener {
             val intent = Intent(this, Login::class.java)
             intent.putExtra("USER_TYPE", "USER")
             startActivity(intent)
         }
 
-
-        val JunkOwnerBtn: Button = findViewById(R.id.radio_junkshop_owner)
-        JunkOwnerBtn.setOnClickListener {
+        junkOwnerBtn.setOnClickListener {
             val intent = Intent(this, Login::class.java)
-            intent.putExtra("USER_TYPE", "USER")
+            intent.putExtra("USER_TYPE", "JUNKSHOP_OWNER")
             startActivity(intent)
         }
+    }
 
+    // Function to apply ripple effect to any button
+    private fun applyRippleEffect(button: Button) {
+        val outValue = TypedValue()
+        theme.resolveAttribute(android.R.attr.selectableItemBackground, outValue, true)
+        button.foreground = getDrawable(outValue.resourceId)
     }
 }

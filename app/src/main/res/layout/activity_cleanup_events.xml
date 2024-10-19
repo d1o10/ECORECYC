@@ -3,15 +3,25 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <ImageButton
+        android:id="@+id/marketplace_back_button"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/baseline_arrow_back_ios_24"
+        android:layout_marginTop="35dp"
+        android:layout_marginStart="20dp" />
+
     <TextView
         android:id="@+id/cleanupText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cleanup Events"
         android:layout_centerHorizontal="true"
-        android:layout_margin="30dp"
-        android:textSize="25sp"
-        android:textColor="@color/black"/>
+        android:layout_margin="35dp"
+        android:textSize="20sp"
+        android:textColor="@color/primary_color"
+        android:fontFamily="@font/poppins"/>
 
     <Button
         android:id="@+id/organize_cleanup_btn"

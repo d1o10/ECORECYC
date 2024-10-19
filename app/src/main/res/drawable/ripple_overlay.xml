@@ -1,0 +1,7 @@
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="?attr/colorControlHighlight">
+    <item>
+        <!-- Your existing button background goes here -->
+        <drawable android:drawable="@drawable/green_outline_light_background" />
+    </item>
+</ripple>

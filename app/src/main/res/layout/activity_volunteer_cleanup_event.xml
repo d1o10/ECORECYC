@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".VolunteerCleanupEvent">
 
+
     <Button
         android:id="@+id/backbtnprof"
         android:layout_width="wrap_content"
@@ -52,7 +53,7 @@
         android:id="@+id/volunteer_Name"
         android:layout_width="350dp"
         android:layout_height="58dp"
-        android:background="@drawable/backdrop2"
+        android:background="@drawable/edittext_green_outline"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/fillout_info_Txt"
         android:layout_marginTop="20dp"
@@ -64,7 +65,7 @@
         android:id="@+id/location"
         android:layout_width="350dp"
         android:layout_height="58dp"
-        android:background="@drawable/backdrop2"
+        android:background="@drawable/edittext_green_outline"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/volunteer_Name"
         android:layout_marginTop="20dp"
@@ -76,7 +77,7 @@
         android:id="@+id/age"
         android:layout_width="350dp"
         android:layout_height="58dp"
-        android:background="@drawable/backdrop2"
+        android:background="@drawable/edittext_green_outline"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/location"
         android:layout_marginTop="20dp"
@@ -88,7 +89,7 @@
         android:id="@+id/gender"
         android:layout_width="350dp"
         android:layout_height="58dp"
-        android:background="@drawable/backdrop2"
+        android:background="@drawable/edittext_green_outline"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/age"
         android:layout_marginTop="20dp"

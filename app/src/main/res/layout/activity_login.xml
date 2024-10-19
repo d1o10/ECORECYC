@@ -14,7 +14,21 @@
         android:layout_width="297dp"
         android:layout_height="247dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logologin" />
+        android:src="@drawable/logo_orig" />
+
+    <TextView
+        android:id="@+id/welcomeBackText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginLogo"
+        android:text="Welcome Back!"
+        android:fontFamily="@font/dm_sans"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="-15dp"
+        />
 
     <TextView
         android:id="@+id/signinText"
@@ -23,8 +37,10 @@
         android:text="Sign in to continue"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
-        android:layout_below="@+id/loginLogo"
-        android:textSize="16sp"/>
+        android:layout_below="@+id/welcomeBackText"
+        android:textSize="16sp"
+        android:fontFamily="@font/poppins_reg"
+        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/emailText"
@@ -33,9 +49,10 @@
         android:text="EMAIL"
         android:textSize="16sp"
         android:layout_below="@+id/signinText"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginLeft="55dp"
         android:textColor="@color/black"
+        android:fontFamily="@font/poppins_reg"
         />
 
     <EditText
@@ -101,7 +118,8 @@
             android:layout_marginTop="5dp"
             android:text="REMEMBER ME"
             android:textColor="@color/black"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_reg"/>
 
         <Button
             android:id="@+id/forgotbtn"
@@ -112,7 +130,8 @@
             android:backgroundTint="@color/transpa"
             android:hint="FORGOT PASSWORD?"
             android:textColorHint="@color/black"
-            android:textSize="13sp" />
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins_reg"/>
     </LinearLayout>
 
 
@@ -123,8 +142,9 @@
         android:layout_gravity="center"
         android:layout_marginTop="70dp"
         android:background="@drawable/button2"
-        android:text="Sign in"
-        android:textSize="16sp"
+        android:text="Login"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_reg"
         android:layout_below="@id/password"
         android:layout_marginLeft="50dp"
         android:layout_centerHorizontal="true"/>
@@ -186,19 +206,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColorHint="@color/black"
-            android:hint="Don't have an account?" />
+            android:hint="Don't have an account?"
+            android:fontFamily="@font/dmsans_reg"/>
 
         <Button
             android:id="@+id/Signup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/transpa"
             android:clickable="true"
+            android:fontFamily="@font/dm_sans"
             android:onClick="onTextViewClicked"
             android:paddingLeft="4dp"
             android:text="Sign up"
-            android:textColor="#EFBD3A"
-            android:background="@color/transpa"
-            />
+            android:textColor="#EFBD3A" />
 
     </LinearLayout>
 </RelativeLayout>

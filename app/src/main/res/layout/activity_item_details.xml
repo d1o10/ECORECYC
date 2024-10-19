@@ -90,9 +90,10 @@
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_weight="1"
-            android:background="@drawable/backdrop2"
+            android:background="@drawable/edittext_green_outline"
             android:text="Add to Cart"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:elevation="3dp"/>
 
         <Button
             android:id="@+id/buyNowButton"

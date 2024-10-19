@@ -49,6 +49,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
             android:text="Item Price"
+            android:textColor="@color/primary_color"
             android:textSize="13sp"
             android:layout_marginLeft="10dp"
             android:layout_below="@id/byUser" />

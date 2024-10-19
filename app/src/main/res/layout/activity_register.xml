@@ -10,26 +10,43 @@
 
     <ImageView
         android:id="@+id/loginLogo"
-        android:layout_width="300dp"
-        android:layout_height="250dp"
+        android:layout_width="297dp"
+        android:layout_height="247dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logoregister"
+        android:src="@drawable/logo_orig"
         android:scaleType="fitCenter"/>
+
+    <TextView
+        android:id="@+id/createAccText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginLogo"
+        android:text="Create an Account"
+        android:fontFamily="@font/dmsans_reg"
+        android:textStyle="bold"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="-15dp"
+
+        />
     <LinearLayout
         android:id="@+id/loginbtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginLogo"
+        android:layout_below="@+id/createAccText"
         android:layout_gravity="center"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="-10dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:hint="Already have an account?"
-            android:textColorHint="@color/black" />
+            android:textColorHint="@color/black"
+            android:fontFamily="@font/dmsans_reg"/>
 
         <Button
             android:id="@+id/loginregister"
@@ -39,9 +56,10 @@
             android:clickable="true"
             android:onClick="onTextViewClicked"
             android:paddingLeft="1dp"
-            android:text="Login"
+            android:text="Sign in"
+            android:fontFamily="@font/dm_sans"
             android:textColor="#EFBD3A"
-            android:textSize="15sp"/>
+            />
 
     </LinearLayout>
 <!--USERNAME -->
@@ -52,6 +70,7 @@
         android:text="USERNAME"
         android:textSize="16sp"
         android:layout_below="@+id/loginbtn"
+        android:fontFamily="@font/dmsans_reg"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="53dp"
         android:textColor="@color/black"
@@ -80,6 +99,7 @@
         android:text="EMAIL"
         android:textSize="16sp"
         android:layout_below="@+id/username"
+        android:fontFamily="@font/dmsans_reg"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="53dp"
         android:textColor="@color/black"
@@ -108,6 +128,7 @@
         android:text="PASSWORD"
         android:textColor="@color/black"
         android:textSize="16sp"
+        android:fontFamily="@font/dmsans_reg"
         android:layout_below="@+id/email"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="53dp"
@@ -137,10 +158,11 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:background="@drawable/button2"
-        android:text="Sign up"
+        android:text="Register"
+        android:fontFamily="@font/poppins_reg"
         android:layout_below="@id/password"
         android:layout_marginLeft="50dp"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:layout_centerHorizontal="true"/>
 
     <ProgressBar

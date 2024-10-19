@@ -20,7 +20,7 @@ class Login : AppCompatActivity() {
     // Firebase authentication instance
     private lateinit var auth: FirebaseAuth
 
-    // SharedPreferences to store email
+    // SharedPreferences to store email and password
     private lateinit var sharedPreferences: SharedPreferences
     private val PREFS_NAME = "LoginPrefs"
 
@@ -66,11 +66,16 @@ class Login : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Retrieve saved email if "Remember Me" was checked
+        // Retrieve saved email and password if "Remember Me" was checked
         val rememberedEmail = sharedPreferences.getString("remembered_email", null)
-        if (rememberedEmail != null) {
+        val rememberedPassword = sharedPreferences.getString("remembered_password", null)
+
+        if (rememberedEmail != null && rememberedPassword != null) {
             emailField.setText(rememberedEmail)
+            passwordField.setText(rememberedPassword)
             rememberMeCheckBox.isChecked = true
+            // Initially, hide the password as asterisks
+            passwordField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
         }
 
         // Add functionality to toggle password visibility on drawable end click
@@ -106,12 +111,14 @@ class Login : AppCompatActivity() {
                         // Successful login
                         Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
 
-                        // Save email in SharedPreferences if "Remember Me" is checked
+                        // Save email and password in SharedPreferences if "Remember Me" is checked
                         val editor = sharedPreferences.edit()
                         if (rememberMeCheckBox.isChecked) {
                             editor.putString("remembered_email", email)
+                            editor.putString("remembered_password", password)
                         } else {
                             editor.remove("remembered_email")
+                            editor.remove("remembered_password")
                         }
                         editor.apply()
 

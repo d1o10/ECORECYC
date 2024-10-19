@@ -2,7 +2,6 @@ package com.capstone.ecorecyc
 
 import android.app.Activity
 import android.content.Intent
-import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -12,16 +11,16 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
-import java.io.IOException
 
 class EditProfile : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private lateinit var profileImageView: ImageView
+    private lateinit var profileImageView: ImageView // This should reference img_5 if that's the correct ID
     private lateinit var editTextName: EditText
     private lateinit var editTextEmail: EditText
     private lateinit var saveProfileBtn: Button
@@ -35,7 +34,8 @@ class EditProfile : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        profileImageView = findViewById(R.id.profile_image)
+        // Ensure the profile image view ID is correct
+        profileImageView = findViewById(R.id.edit_profile_image) // Change this to your ImageView's ID
         editTextName = findViewById(R.id.editTextName)
         editTextEmail = findViewById(R.id.editTextEmail)
         saveProfileBtn = findViewById(R.id.save_profile_btn)
@@ -52,6 +52,12 @@ class EditProfile : AppCompatActivity() {
         saveProfileBtn.setOnClickListener {
             saveProfile()
         }
+
+        // Add the button to trigger profile change
+        val changeProfileButton = findViewById<Button>(R.id.change_profile_btn)
+        changeProfileButton.setOnClickListener {
+            pickImageFromGallery() // Opens gallery to pick a new profile picture
+        }
     }
 
     private fun loadUserProfile() {
@@ -59,7 +65,14 @@ class EditProfile : AppCompatActivity() {
         currentUser?.let {
             editTextName.setText(it.displayName)
             editTextEmail.setText(it.email)
-            Glide.with(this).load(it.photoUrl).into(profileImageView)
+
+            // Load the current profile image
+            // Check if there's a photoUrl available; if not, use a default image or placeholder
+            val photoUrl = it.photoUrl ?: Uri.parse("default_image_url") // Replace with your default image URL if needed
+            Glide.with(this)
+                .load(photoUrl)
+                .transform(CircleCrop()) // Ensure the image remains circular
+                .into(profileImageView)
         }
     }
 
@@ -72,7 +85,15 @@ class EditProfile : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             imageUri = data?.data
-            profileImageView.setImageURI(imageUri)
+
+            // Check if the selected URI is not null
+            imageUri?.let {
+                // Apply circular crop for the new image
+                Glide.with(this)
+                    .load(it)
+                    .transform(CircleCrop())  // This ensures the image remains circular
+                    .into(profileImageView)
+            }
         }
     }
 

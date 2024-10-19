@@ -17,6 +17,8 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
+
 
 class UserProfileFragment : Fragment() {
 
@@ -77,14 +79,18 @@ class UserProfileFragment : Fragment() {
     private fun loadUserProfile() {
         val currentUser = auth.currentUser
         currentUser?.let {
-            // Fetch additional user details from Firestore
             db.collection("users").document(it.uid).get()
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         profileEmail.text = document.getString("email") ?: it.email
                         profileName.text = document.getString("displayName") ?: it.displayName
                         val photoUrl = document.getString("photoUrl") ?: it.photoUrl.toString()
-                        Glide.with(this).load(photoUrl).into(profileImageView)
+
+                        // Applying circle crop with Glide
+                        Glide.with(this)
+                            .load(photoUrl)
+                            .transform(CircleCrop())  // This makes the image circular
+                            .into(profileImageView)
                     } else {
                         Log.d("UserProfileFragment", "No such document")
                     }
