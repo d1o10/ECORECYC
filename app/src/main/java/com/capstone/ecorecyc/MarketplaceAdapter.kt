@@ -9,7 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
-class MarketplaceAdapter(private val itemList: List<Data.Item>) : RecyclerView.Adapter<MarketplaceAdapter.ViewHolder>() {
+class MarketplaceAdapter(private var itemList: List<Data.Item>) : RecyclerView.Adapter<MarketplaceAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val itemImage: ImageView = view.findViewById(R.id.itemImage)
@@ -28,7 +28,7 @@ class MarketplaceAdapter(private val itemList: List<Data.Item>) : RecyclerView.A
         holder.itemPrice.text = item.price
         Glide.with(holder.itemView.context).load(item.imageUrl).into(holder.itemImage)
 
-        // Set the onClickListener to open the ItemDetailsActivity
+        // Set the onClickListener to open the ItemDetails activity
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, ItemDetails::class.java).apply {
@@ -44,4 +44,10 @@ class MarketplaceAdapter(private val itemList: List<Data.Item>) : RecyclerView.A
     }
 
     override fun getItemCount() = itemList.size
+
+    // Function to update the items list dynamically
+    fun updateItems(newItems: List<Data.Item>) {
+        itemList = newItems
+        notifyDataSetChanged() // Notify adapter about the updated list
+    }
 }

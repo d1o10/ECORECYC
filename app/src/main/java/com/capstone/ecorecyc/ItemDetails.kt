@@ -71,17 +71,17 @@ class ItemDetails : AppCompatActivity() {
 
             // Optionally show a toast message
             Toast.makeText(this, "$name added to cart", Toast.LENGTH_SHORT).show()
+        }
 
+        // Move buyNowButton click listener outside
+        buyNowButton.setOnClickListener {
+            // Handle buy now action
+            // e.g., proceed to checkout
+        }
 
-
-            buyNowButton.setOnClickListener {
-                // Handle buy now action
-                // e.g., proceed to checkout
-            }
-
-            backBtn.setOnClickListener {
-                finish() // Close the current activity
-            }
+        // Move backBtn click listener outside
+        backBtn.setOnClickListener {
+            finish() // Close the current activity
         }
     }
 }

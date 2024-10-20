@@ -3,27 +3,26 @@ package com.capstone.ecorecyc
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.capstone.ecorecyc.databinding.ActivityCartBinding // Import the generated binding class
+import com.capstone.ecorecyc.databinding.ActivityCartBinding
 
 class CartActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityCartBinding // Declare the binding variable
+    private lateinit var binding: ActivityCartBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityCartBinding.inflate(layoutInflater) // Inflate the binding
-        setContentView(binding.root) // Set the content view to the root of the binding
+        binding = ActivityCartBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // Set up the RecyclerView
         binding.cartRecyclerView.layoutManager = LinearLayoutManager(this)
 
-        // Get cart items from CartManager
-        val cartItems = CartManager.getCartItems()
-
-        // Set the adapter for the RecyclerView
-        val cartAdapter = MarketplaceAdapter(cartItems)
-        binding.cartRecyclerView.adapter = cartAdapter
+        // Load cart items from Firestore
+        CartManager.loadCartItems { cartItems ->
+            // Set the adapter for the RecyclerView with loaded items
+            val cartAdapter = CartAdapter(cartItems)
+            binding.cartRecyclerView.adapter = cartAdapter
+        }
     }
 }

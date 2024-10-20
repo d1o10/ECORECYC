@@ -12,6 +12,7 @@ class CartFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CartAdapter
+    private val cartItems = mutableListOf<Data.Item>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,9 +23,13 @@ class CartFragment : Fragment() {
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val cartItems = CartManager.getCartItems()
-        adapter = CartAdapter(cartItems) // Ensure CartItem matches the type
-        recyclerView.adapter = adapter
+        // Load cart items from Firestore
+        CartManager.loadCartItems { items ->
+            cartItems.clear()
+            cartItems.addAll(items)
+            adapter = CartAdapter(cartItems)
+            recyclerView.adapter = adapter
+        }
 
         return view
     }
