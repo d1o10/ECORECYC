@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -9,8 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="horizontal"
-        android:layout_marginStart="10dp"
-        >
+        android:layout_marginStart="10dp">
 
         <ImageButton
             android:id="@+id/cart_back_button"
@@ -29,51 +29,56 @@
             android:textSize="17sp"
             android:textStyle="bold"
             android:layout_marginStart="80dp"
-            android:paddingTop="10dp"/>
+            android:paddingTop="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit"
-            android:layout_marginStart="60dp"
-            />
-
+            android:layout_marginStart="60dp" />
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/image_background_curve"
         android:layout_marginTop="15dp"
-        android:layout_centerHorizontal="true"
-       >
+        android:layout_centerHorizontal="true">
 
-    <ImageView
-        android:id="@+id/itemImage"
-        android:layout_width="150dp"
-        android:layout_height="120dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="20dp"
-        android:scaleType="centerCrop"/>
-
+        <ImageView
+            android:id="@+id/itemImage"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="20dp"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/itemName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:layout_marginStart="10dp"
-            />
+            android:layout_marginStart="10dp" />
 
         <TextView
             android:id="@+id/itemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="70dp"
-            android:layout_marginStart="-130dp"/>
-</LinearLayout>
-</LinearLayout>
+            android:layout_marginStart="-130dp" />
+
+        <!-- Add a delete button -->
+        <ImageButton
+            android:id="@+id/deleteItem"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_delete"
+            android:layout_marginTop="80dp"
+            android:layout_marginStart="10dp"
+            android:background="@android:color/transparent" />
 
 
+    </LinearLayout>
+
+</LinearLayout>
