@@ -8,41 +8,15 @@
         android:id="@+id/relativeLayout4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal"
-        android:layout_marginStart="10dp">
-
-        <ImageButton
-            android:id="@+id/cart_back_button"
-            android:layout_width="38dp"
-            android:layout_height="38dp"
-            android:background="@android:color/transparent"
-            android:src="@drawable/baseline_arrow_back_ios_24" />
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_reg"
-            android:text="Shopping Cart()"
-            android:textColor="@color/primary_color"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            android:layout_marginStart="80dp"
-            android:paddingTop="10dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit"
-            android:layout_marginStart="60dp" />
-    </LinearLayout>
+       >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:background="@drawable/image_background_curve"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="3dp"
         android:layout_centerHorizontal="true">
 
         <ImageView
@@ -81,4 +55,5 @@
 
     </LinearLayout>
 
+</LinearLayout>
 </LinearLayout>

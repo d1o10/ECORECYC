@@ -8,7 +8,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -18,7 +17,6 @@ import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
-
 
 class UserProfileFragment : Fragment() {
 
@@ -32,7 +30,6 @@ class UserProfileFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_user_profile, container, false)
 
         // Initialize Firebase Auth and Firestore
@@ -47,15 +44,12 @@ class UserProfileFragment : Fragment() {
         // Load the current user profile
         loadUserProfile()
 
-        // Settings button to navigate to EditProfile activity
-        val sett: Button = view.findViewById(R.id.settingarrowbtn)
-        sett.setOnClickListener {
+        // Settings button to navigate to Settings activity
+        val settingsBtn: ImageButton = view.findViewById(R.id.settings_btn)
+        settingsBtn.setOnClickListener {
             val intent = Intent(activity, Settings::class.java)
-            intent.putExtra("USER_TYPE", "USER")
-            startActivityForResult(intent, REQUEST_CODE_EDIT_PROFILE)
+            startActivity(intent)
         }
-
-
 
         // Logout button to sign out the user
         val logoutBtn: ImageButton = view.findViewById(R.id.logout_btn)
@@ -83,14 +77,25 @@ class UserProfileFragment : Fragment() {
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         profileEmail.text = document.getString("email") ?: it.email
-                        profileName.text = document.getString("displayName") ?: it.displayName
-                        val photoUrl = document.getString("photoUrl") ?: it.photoUrl.toString()
+                        val displayName = document.getString("displayName") ?: "No Name" // Fetch display name
+                        profileName.text = displayName // Set username
+                        Log.d("UserProfileFragment", "Display Name: $displayName") // Log for debugging
 
-                        // Applying circle crop with Glide
-                        Glide.with(this)
-                            .load(photoUrl)
-                            .transform(CircleCrop())  // This makes the image circular
-                            .into(profileImageView)
+                        // Check if photoUrl exists; if not, load default image
+                        val photoUrl = document.getString("photoUrl")
+                        if (!photoUrl.isNullOrEmpty()) {
+                            // Applying circle crop with Glide if photoUrl is available
+                            Glide.with(this)
+                                .load(photoUrl)
+                                .transform(CircleCrop())
+                                .into(profileImageView)
+                        } else {
+                            // Load the default image
+                            Glide.with(this)
+                                .load(R.drawable.img_5) // Load your default image
+                                .transform(CircleCrop())
+                                .into(profileImageView)
+                        }
                     } else {
                         Log.d("UserProfileFragment", "No such document")
                     }
@@ -99,6 +104,7 @@ class UserProfileFragment : Fragment() {
                     Log.w("UserProfileFragment", "Error getting documents: ", exception)
                 }
         }
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

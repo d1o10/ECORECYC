@@ -21,7 +21,7 @@ class Navbar : AppCompatActivity() {
             when (item.itemId) {
                 R.id.homeIcon -> selectedFragment = DashboardFragment()
                 R.id.cartIcon -> selectedFragment = CartFragment()
-                R.id.notificationIcon -> selectedFragment = NotificationFragment()  // Assuming this fragment exists
+                R.id.chatIcon -> selectedFragment = ChatFragment()  // Assuming this fragment exists
                 R.id.profileIcon -> selectedFragment = UserProfileFragment()
             }
 

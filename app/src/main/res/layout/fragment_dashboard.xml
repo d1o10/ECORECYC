@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<HorizontalScrollView
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
@@ -13,38 +13,67 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="180dp">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp">
 
-                <EditText
-                    android:id="@+id/searchbox"
-                    android:layout_width="280dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginTop="140dp"
-                    android:background="@drawable/search2"
-                    android:padding="10dp" />
+                <TextView
+                    android:id="@+id/greetings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hi,"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/dm_sans"
+                    android:textSize="20sp"
+                    android:paddingLeft="30dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="6dp"/>
+
+                <TextView
+                    android:id="@+id/hiusername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/dm_sans"
+                    android:padding="7dp"
+                    android:text="fretxjsojw!"
+                    android:textColor="@color/primary_color"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toRightOf="@id/greetings"/>
 
                 <ImageButton
-                    android:id="@+id/chatBtn"
+                    android:id="@+id/notificationBtn"
                     android:layout_width="45dp"
-                    android:layout_height="60dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="130dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="9dp"
                     android:background="@color/transpa"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/chat" />
-            </LinearLayout>
+                    android:layout_marginEnd="20dp"
+                    android:src="@drawable/baseline_notifications_24"/>
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ready to make a sustainable impact today?"
+                android:layout_marginTop="70dp"
+                android:paddingLeft="30dp"
+                android:fontFamily="@font/dmsans_reg"
+                android:textSize="13sp"
+                />
 
             <TextView
                 android:id="@+id/locationText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Your Location"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="120dp"
                 android:textColor="@color/black"
                 android:paddingLeft="30dp"
+                android:fontFamily="@font/dmsans_reg"
                 />
 
             <Button
@@ -55,7 +84,8 @@
                 android:background="@color/transpa"
                 android:textColor="@color/black"
                 android:paddingLeft="30dp"
-                android:layout_marginTop="80dp"
+                android:layout_marginTop="130dp"
+                android:fontFamily="@font/dmsans_reg"
                 />
 
             <RelativeLayout
@@ -64,14 +94,6 @@
                 android:id="@+id/searchandchat">
             </RelativeLayout>
 
-            <ImageButton
-                android:id="@+id/profilebtn"
-                android:layout_width="45dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="75dp"
-                android:layout_marginLeft="320dp"
-                android:background="@drawable/img_5"
-                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -80,13 +102,14 @@
                 android:paddingLeft="30dp"
                 android:layout_marginTop="210dp"
                 android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"/>
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/dm_sans"/>
 
             <ImageButton
                 android:id="@+id/marketplacebutton"
                 android:layout_width="341dp"
-                android:layout_height="120dp"
+                android:layout_height="125dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="260dp"
                 android:background="@drawable/marketplacecat"
@@ -98,7 +121,7 @@
             <ImageButton
                 android:id="@+id/recylinghubbutton"
                 android:layout_width="341dp"
-                android:layout_height="120dp"
+                android:layout_height="125dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="430dp"
                 android:background="@drawable/recyclingcat"
@@ -108,7 +131,7 @@
             <ImageButton
                 android:id="@+id/cleanupbtn"
                 android:layout_width="339dp"
-                android:layout_height="120dp"
+                android:layout_height="125dp"
                 android:layout_marginLeft="25dp"
                 android:layout_marginTop="600dp"
                 android:background="@drawable/cleanupcat"
@@ -117,4 +140,4 @@
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </ScrollView>
-</HorizontalScrollView>
+</ScrollView>

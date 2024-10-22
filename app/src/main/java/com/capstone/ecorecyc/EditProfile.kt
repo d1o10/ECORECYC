@@ -1,6 +1,7 @@
 package com.capstone.ecorecyc
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -20,7 +21,7 @@ class EditProfile : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private lateinit var profileImageView: ImageView // This should reference img_5 if that's the correct ID
+    private lateinit var profileImageView: ImageView
     private lateinit var editTextName: EditText
     private lateinit var editTextEmail: EditText
     private lateinit var saveProfileBtn: Button
@@ -34,8 +35,8 @@ class EditProfile : AppCompatActivity() {
         auth = FirebaseAuth.getInstance()
         db = FirebaseFirestore.getInstance()
 
-        // Ensure the profile image view ID is correct
-        profileImageView = findViewById(R.id.edit_profile_image) // Change this to your ImageView's ID
+        // Initialize views
+        profileImageView = findViewById(R.id.edit_profile_image)
         editTextName = findViewById(R.id.editTextName)
         editTextEmail = findViewById(R.id.editTextEmail)
         saveProfileBtn = findViewById(R.id.save_profile_btn)
@@ -52,27 +53,30 @@ class EditProfile : AppCompatActivity() {
         saveProfileBtn.setOnClickListener {
             saveProfile()
         }
-
-        // Add the button to trigger profile change
-        val changeProfileButton = findViewById<Button>(R.id.change_profile_btn)
-        changeProfileButton.setOnClickListener {
-            pickImageFromGallery() // Opens gallery to pick a new profile picture
-        }
     }
 
     private fun loadUserProfile() {
         val currentUser = auth.currentUser
         currentUser?.let {
-            editTextName.setText(it.displayName)
-            editTextEmail.setText(it.email)
+            db.collection("users").document(it.uid).get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        editTextName.setText(document.getString("displayName"))
+                        editTextEmail.setText(document.getString("email"))
 
-            // Load the current profile image
-            // Check if there's a photoUrl available; if not, use a default image or placeholder
-            val photoUrl = it.photoUrl ?: Uri.parse("default_image_url") // Replace with your default image URL if needed
-            Glide.with(this)
-                .load(photoUrl)
-                .transform(CircleCrop()) // Ensure the image remains circular
-                .into(profileImageView)
+                        val photoUrl = document.getString("photoUrl")
+                        if (!photoUrl.isNullOrEmpty()) {
+                            // Load the profile image
+                            Glide.with(this)
+                                .load(photoUrl)
+                                .transform(CircleCrop())
+                                .into(profileImageView)
+                        }
+                    }
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Failed to load profile", Toast.LENGTH_SHORT).show()
+                }
         }
     }
 
@@ -81,69 +85,86 @@ class EditProfile : AppCompatActivity() {
         startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK) {
-            imageUri = data?.data
-
-            // Check if the selected URI is not null
-            imageUri?.let {
-                // Apply circular crop for the new image
-                Glide.with(this)
-                    .load(it)
-                    .transform(CircleCrop())  // This ensures the image remains circular
-                    .into(profileImageView)
-            }
-        }
-    }
-
     private fun saveProfile() {
         val name = editTextName.text.toString()
         val email = editTextEmail.text.toString()
 
-        if (imageUri != null) {
-            val storageRef = FirebaseStorage.getInstance().reference.child("profile_images/${auth.currentUser?.uid}")
-            storageRef.putFile(imageUri!!)
-                .addOnSuccessListener {
-                    storageRef.downloadUrl.addOnSuccessListener { uri ->
-                        updateProfileData(name, email, uri.toString())
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Toast.makeText(this, "Error uploading image: ${exception.message}", Toast.LENGTH_SHORT).show()
-                }
-        } else {
-            updateProfileData(name, email)
+        if (name.isEmpty() || email.isEmpty()) {
+            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            return
         }
+
+        val user = auth.currentUser
+        val updates = hashMapOf<String, Any>(
+            "displayName" to name,
+            "email" to email
+        )
+
+        if (imageUri != null) {
+            uploadImageToFirebase(imageUri!!, user!!.uid, updates)
+        } else {
+            // Include existing photoUrl when updating if no new image is uploaded
+            db.collection("users").document(user!!.uid).get().addOnSuccessListener { document ->
+                if (document != null) {
+                    val existingPhotoUrl = document.getString("photoUrl")
+                    if (!existingPhotoUrl.isNullOrEmpty()) {
+                        updates["photoUrl"] = existingPhotoUrl // Keep the existing image URL
+                    }
+                    updateProfileData(updates)
+                }
+            }
+        }
+
+        // Save updated username in SharedPreferences
+        val sharedPreferences = getSharedPreferences("LoginPrefs", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putString("username", name) // Update the username
+        editor.apply() // Commit changes
     }
 
-    private fun updateProfileData(name: String, email: String, imageUrl: String? = null) {
-        val user = auth.currentUser
-        val updates = hashMapOf<String, Any>()
-        updates["displayName"] = name
-        updates["email"] = email
-        if (imageUrl != null) {
-            updates["photoUrl"] = imageUrl
-        }
+    private fun uploadImageToFirebase(imageUri: Uri, userId: String, updates: HashMap<String, Any>) {
+        val storageRef = FirebaseStorage.getInstance().reference.child("profile_images/$userId")
 
-        // Update Firestore
+        storageRef.putFile(imageUri)
+            .addOnSuccessListener {
+                storageRef.downloadUrl.addOnSuccessListener { uri ->
+                    updates["photoUrl"] = uri.toString()
+                    updateProfileData(updates)
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Image upload failed", Toast.LENGTH_SHORT).show()
+            }
+    }
+
+    private fun updateProfileData(updates: HashMap<String, Any>) {
+        val user = auth.currentUser
+
         db.collection("users").document(user?.uid ?: "")
             .set(updates)
             .addOnSuccessListener {
                 Toast.makeText(this, "Profile updated successfully", Toast.LENGTH_SHORT).show()
                 setResult(Activity.RESULT_OK, Intent().apply {
-                    putExtra("name", name)
-                    putExtra("email", email)
-                    putExtra("imageUri", imageUrl)
+                    putExtra("name", updates["displayName"] as? String)
+                    putExtra("email", updates["email"] as? String)
+                    putExtra("imageUri", updates["photoUrl"] as? String)
                 })
-                finish() // Close EditProfile activity
+                finish()
             }
             .addOnFailureListener { exception ->
                 Toast.makeText(this, "Error updating profile: ${exception.message}", Toast.LENGTH_SHORT).show()
             }
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_CODE_PICK_IMAGE && resultCode == Activity.RESULT_OK && data != null) {
+            imageUri = data.data
+            Glide.with(this).load(imageUri).transform(CircleCrop()).into(profileImageView)
+        }
+    }
+
     companion object {
-        private const val REQUEST_CODE_PICK_IMAGE = 1000
+        private const val REQUEST_CODE_PICK_IMAGE = 1002
     }
 }

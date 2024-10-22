@@ -5,9 +5,10 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffff"
+    android:background="@color/primary_color"
     tools:context=".EditProfile">
 
+    <!-- Back Button -->
     <ImageButton
         android:id="@+id/image_button_back"
         android:layout_width="wrap_content"
@@ -17,6 +18,7 @@
         android:layout_marginTop="50dp"
         android:background="@color/transpa" />
 
+    <!-- Edit Profile Text -->
     <TextView
         android:id="@+id/edit_profileText"
         android:layout_width="wrap_content"
@@ -24,71 +26,108 @@
         android:text="Edit Profile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="@color/black" />
 
+    <!-- Profile Image -->
     <ImageView
         android:id="@+id/edit_profile_image"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="120dp"
+        android:layout_height="130dp"
         android:src="@drawable/img_5"
-        android:layout_marginTop="100dp"
+        android:layout_below="@id/edit_profileText"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
         android:elevation="5dp"
         android:clickable="false"
-        android:visibility="visible"/>
+        android:visibility="visible" />
 
+    <!-- White Background -->
+    <RelativeLayout
+        android:id="@+id/white_background"
+        android:layout_width="match_parent"
+        android:layout_height="1000dp"
+        android:layout_below="@id/edit_profile_image"
+        android:background="@android:color/white"
+        android:layout_marginTop="-70dp"
+        android:layout_marginBottom="0dp" >
 
+    <!-- Edit Profile Image Button -->
     <Button
         android:id="@+id/change_profile_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Edit profile image"
         android:textColor="#0D99FF"
-        android:layout_below="@id/edit_profile_image"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         android:background="@color/transpa" />
 
+    <!-- Username Input -->
 
-
-
-        <EditText
-            android:id="@+id/editTextName"
-            android:layout_width="350dp"
+        <TextView
+            android:id="@+id/UserNameTxt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Username"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
+            android:text="Name"
             android:layout_below="@id/change_profile_btn"
-            android:layout_centerHorizontal="true"
+            android:layout_marginStart="30dp"
             />
+    <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/UserNameTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edittext_green_outline"/>
 
-        <EditText
-            android:id="@+id/editTextEmail"
-            android:layout_width="350dp"
+
+        <TextView
+            android:id="@+id/emailTxt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
-            android:padding="12dp"
-            android:inputType="textEmailAddress"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
+            android:text="Email Address"
             android:layout_below="@id/editTextName"
-            android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            />
+    <!-- Email Input -->
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_green_outline"
+        android:padding="12dp"
+        android:inputType="textEmailAddress"
+        android:textSize="16sp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/emailTxt"/>
 
-        <EditText
-            android:id="@+id/editTextChangePassword"
-            android:layout_width="350dp"
+    <!-- Change Password Input -->
+        <TextView
+            android:id="@+id/passwordTxt"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="Change Password"
-            android:textColor="@color/black"
-            android:padding="12dp"
-            android:textSize="16sp"
-            android:layout_marginTop="16dp"
-            android:background="@color/transpa"
+            android:text="Change Password"
             android:layout_below="@id/editTextEmail"
-            android:layout_centerHorizontal="true"/>
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            />
+    <EditText
+        android:id="@+id/editTextChangePassword"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_green_outline"
+        android:textColor="@color/black"
+        android:padding="12dp"
+        android:textSize="16sp"
+        android:layout_below="@id/passwordTxt"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
 
     <!-- Save Changes Button -->
     <Button
@@ -98,6 +137,10 @@
         android:text="Save Changes"
         android:textColor="#FFFFFF"
         android:backgroundTint="#0D99FF"
+        android:layout_below="@id/editTextChangePassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="550dp" />
+        android:layout_marginTop="30dp" />
+
+</RelativeLayout>
+
 </RelativeLayout>

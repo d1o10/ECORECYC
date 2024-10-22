@@ -9,9 +9,9 @@
             android:icon="@drawable/baseline_shopping_cart_24"
             android:title="Cart" />
         <item
-            android:id="@+id/notificationIcon"
-            android:icon="@drawable/baseline_notifications_24"
-            android:title="Notifications" />
+            android:id="@+id/chatIcon"
+            android:icon="@drawable/chat"
+            android:title="Chat" />
         <item
             android:id="@+id/profileIcon"
             android:icon="@drawable/profile"

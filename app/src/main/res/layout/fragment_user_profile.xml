@@ -5,18 +5,20 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0e983d"
-    tools:context=".UserProfileFragment">
+    tools:context=".UserProfileFragment"
+    android:background="@color/primary_color">
+
 
     <TextView
         android:id="@+id/profileText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile"
+        android:fontFamily="@font/poppins"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:textSize="20dp"
-        android:textColor="@color/black" />
+        android:textColor="@color/white" />
 
     <ImageView
         android:id="@+id/profile_image"
@@ -35,6 +37,7 @@
         android:text="Ariana Grande"
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins_reg"
         android:textColor="@color/white"
         android:textSize="16sp" />
 
@@ -46,13 +49,17 @@
         android:layout_below="@+id/profile_name"
         android:text="grandeariana@gmail.com"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/white" />
+        android:fontFamily="@font/poppins_reg"
+        android:textColor="@color/white"
+        />
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="700dp"
+        android:layout_height="match_parent"
         android:background="@drawable/edittextbackground2"
-        android:layout_marginTop="320dp" />
+        android:layout_marginTop="300dp"
+        android:elevation="5dp"
+        >
 
     <!-- My Orders Button -->
     <ImageButton
@@ -63,15 +70,8 @@
         android:backgroundTint="@color/transpa"
         android:layout_marginStart="30dp"
         android:scaleType="fitCenter"
-        android:layout_marginTop="320dp" />
+        android:layout_marginTop="20dp" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="325dp" />
 
     <!-- My Listings Button -->
     <ImageButton
@@ -85,13 +85,6 @@
         android:layout_below="@+id/my_orders_btn"
         android:layout_marginTop="-31dp" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="385dp" />
 
     <!-- Transactions Button -->
     <ImageButton
@@ -145,4 +138,6 @@
         android:scaleType="fitCenter"
         android:layout_below="@+id/settings_btn"
         android:layout_marginTop="-20dp" />
+
+    </RelativeLayout>
 </RelativeLayout>

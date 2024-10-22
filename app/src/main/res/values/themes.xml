@@ -3,6 +3,8 @@
     <style name="Base.Theme.Ecorecyc" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="materialButtonStyle">@style/MyButtonStyle</item>
+        <!-- Add this line to globally disable tinting -->
+        <item name="itemIconTint">@null</item>
     </style>
 
     <style name="Theme.Ecorecyc" parent="Base.Theme.Ecorecyc" />

@@ -66,7 +66,7 @@
             android:layout_height="10dp"
             android:layout_alignParentEnd="true"
             android:layout_marginTop="20dp"
-            android:layout_marginEnd="20dp"
+            android:layout_marginEnd="40dp"
             android:background="@color/transpa"
             android:src="@drawable/baseline_arrow_forward_ios_24"/>
     </RelativeLayout>
