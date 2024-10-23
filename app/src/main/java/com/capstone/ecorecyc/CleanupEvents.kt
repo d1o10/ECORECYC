@@ -7,7 +7,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
@@ -50,27 +49,24 @@ class CleanupEvents : AppCompatActivity() {
     }
 
     private fun fetchEventsFromFirestore() {
-        val currentUser = FirebaseAuth.getInstance().currentUser
-        if (currentUser == null) {
-            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        val userId = currentUser.uid
-        eventListener = firestore.collection("users").document(userId)
-            .collection("cleanup_events")
+        eventListener = firestore.collection("cleanup_events")
             .addSnapshotListener { snapshots, e ->
                 if (e != null) {
-                    Toast.makeText(this, "Failed to load events", Toast.LENGTH_SHORT).show()
                     return@addSnapshotListener
                 }
 
-                eventList.clear()
-                for (doc in snapshots!!) {
-                    val event = doc.toObject(Event::class.java)
-                    eventList.add(event)
+                if (snapshots != null && !snapshots.isEmpty) {
+                    eventList.clear()
+                    for (doc in snapshots.documents) {
+                        val event = doc.toObject(Event::class.java)
+                        if (event != null) {
+                            eventList.add(event)
+                        }
+                    }
+                    eventAdapter.notifyDataSetChanged()
+                } else {
+                    Toast.makeText(this, "No events available", Toast.LENGTH_SHORT).show()
                 }
-                eventAdapter.notifyDataSetChanged()
             }
     }
 }
