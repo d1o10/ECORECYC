@@ -1,20 +1,40 @@
 package com.capstone.ecorecyc
 
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 
 class VolunteerCleanupEvent : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_volunteer_cleanup_event)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        val imageView: ImageView = findViewById(R.id.event_img)
+        val imageUrl = intent.getStringExtra("IMAGE_URL")
+
+        if (imageUrl != null) {
+            Glide.with(this)
+                .load(imageUrl)
+                .into(imageView)
+        }
+
+        val confirmButton: Button = findViewById(R.id.confirm_volunteer_event_btn)
+        confirmButton.setOnClickListener {
+            val volunteerName = findViewById<EditText>(R.id.volunteer_Name).text.toString()
+            val location = findViewById<EditText>(R.id.location).text.toString()
+            val age = findViewById<EditText>(R.id.age).text.toString()
+            val gender = findViewById<EditText>(R.id.gender).text.toString()
+
+            if (volunteerName.isNotEmpty() && location.isNotEmpty() && age.isNotEmpty() && gender.isNotEmpty()) {
+                Toast.makeText(this, "Successfully Joined!", Toast.LENGTH_SHORT).show()
+                finish()
+            } else {
+                Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }

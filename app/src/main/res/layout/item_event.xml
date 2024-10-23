@@ -24,7 +24,6 @@
             android:contentDescription="Event Image"
             android:scaleType="centerCrop" />
 
-        <!-- Event Name -->
         <TextView
             android:id="@+id/cleanup_name"
             android:layout_width="wrap_content"
@@ -51,7 +50,6 @@
             android:paddingLeft="10dp"
             android:text="Description" />
 
-        <!-- Event Date -->
         <TextView
             android:id="@+id/date"
             android:layout_width="wrap_content"
@@ -68,7 +66,6 @@
             android:paddingLeft="10dp"
             android:text="Time" />
 
-
         <Button
             android:id="@+id/joinEvent"
             android:layout_width="wrap_content"
@@ -78,8 +75,5 @@
             android:background="@color/transpa"
             android:text="Join Event"
             android:textColor="@color/primary_color" />
-
     </RelativeLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
