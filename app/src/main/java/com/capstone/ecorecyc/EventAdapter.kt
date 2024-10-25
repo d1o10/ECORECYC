@@ -34,6 +34,7 @@ class EventAdapter(private val eventList: List<Event>) : RecyclerView.Adapter<Ev
             val context: Context = holder.itemView.context
             val intent = Intent(context, VolunteerCleanupEvent::class.java).apply {
                 putExtra("IMAGE_URL", event.imageUrl)
+                putExtra("EVENT_ID", event.id)
             }
             context.startActivity(intent)
         }

@@ -60,6 +60,7 @@ class CleanupEvents : AppCompatActivity() {
                     for (doc in snapshots.documents) {
                         val event = doc.toObject(Event::class.java)
                         if (event != null) {
+                            event.id = doc.id
                             eventList.add(event)
                         }
                     }
