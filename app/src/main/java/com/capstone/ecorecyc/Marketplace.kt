@@ -1,22 +1,34 @@
 package com.capstone.ecorecyc
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
 import android.widget.ImageButton
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.Locale
 
 class Marketplace : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var searchBox: EditText
-    private lateinit var sellItemBtn: ImageButton // Add reference for the sell button
+    private lateinit var sellItemBtn: ImageButton
+    private lateinit var locationTextView: TextView
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
+
     private val firestore = FirebaseFirestore.getInstance()
     private val itemList = mutableListOf<Data.Item>()
     private lateinit var adapter: MarketplaceAdapter
@@ -27,73 +39,104 @@ class Marketplace : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
         searchBox = findViewById(R.id.searchbox)
-        sellItemBtn = findViewById(R.id.sellItemBtn) // Initialize the button
+        sellItemBtn = findViewById(R.id.sellItemBtn)
+        locationTextView = findViewById(R.id.locationTextView)
 
-        // Set the layout manager to display a grid of 2 columns
         recyclerView.layoutManager = GridLayoutManager(this, 2)
-
-        // Initialize the adapter and set it to the RecyclerView
         adapter = MarketplaceAdapter(itemList)
         recyclerView.adapter = adapter
 
-        // Fetch all items initially
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+        checkLocationPermission()
+
         fetchItems()
 
-        // Add a TextWatcher to the search box to listen for changes
         searchBox.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
-
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 val query = s.toString().trim()
                 if (query.isNotEmpty()) {
                     searchItems(query)
                 } else {
-                    // Fetch all items when the search box is cleared
                     fetchItems()
                 }
             }
-
             override fun afterTextChanged(s: Editable?) {}
         })
 
-        // Set click listener to the sell item button
         sellItemBtn.setOnClickListener {
-            // Handle the action when the sell item button is clicked
             val intent = Intent(this, SellAnItem::class.java)
             startActivity(intent)
         }
     }
 
-    // Fetch all items from Firestore
+    private fun checkLocationPermission() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        } else {
+            fetchLocation()
+        }
+    }
+
+    private fun fetchLocation() {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+            ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                location?.let {
+                    updateLocationUI(it)
+                }
+            }
+        }
+    }
+
+    private fun updateLocationUI(location: Location) {
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+        if (!addresses.isNullOrEmpty()) {
+            val address = addresses[0]
+            val locationName = address.locality ?: address.subAdminArea ?: "Unknown Location"
+            locationTextView.text = locationName
+        } else {
+            locationTextView.text = "Location not found"
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 1 && grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            fetchLocation()
+        }
+    }
+
     private fun fetchItems() {
         firestore.collection("items")
             .get()
             .addOnSuccessListener { documents ->
-                itemList.clear()  // Clear the current list
+                itemList.clear()
                 for (document in documents) {
                     val item = document.toObject(Data.Item::class.java)
                     itemList.add(item)
                 }
-                adapter.notifyDataSetChanged()  // Notify the adapter of the data change
+                adapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.e("Marketplace", "Error getting documents: ", exception)
             }
     }
 
-    // Search for items by name in Firestore
     private fun searchItems(query: String) {
         firestore.collection("items")
             .whereGreaterThanOrEqualTo("name", query)
-            .whereLessThanOrEqualTo("name", query + '\uf8ff') // Unicode trick for prefix matching
+            .whereLessThanOrEqualTo("name", query + '\uf8ff')
             .get()
             .addOnSuccessListener { documents ->
-                itemList.clear()  // Clear the current list
+                itemList.clear()
                 for (document in documents) {
                     val item = document.toObject(Data.Item::class.java)
                     itemList.add(item)
                 }
-                adapter.notifyDataSetChanged()  // Notify the adapter of the data change
+                adapter.notifyDataSetChanged()
             }
             .addOnFailureListener { exception ->
                 Log.e("Marketplace", "Error searching documents: ", exception)

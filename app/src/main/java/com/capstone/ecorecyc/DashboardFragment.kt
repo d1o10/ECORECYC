@@ -1,37 +1,54 @@
 package com.capstone.ecorecyc
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.pm.PackageManager
+import android.location.Geocoder
+import android.location.Location
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import android.widget.TextView
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import java.util.Locale
 
 class DashboardFragment : Fragment() {
 
     private lateinit var sharedPreferences: SharedPreferences
-    private val PREFS_NAME = "LoginPrefs" // Use the same name you used in the Register activity
+    private val PREFS_NAME = "LoginPrefs"
     private lateinit var greetingTextView: TextView
+    private lateinit var locationTextView: TextView
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
-        // Initialize SharedPreferences
         sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
-        // Set up greeting
         greetingTextView = view.findViewById(R.id.hiusername)
-        updateGreeting() // Set the greeting text
+        locationTextView = view.findViewById(R.id.locationTextView)
 
-        // Find and set up your buttons
+        updateGreeting()
+
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
+        checkLocationPermission()
+
+        setupButtons(view)
+
+        return view
+    }
+
+    private fun setupButtons(view: View) {
         val market: ImageButton = view.findViewById(R.id.marketplacebutton)
         market.setOnClickListener {
             val intent = Intent(activity, Marketplace::class.java)
@@ -53,24 +70,53 @@ class DashboardFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Add the chat button functionality
         val chatBtn: ImageButton = view.findViewById(R.id.notificationBtn)
         chatBtn.setOnClickListener {
             val intent = Intent(activity, Chat::class.java)
             startActivity(intent)
         }
+    }
 
-        return view
+    private fun checkLocationPermission() {
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        } else {
+            fetchLocation()
+        }
+    }
+
+    private fun fetchLocation() {
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
+            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
+                location?.let {
+                    updateLocationUI(it)
+                }
+            }
+        }
+    }
+
+    private fun updateLocationUI(location: Location) {
+        val geocoder = Geocoder(requireContext(), Locale.getDefault())
+        val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+        if (!addresses.isNullOrEmpty()) {
+            val address = addresses[0]
+            val locationName = address.locality ?: address.subAdminArea ?: "Unknown Location"
+            locationTextView.text = locationName
+        } else {
+            locationTextView.text = "Location not found"
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        updateGreeting() // Reload username when the fragment resumes
+        updateGreeting()
+        fetchLocation()
     }
 
-    // Method to update the greeting text
     private fun updateGreeting() {
-        val username = sharedPreferences.getString("username", "User") // Default to "User" if not found
+        val username = sharedPreferences.getString("username", "User")
         greetingTextView.text = "$username!"
     }
 }

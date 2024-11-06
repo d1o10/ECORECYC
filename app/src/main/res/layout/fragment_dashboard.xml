@@ -76,18 +76,18 @@
                 />
 
             <Button
-                android:id="@+id/locationbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Banilad, Cebu City"
                 android:background="@color/transpa"
                 android:paddingLeft="50dp"
                 android:layout_marginTop="100dp"
                 android:fontFamily="@font/dmsans_reg"
                 android:textColor="@color/black"
                 android:layout_marginStart="7dp"
+                android:text="Fetching location..."
+                android:textSize="14sp"
+                android:id="@+id/locationTextView"
                 />
-
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
