@@ -2,7 +2,6 @@ package com.capstone.ecorecyc
 
 import android.app.Activity
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -62,6 +61,14 @@ class UserProfileFragment : Fragment() {
             activity?.finish() // Close the current activity
         }
 
+        // My Orders button to navigate to My Orders activity
+        val myOrdersBtn: ImageButton = view.findViewById(R.id.my_orders_btn)
+        myOrdersBtn.setOnClickListener {
+            // Launch MyOrders Activity
+            val intent = Intent(activity, MyOrders::class.java)
+            startActivity(intent)  // Start the activity
+        }
+
         return view
     }
 
@@ -77,22 +84,18 @@ class UserProfileFragment : Fragment() {
                 .addOnSuccessListener { document ->
                     if (document != null) {
                         profileEmail.text = document.getString("email") ?: it.email
-                        val displayName = document.getString("displayName") ?: "No Name" // Fetch display name
-                        profileName.text = displayName // Set username
-                        Log.d("UserProfileFragment", "Display Name: $displayName") // Log for debugging
+                        val displayName = document.getString("displayName") ?: "No Name"
+                        profileName.text = displayName
 
-                        // Check if photoUrl exists; if not, load default image
                         val photoUrl = document.getString("photoUrl")
                         if (!photoUrl.isNullOrEmpty()) {
-                            // Applying circle crop with Glide if photoUrl is available
                             Glide.with(this)
                                 .load(photoUrl)
                                 .transform(CircleCrop())
                                 .into(profileImageView)
                         } else {
-                            // Load the default image
                             Glide.with(this)
-                                .load(R.drawable.img_5) // Load your default image
+                                .load(R.drawable.img_5) // Default image if no profile photo
                                 .transform(CircleCrop())
                                 .into(profileImageView)
                         }
@@ -103,23 +106,6 @@ class UserProfileFragment : Fragment() {
                 .addOnFailureListener { exception ->
                     Log.w("UserProfileFragment", "Error getting documents: ", exception)
                 }
-        }
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_EDIT_PROFILE && resultCode == Activity.RESULT_OK && data != null) {
-            // Update the profile with the new data
-            val newName = data.getStringExtra("name")
-            val newEmail = data.getStringExtra("email")
-            val newImageUri = data.getStringExtra("imageUri")
-
-            profileName.text = newName
-            profileEmail.text = newEmail
-            if (newImageUri != null) {
-                Glide.with(this).load(Uri.parse(newImageUri)).into(profileImageView)
-            }
         }
     }
 

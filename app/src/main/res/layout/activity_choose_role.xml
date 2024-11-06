@@ -6,12 +6,19 @@
     android:layout_height="match_parent"
     android:background="#ffff">
 
+    <ImageView
+        android:id="@+id/loginLogo"
+        android:layout_width="267dp"
+        android:layout_height="247dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo_orig" />
+
         <TextView
             android:id="@+id/choose_role"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="230dp"
             android:fontFamily="@font/dm_sans"
             android:text="Choose Your Role"
             android:textColor="@color/primary_color"
@@ -47,20 +54,20 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="95dp">
 
             <ImageView
                 android:layout_width="55dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="60dp"
-                android:layout_marginTop="95dp"
                 android:src="@drawable/img_2" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="110dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/poppins_reg"
                 android:text="Sell second-hand items, find\n recyclables and join clean-up\n events to promote sustainability"
                 android:textColor="#0E983D"
@@ -75,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="470dp">
+        android:layout_marginTop="490dp">
 
         <Button
             android:id="@+id/radio_junkshop_owner"

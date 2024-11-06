@@ -1,9 +1,11 @@
 package com.capstone.ecorecyc
 
 import android.content.Intent
+import android.graphics.Outline
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +28,20 @@ class MarketplaceAdapter(private var itemList: List<Data.Item>) : RecyclerView.A
         val item = itemList[position]
         holder.itemName.text = item.name
         holder.itemPrice.text = item.price
+
+        // Load the image using Glide
         Glide.with(holder.itemView.context).load(item.imageUrl).into(holder.itemImage)
+
+        // Apply the curved top corners programmatically to the ImageView
+        holder.itemImage.outlineProvider = object : ViewOutlineProvider() {
+            override fun getOutline(view: View, outline: Outline) {
+                // Set the rounded corners (curve top only)
+                outline.setRoundRect(0, 0, view.width, view.height, 30f) // Adjust radius as needed
+            }
+        }
+
+        // Ensure the ImageView is clipped to the outline
+        holder.itemImage.clipToOutline = true
 
         // Set the onClickListener to open the ItemDetails activity
         holder.itemView.setOnClickListener {

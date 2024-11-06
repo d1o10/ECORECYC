@@ -14,10 +14,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Profile"
-        android:fontFamily="@font/poppins"
+        android:fontFamily="@font/poppins_reg"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="40dp"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:textColor="@color/white" />
 
     <ImageView
@@ -56,88 +57,91 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/edittextbackground2"
         android:layout_marginTop="300dp"
-        android:elevation="5dp"
-        >
+        android:background="@drawable/edittextbackground2"
+        android:elevation="5dp">
 
-    <!-- My Orders Button -->
-    <ImageButton
-        android:id="@+id/my_orders_btn"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:src="@drawable/my_orders"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="30dp"
-        android:scaleType="fitCenter"
-        android:layout_marginTop="20dp" />
-
-
-    <!-- My Listings Button -->
-    <ImageButton
-        android:id="@+id/my_listings_btn"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:src="@drawable/my_listings"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="30dp"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/my_orders_btn"
-        android:layout_marginTop="-31dp" />
+        <!-- My Orders Button -->
+        <ImageButton
+            android:id="@+id/my_orders_btn"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/transpa"
+            android:scaleType="fitCenter"
+            android:src="@drawable/my_orders" />
 
 
-    <!-- Transactions Button -->
-    <ImageButton
-        android:id="@+id/transactions_btn"
-        android:layout_width="220dp"
-        android:layout_height="150dp"
-        android:src="@drawable/transaction_history"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="25dp"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/my_listings_btn"
-        android:layout_marginTop="-50dp" />
+        <!-- My Listings Button -->
+        <ImageButton
+            android:id="@+id/my_listings_btn"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/my_orders_btn"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="-22dp"
+            android:backgroundTint="@color/transpa"
+            android:scaleType="fitCenter"
+            android:src="@drawable/my_listings" />
 
-    <Button
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="460dp" />
 
-    <!-- Settings Button -->
-    <ImageButton
-        android:id="@+id/settings_btn"
-        android:layout_width="130dp"
-        android:layout_height="100dp"
-        android:src="@drawable/settings"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="25dp"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/transactions_btn"
-        android:layout_marginTop="-60dp" />
+        <!-- Settings Button -->
+        <ImageButton
+            android:id="@+id/settings_btn"
+            android:layout_width="130dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/my_listings_btn"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="-20dp"
+            android:backgroundTint="@color/transpa"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings" />
 
-    <Button
-        android:id="@+id/settingarrowbtn"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:drawableRight="@drawable/baseline_arrow_forward_ios_24"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="250dp"
-        android:layout_marginTop="530dp" />
+        <ImageButton
+            android:id="@+id/rateus_btn"
+            android:layout_width="70dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/settings_btn"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="-10dp"
+            android:backgroundTint="@color/transpa"
+            android:scaleType="fitCenter"
+            android:src="@drawable/baseline_star_24"/>
 
-    <!-- Logout Button -->
-    <ImageButton
-        android:id="@+id/logout_btn"
-        android:layout_width="130dp"
-        android:layout_height="70dp"
-        android:src="@drawable/logout"
-        android:backgroundTint="@color/transpa"
-        android:layout_marginStart="30dp"
-        android:scaleType="fitCenter"
-        android:layout_below="@+id/settings_btn"
-        android:layout_marginTop="-20dp" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Rate Us"
+            android:background="@color/transpa"
+            android:textColor="@color/black"
+            android:layout_below="@id/settings_btn"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="0dp"
+            android:textSize="15dp"
+            android:textStyle="bold"/>
+
+
+        <Button
+            android:id="@+id/settingarrowbtn"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="250dp"
+            android:layout_marginTop="530dp"
+            android:backgroundTint="@color/transpa"
+            android:drawableRight="@drawable/baseline_arrow_forward_ios_24" />
+
+        <!-- Logout Button -->
+        <ImageButton
+            android:id="@+id/logout_btn"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/rateus_btn"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/transpa"
+            android:scaleType="fitCenter"
+            android:src="@drawable/logout" />
 
     </RelativeLayout>
 </RelativeLayout>

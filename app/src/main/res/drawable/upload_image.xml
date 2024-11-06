@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:drawable="@drawable/email"
-        android:width="21dp"
-        android:height="16dp"
+        android:drawable="@drawable/upload_image_icon"
+        android:width="41dp"
+        android:height="36dp"
         android:gravity="center" />
 </layer-list>

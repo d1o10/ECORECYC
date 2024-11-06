@@ -1,10 +1,12 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme -->
     <style name="Base.Theme.Ecorecyc" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+        <!-- Customize your light theme here -->
         <item name="materialButtonStyle">@style/MyButtonStyle</item>
-        <!-- Add this line to globally disable tinting -->
-        <item name="itemIconTint">@null</item>
+        <item name="itemIconTint">@color/primary_color</item> <!-- Primary color for icons -->
+        <item name="colorAccent">@color/primary_color</item> <!-- Sets accent color to primary color -->
+        <item name="colorPrimary">@color/primary_color</item> <!-- Sets primary color -->
+        <item name="colorOnPrimary">@color/white</item> <!-- Text color on primary background -->
     </style>
 
     <style name="Theme.Ecorecyc" parent="Base.Theme.Ecorecyc" />

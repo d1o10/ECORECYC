@@ -5,75 +5,74 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent">
 
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
+
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_height="150dp"
+                android:layout_marginTop="20dp"
+               >
 
                 <TextView
                     android:id="@+id/greetings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginTop="30dp"
+                    android:fontFamily="@font/dm_sans"
+                    android:paddingLeft="30dp"
                     android:text="Hi,"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/dm_sans"
-                    android:textSize="20sp"
-                    android:paddingLeft="30dp"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="6dp"/>
+                    android:textSize="20sp" />
 
                 <TextView
                     android:id="@+id/hiusername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toRightOf="@id/greetings"
                     android:fontFamily="@font/dm_sans"
                     android:padding="7dp"
                     android:text="fretxjsojw!"
                     android:textColor="@color/primary_color"
-                    android:textSize="20sp"
-                    android:layout_marginEnd="20dp"
-                    android:layout_toRightOf="@id/greetings"/>
+                    android:textSize="20sp" />
 
                 <ImageButton
                     android:id="@+id/notificationBtn"
                     android:layout_width="45dp"
                     android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginTop="9dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginEnd="20dp"
                     android:background="@color/transpa"
                     android:scaleType="fitCenter"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/baseline_notifications_24"/>
+                    android:src="@drawable/baseline_notifications_24" />
             </RelativeLayout>
-
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Ready to make a sustainable impact today?"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="85dp"
                 android:paddingLeft="30dp"
                 android:fontFamily="@font/dmsans_reg"
                 android:textSize="13sp"
+                android:textColor="@color/black"
                 />
 
-            <TextView
-                android:id="@+id/locationText"
+            <ImageButton
+                android:id="@+id/locationpin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your Location"
-                android:layout_marginTop="120dp"
-                android:textColor="@color/black"
-                android:paddingLeft="30dp"
-                android:fontFamily="@font/dmsans_reg"
+                android:layout_marginTop="102dp"
+               android:src="@drawable/baseline_location_pin_24"
+                android:paddingLeft="27dp"
+                android:backgroundTint="@color/transpa"
                 />
 
             <Button
@@ -82,10 +81,11 @@
                 android:layout_height="wrap_content"
                 android:text="Banilad, Cebu City"
                 android:background="@color/transpa"
-                android:textColor="@color/black"
-                android:paddingLeft="30dp"
-                android:layout_marginTop="130dp"
+                android:paddingLeft="50dp"
+                android:layout_marginTop="100dp"
                 android:fontFamily="@font/dmsans_reg"
+                android:textColor="@color/black"
+                android:layout_marginStart="7dp"
                 />
 
             <RelativeLayout
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:text="Category"
                 android:paddingLeft="30dp"
-                android:layout_marginTop="210dp"
+                android:layout_marginTop="190dp"
                 android:textColor="@color/black"
                 android:textSize="17sp"
                 android:textStyle="bold"
@@ -111,7 +111,7 @@
                 android:layout_width="341dp"
                 android:layout_height="125dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="260dp"
+                android:layout_marginTop="240dp"
                 android:background="@drawable/marketplacecat"
                 android:layout_centerHorizontal="true"
                 android:clickable="true"
@@ -123,7 +123,7 @@
                 android:layout_width="341dp"
                 android:layout_height="125dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="430dp"
+                android:layout_marginTop="410dp"
                 android:background="@drawable/recyclingcat"
                 android:layout_centerHorizontal="true"
                 />
@@ -133,11 +133,11 @@
                 android:layout_width="339dp"
                 android:layout_height="125dp"
                 android:layout_marginLeft="25dp"
-                android:layout_marginTop="600dp"
+                android:layout_marginTop="580dp"
                 android:background="@drawable/cleanupcat"
                 android:layout_centerHorizontal="true"
                 />
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
     </ScrollView>
-</ScrollView>
+

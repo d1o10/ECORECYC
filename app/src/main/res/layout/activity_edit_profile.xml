@@ -26,6 +26,7 @@
         android:text="Edit Profile"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/poppins_reg"
         android:textSize="20sp"
         android:textColor="@color/black" />
 

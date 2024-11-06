@@ -198,7 +198,7 @@
         <RelativeLayout
             android:id="@+id/paymentMethod"
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="100dp"
             android:elevation="5dp"
             android:layout_marginTop="9dp"
             android:background="@drawable/edittextbackground"
@@ -217,7 +217,7 @@
             />
 
             <!-- GCASH -->
-            <LinearLayout
+         <!---   <LinearLayout
                 android:id="@+id/gcash"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -242,8 +242,8 @@
                     android:layout_marginStart="15dp"/>
             </LinearLayout>
 
+<!
 
-            <!-- MAYA -->
             <LinearLayout
                 android:id="@+id/maya"
                 android:layout_width="match_parent"
@@ -268,7 +268,7 @@
                     android:layout_marginTop="27dp"
                     android:layout_marginStart="15dp"/>
             </LinearLayout>
-
+-->
 
             <!-- CASH ON DELIVERY -->
             <LinearLayout
@@ -276,16 +276,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_below="@+id/maya">
+               >
 
             <androidx.appcompat.widget.AppCompatImageButton
-                android:layout_width="40dp"
+                android:layout_width="60dp"
                 android:layout_height="40dp"
                 android:src="@drawable/cod"
                 android:scaleType="fitCenter"
                 android:background="@color/transpa"
                 android:layout_below="@+id/maya"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginStart="65dp"
                 />
                 <TextView
@@ -293,7 +293,7 @@
                     android:layout_height="wrap_content"
                     android:text="Cash on Delivery (Cod)"
                     android:textSize="15sp"
-                    android:layout_marginTop="27dp"
+                    android:layout_marginTop="57dp"
                     android:layout_marginStart="15dp"/>
             </LinearLayout>
         </RelativeLayout>
@@ -337,7 +337,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/button2"
             android:elevation="10dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="65dp"
             android:text="Place Order"
             android:textColor="@color/white"
             app:layout_constraintEnd_toEndOf="parent"

@@ -8,11 +8,11 @@
 
     <ImageButton
         android:id="@+id/marketplace_back_button"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
+        android:layout_width="28dp"
+        android:layout_height="18dp"
         android:background="@android:color/transparent"
         android:src="@drawable/baseline_arrow_back_ios_24"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="45dp"
         android:layout_marginStart="20dp" />
 
     <TextView
@@ -21,19 +21,26 @@
         android:layout_height="wrap_content"
         android:text="Recycling Hub"
         android:layout_centerHorizontal="true"
-        android:layout_margin="35dp"
+        android:layout_margin="40dp"
         android:textSize="20dp"
+        android:textStyle="bold"
         android:textColor="@color/primary_color"
-        android:fontFamily="@font/poppins" />
+        android:fontFamily="@font/poppins_reg"
+        />
+
 
     <EditText
         android:id="@+id/searchbox"
-        android:layout_width="210dp"
+        android:layout_width="320dp"
         android:layout_height="40dp"
         android:layout_marginStart="30dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/search2"
-        android:layout_below="@id/recyclingHubText" />
+        android:layout_below="@id/recyclingHubText"
+        android:hint="Search"
+        android:textSize="16dp"
+        android:fontFamily="@font/poppins_reg"/>
+
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -41,24 +48,31 @@
         android:orientation="horizontal"
         android:layout_below="@id/recyclingHubText"
         android:gravity="center_vertical"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="245dp">
+        android:layout_marginTop="78dp"
+        android:layout_marginStart="220dp"
+        >
+
 
         <ImageButton
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/location_icon"
+            android:layout_width="33dp"
+            android:layout_height="28dp"
+            android:src="@drawable/baseline_location_pin_24"
             android:background="@color/transpa"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:layout_marginTop="5dp"/>
 
         <TextView
             android:id="@+id/locationTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Fetching location..."
-            android:textSize="13sp"
+            android:textSize="14sp"
             android:textColor="#0E983D"
-            android:layout_marginStart="-10dp" />
+            android:layout_marginStart="-5dp"
+            android:layout_marginTop="7dp"
+            android:fontFamily="@font/poppins_reg"
+            />
+
     </LinearLayout>
 
     <TextView
@@ -69,9 +83,13 @@
         android:text="Nearby Junkshops"
         android:paddingLeft="32dp"
         android:layout_marginTop="30dp"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="@color/black"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins_reg"
+        />
+
+
 
     <ScrollView
         android:id="@+id/listOfJunkshops"
@@ -80,7 +98,9 @@
         android:layout_below="@+id/todaysItemsText"
         android:layout_marginTop="20dp"
         android:layout_marginStart="30dp"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        android:scrollbars="none"
+        >
 
         <LinearLayout
             android:layout_width="wrap_content"

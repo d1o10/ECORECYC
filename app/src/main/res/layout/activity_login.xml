@@ -46,7 +46,7 @@
         android:id="@+id/emailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="EMAIL"
+        android:text="Email"
         android:textSize="16sp"
         android:layout_below="@+id/signinText"
         android:layout_marginTop="15dp"
@@ -73,12 +73,13 @@
         android:id="@+id/passwordText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PASSWORD"
+        android:text="Password"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_below="@+id/email"
         android:layout_marginTop="30dp"
         android:layout_marginLeft="53dp"
+        android:fontFamily="@font/poppins_reg"
         />
 
 
@@ -116,7 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_marginTop="5dp"
-            android:text="REMEMBER ME"
+            android:text="Remember me"
             android:textColor="@color/black"
             android:textSize="13sp"
             android:fontFamily="@font/poppins_reg"/>
@@ -128,7 +129,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="5dp"
             android:backgroundTint="@color/transpa"
-            android:hint="FORGOT PASSWORD?"
+            android:hint="Forgot Password?"
             android:textColorHint="@color/black"
             android:textSize="13sp"
             android:fontFamily="@font/poppins_reg"/>
@@ -140,11 +141,11 @@
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="90dp"
         android:background="@drawable/button2"
         android:text="Login"
         android:textSize="18sp"
-        android:fontFamily="@font/poppins_reg"
+        android:fontFamily="@font/dmsans_reg"
         android:layout_below="@id/password"
         android:layout_marginLeft="50dp"
         android:layout_centerHorizontal="true"/>
