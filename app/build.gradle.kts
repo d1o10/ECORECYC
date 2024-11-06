@@ -57,7 +57,8 @@ dependencies {
     implementation(libs.glide) // Glide for image loading
     implementation(libs.androidx.navigation.fragment.ktx) // Navigation component for fragments
     implementation(libs.androidx.navigation.ui.ktx) // Navigation component for UI
-    implementation(libs.androidx.recyclerview) // RecyclerView library
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.play.services.location) // RecyclerView library
     kapt(libs.glide.compiler) // Glide annotation processor
 
     testImplementation(libs.junit) // JUnit for unit testing
