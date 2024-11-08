@@ -93,7 +93,7 @@ public class Maps extends AppCompatActivity {
         }
 
         floatingActionButton.hide();
-        mapView.getMapboxMap().loadStyleUri("mapbox://styles/mapbox/standard", new Style.OnStyleLoaded() {
+        mapView.getMapboxMap().loadStyleUri("mapbox://styles/mapbox/standard-satellite", new Style.OnStyleLoaded() {
             @Override
             public void onStyleLoaded(@NonNull Style style) {
                 mapView.getMapboxMap().setCamera(new CameraOptions.Builder().zoom(20.0).build());
