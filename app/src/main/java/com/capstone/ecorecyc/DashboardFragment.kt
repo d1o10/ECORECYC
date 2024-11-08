@@ -75,6 +75,13 @@ class DashboardFragment : Fragment() {
             val intent = Intent(activity, Chat::class.java)
             startActivity(intent)
         }
+
+        // Add click listener for the Maps activity
+        val locationPinBtn: ImageButton = view.findViewById(R.id.locationpin)
+        locationPinBtn.setOnClickListener {
+            val intent = Intent(activity, Maps::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun checkLocationPermission() {

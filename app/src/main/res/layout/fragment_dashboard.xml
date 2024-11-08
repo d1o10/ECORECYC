@@ -15,7 +15,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="20dp"
-               >
+                app:layout_anchor="@+id/textView2"
+                app:layout_anchorGravity="end|top">
 
                 <TextView
                     android:id="@+id/greetings"
@@ -52,18 +53,31 @@
                     android:background="@color/transpa"
                     android:scaleType="fitCenter"
                     android:src="@drawable/baseline_notifications_24" />
+
+                <TextView
+                    android:id="@+id/locationTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="93dp"
+                    android:background="@color/transpa"
+                    android:fontFamily="@font/dmsans_reg"
+                    android:paddingLeft="50dp"
+                    android:text="Fetching location..."
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
             </RelativeLayout>
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ready to make a sustainable impact today?"
                 android:layout_marginTop="85dp"
-                android:paddingLeft="30dp"
                 android:fontFamily="@font/dmsans_reg"
-                android:textSize="13sp"
+                android:paddingLeft="30dp"
+                android:text="Ready to make a sustainable impact today?"
                 android:textColor="@color/black"
-                />
+                android:textSize="13sp" />
 
             <ImageButton
                 android:id="@+id/locationpin"
@@ -75,19 +89,7 @@
                 android:backgroundTint="@color/transpa"
                 />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/transpa"
-                android:paddingLeft="50dp"
-                android:layout_marginTop="100dp"
-                android:fontFamily="@font/dmsans_reg"
-                android:textColor="@color/black"
-                android:layout_marginStart="7dp"
-                android:text="Fetching location..."
-                android:textSize="14sp"
-                android:id="@+id/locationTextView"
-                />
+
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

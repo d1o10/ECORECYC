@@ -1,10 +1,12 @@
 package com.capstone.ecorecyc
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -33,6 +35,13 @@ class RecyclingHub : AppCompatActivity() {
         }
 
         checkLocationPermission()
+
+        // Set up the click listener for the ImageButton
+        val mapsLocationBtn: ImageButton = findViewById(R.id.mapslocationbtn)
+        mapsLocationBtn.setOnClickListener {
+            val intent = Intent(this, Maps::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun checkLocationPermission() {

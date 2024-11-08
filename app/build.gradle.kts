@@ -60,7 +60,7 @@ dependencies {
     implementation(libs.androidx.recyclerview) // RecyclerView library
     implementation(libs.play.services.location) // RecyclerView library
     kapt(libs.glide.compiler) // Glide annotation processor
-
+    implementation("com.mapbox.maps:android:11.7.2")
     testImplementation(libs.junit) // JUnit for unit testing
     androidTestImplementation(libs.androidx.junit) // JUnit for Android UI testing
     androidTestImplementation(libs.androidx.espresso.core) // Espresso for UI testing

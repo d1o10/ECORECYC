@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 
     <application
@@ -19,6 +19,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ecorecyc"
         tools:targetApi="31">
+        <activity
+            android:name=".Maps"
+            android:exported="false" />
         <activity
             android:name=".MyListings"
             android:exported="false" />
@@ -98,6 +101,7 @@
         <activity
             android:name=".Navbar"
             android:exported="true" />
+
     </application>
 
 </manifest>
