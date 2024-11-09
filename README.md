@@ -2,3 +2,4 @@ Capstone Project Title: Ecorecyc - A Mobile Application for Sustainable Marketpl
 Project Manager: John Vincent Diocampo
 UI/UX Designer/Programmer: Fretch Barbie Hugo
 Technical Writer: Jessalyn Sadili
+
