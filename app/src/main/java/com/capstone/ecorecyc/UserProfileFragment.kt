@@ -1,6 +1,5 @@
 package com.capstone.ecorecyc
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -13,9 +12,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 
 class UserProfileFragment : Fragment() {
 
@@ -53,20 +52,19 @@ class UserProfileFragment : Fragment() {
         // Logout button to sign out the user
         val logoutBtn: ImageButton = view.findViewById(R.id.logout_btn)
         logoutBtn.setOnClickListener {
-            auth.signOut() // Sign out the user
+            auth.signOut()
             Toast.makeText(requireContext(), "Logged out successfully", Toast.LENGTH_SHORT).show()
             val intent = Intent(activity, Login::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
-            activity?.finish() // Close the current activity
+            activity?.finish()
         }
 
         // My Orders button to navigate to My Orders activity
         val myOrdersBtn: ImageButton = view.findViewById(R.id.my_orders_btn)
         myOrdersBtn.setOnClickListener {
-            // Launch MyOrders Activity
             val intent = Intent(activity, MyOrders::class.java)
-            startActivity(intent)  // Start the activity
+            startActivity(intent)
         }
 
         return view
@@ -74,7 +72,7 @@ class UserProfileFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        loadUserProfile()  // Reload user profile whenever the fragment is resumed
+        loadUserProfile() // Reload user profile whenever the fragment is resumed
     }
 
     private fun loadUserProfile() {
@@ -107,9 +105,5 @@ class UserProfileFragment : Fragment() {
                     Log.w("UserProfileFragment", "Error getting documents: ", exception)
                 }
         }
-    }
-
-    companion object {
-        private const val REQUEST_CODE_EDIT_PROFILE = 1001
     }
 }

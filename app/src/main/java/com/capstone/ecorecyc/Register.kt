@@ -59,7 +59,7 @@ class Register : AppCompatActivity() {
                         if (task.isSuccessful) {
                             val userId = auth.currentUser?.uid
                             val user = hashMapOf(
-                                "username" to username,
+                                "displayName" to username, // Store username as displayName
                                 "email" to email
                             )
                             userId?.let {
