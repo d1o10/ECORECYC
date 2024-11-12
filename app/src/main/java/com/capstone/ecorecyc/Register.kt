@@ -22,23 +22,21 @@ class Register : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
     private lateinit var firestore: FirebaseFirestore
     private lateinit var progressBar: ProgressBar
-    private var isPasswordVisible = false // Track password visibility state
+    private var isPasswordVisible = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        // Initialize Firebase Auth, Firestore, and ProgressBar
         auth = FirebaseAuth.getInstance()
         firestore = FirebaseFirestore.getInstance()
         progressBar = findViewById(R.id.progress_bar)
-        progressBar.visibility = View.GONE // Hide progress bar initially
+        progressBar.visibility = View.GONE
 
         val usernameField: EditText = findViewById(R.id.username)
         val emailField: EditText = findViewById(R.id.email)
         val passwordField: EditText = findViewById(R.id.password)
 
-        // Set up password visibility toggle
         setUpPasswordVisibilityToggle(passwordField)
 
         val registerButton: Button = findViewById(R.id.btn_login)
@@ -50,40 +48,31 @@ class Register : AppCompatActivity() {
             if (email.isEmpty() || password.isEmpty() || username.isEmpty()) {
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show()
             } else {
-                // Show the progress bar when user clicks sign up button
                 progressBar.visibility = View.VISIBLE
 
-                // Create a new user
                 auth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful) {
                             val userId = auth.currentUser?.uid
                             val user = hashMapOf(
-                                "displayName" to username, // Store username as displayName
+                                "displayName" to username,
                                 "email" to email
                             )
                             userId?.let {
                                 firestore.collection("users").document(it).set(user)
                                     .addOnSuccessListener {
                                         Toast.makeText(this, "Registration successful", Toast.LENGTH_SHORT).show()
-
-                                        // Hide the progress bar after success
                                         progressBar.visibility = View.GONE
-
-                                        // Navigate to login
-                                        val intent = Intent(this, Login::class.java)
-                                        startActivity(intent)
+                                        startActivity(Intent(this, Login::class.java))
                                         finish()
                                     }
                                     .addOnFailureListener { e ->
                                         Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
-                                        // Hide the progress bar on error
                                         progressBar.visibility = View.GONE
                                     }
                             }
                         } else {
                             Toast.makeText(this, "Registration failed: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-                            // Hide the progress bar on error
                             progressBar.visibility = View.GONE
                         }
                     }
@@ -92,46 +81,34 @@ class Register : AppCompatActivity() {
 
         val login2btn: Button = findViewById(R.id.loginregister)
         login2btn.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, Login::class.java))
         }
     }
 
-    // Function to set up password visibility toggle
     private fun setUpPasswordVisibilityToggle(passwordField: EditText) {
-        // Define the drawable icons for password visibility states
         val visibilityOnIcon: Drawable? = ContextCompat.getDrawable(this, visibility_on)
         val visibilityOffIcon: Drawable? = ContextCompat.getDrawable(this, visibility_off)
-
-        // Get the existing start drawable (password icon) from the XML
         val passwordIcon: Drawable? = ContextCompat.getDrawable(this, R.drawable.password_icon)
 
-        // Set the initial drawable (password hidden state) with the start icon
         passwordField.setCompoundDrawablesWithIntrinsicBounds(passwordIcon, null, visibilityOffIcon, null)
 
-        // Set an OnTouchListener on the EditText to detect drawable end click
-        passwordField.setOnTouchListener { v, event ->
+        passwordField.setOnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_UP) {
-                // Get drawable end width and check if the touch is within its bounds
-                val drawableEnd = passwordField.compoundDrawables[2] // drawableRight (visibility icon)
+                val drawableEnd = passwordField.compoundDrawables[2]
                 if (drawableEnd != null && event.rawX >= (passwordField.right - drawableEnd.bounds.width())) {
-                    // Toggle password visibility
                     isPasswordVisible = !isPasswordVisible
                     if (isPasswordVisible) {
-                        // Show password
                         passwordField.inputType = InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
                         passwordField.setCompoundDrawablesWithIntrinsicBounds(passwordIcon, null, visibilityOnIcon, null)
                     } else {
-                        // Hide password
                         passwordField.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
                         passwordField.setCompoundDrawablesWithIntrinsicBounds(passwordIcon, null, visibilityOffIcon, null)
                     }
-                    // Move the cursor to the end of the text after toggling
                     passwordField.setSelection(passwordField.text.length)
-                    return@setOnTouchListener true // Consume the touch event
+                    return@setOnTouchListener true
                 }
             }
-            return@setOnTouchListener false // Pass the event to other listeners if not handled
+            false
         }
     }
 }

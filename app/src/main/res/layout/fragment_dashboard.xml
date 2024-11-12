@@ -18,25 +18,15 @@
                 app:layout_anchor="@+id/textView2"
                 app:layout_anchorGravity="end|top">
 
-                <TextView
-                    android:id="@+id/greetings"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginTop="30dp"
-                    android:fontFamily="@font/dm_sans"
-                    android:paddingLeft="30dp"
-                    android:text="Hi,"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+
 
                 <TextView
                     android:id="@+id/hiusername"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:layout_marginStart="25dp"
                     android:layout_marginEnd="20dp"
-                    android:layout_toRightOf="@id/greetings"
                     android:fontFamily="@font/dm_sans"
                     android:padding="7dp"
                     android:text="fretxjsojw!"

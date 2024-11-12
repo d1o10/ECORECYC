@@ -1,9 +1,7 @@
 package com.capstone.ecorecyc
 
 import android.Manifest
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.content.pm.PackageManager
 import android.location.Geocoder
 import android.location.Location
@@ -17,15 +15,17 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.Locale
 
 class DashboardFragment : Fragment() {
 
-    private lateinit var sharedPreferences: SharedPreferences
-    private val PREFS_NAME = "LoginPrefs"
     private lateinit var greetingTextView: TextView
     private lateinit var locationTextView: TextView
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+    private val firestore = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,12 +33,8 @@ class DashboardFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
-        sharedPreferences = requireActivity().getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
-
         greetingTextView = view.findViewById(R.id.hiusername)
         locationTextView = view.findViewById(R.id.locationTextView)
-
-        updateGreeting()
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         checkLocationPermission()
@@ -76,7 +72,6 @@ class DashboardFragment : Fragment() {
             startActivity(intent)
         }
 
-        // Add click listener for the Maps activity
         val locationPinBtn: ImageButton = view.findViewById(R.id.locationpin)
         locationPinBtn.setOnClickListener {
             val intent = Intent(activity, Maps::class.java)
@@ -118,12 +113,23 @@ class DashboardFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        updateGreeting()
+        fetchUsername()
         fetchLocation()
     }
 
-    private fun updateGreeting() {
-        val username = sharedPreferences.getString("username", "User")
-        greetingTextView.text = "$username!"
+    private fun fetchUsername() {
+        val userId = auth.currentUser?.uid
+        userId?.let {
+            firestore.collection("users").document(it).get()
+                .addOnSuccessListener { document ->
+                    if (document != null) {
+                        val username = document.getString("displayName") ?: "User"
+                        greetingTextView.text = "Hi, $username!"
+                    }
+                }
+                .addOnFailureListener {
+                    greetingTextView.text = "Hi, User!"
+                }
+        }
     }
 }
