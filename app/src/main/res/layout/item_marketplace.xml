@@ -4,8 +4,7 @@
     android:layout_height="250dp"
     android:orientation="vertical"
     android:padding="8dp"
-    android:background="#FFFCFC"
-    >
+    android:background="#FFFCFC">
 
     <RelativeLayout
         android:layout_width="180dp"
@@ -21,7 +20,6 @@
             android:scaleType="centerCrop"
             android:background="@drawable/curved_image_bg"
             android:clipToOutline="true"/>
-
 
         <TextView
             android:id="@+id/itemName"

@@ -1,11 +1,9 @@
 package com.capstone.ecorecyc
 
 import android.content.Intent
-import android.graphics.Outline
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewOutlineProvider
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -17,6 +15,7 @@ class MarketplaceAdapter(private var itemList: List<Data.Item>) : RecyclerView.A
         val itemImage: ImageView = view.findViewById(R.id.itemImage)
         val itemName: TextView = view.findViewById(R.id.itemName)
         val itemPrice: TextView = view.findViewById(R.id.itemPrice)
+        val itemUsername: TextView = view.findViewById(R.id.byUser) // Display username here
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -28,20 +27,10 @@ class MarketplaceAdapter(private var itemList: List<Data.Item>) : RecyclerView.A
         val item = itemList[position]
         holder.itemName.text = item.name
         holder.itemPrice.text = item.price
+        holder.itemUsername.text = "by ${item.username}" // Set the username
 
         // Load the image using Glide
         Glide.with(holder.itemView.context).load(item.imageUrl).into(holder.itemImage)
-
-        // Apply the curved top corners programmatically to the ImageView
-        holder.itemImage.outlineProvider = object : ViewOutlineProvider() {
-            override fun getOutline(view: View, outline: Outline) {
-                // Set the rounded corners (curve top only)
-                outline.setRoundRect(0, 0, view.width, view.height, 30f) // Adjust radius as needed
-            }
-        }
-
-        // Ensure the ImageView is clipped to the outline
-        holder.itemImage.clipToOutline = true
 
         // Set the onClickListener to open the ItemDetails activity
         holder.itemView.setOnClickListener {
@@ -53,6 +42,7 @@ class MarketplaceAdapter(private var itemList: List<Data.Item>) : RecyclerView.A
                 putExtra("description", item.description)  // Pass description
                 putExtra("condition", item.condition)      // Pass condition
                 putExtra("location", item.location)        // Pass location
+                putExtra("username", item.username)        // Pass username
             }
             context.startActivity(intent)
         }

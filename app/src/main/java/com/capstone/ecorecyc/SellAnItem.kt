@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -23,6 +22,7 @@ class SellAnItem : AppCompatActivity() {
     private lateinit var description: EditText
     private lateinit var condition: EditText
     private lateinit var location: EditText
+    private lateinit var username: EditText  // Added username field
 
     private var imageUri: Uri? = null
     private val storage = FirebaseStorage.getInstance().reference
@@ -40,6 +40,7 @@ class SellAnItem : AppCompatActivity() {
         description = findViewById(R.id.description)
         condition = findViewById(R.id.condition)
         location = findViewById(R.id.market_Location)
+        username = findViewById(R.id.usernameList)  // Initialize username field
 
         // Set upload button listener to pick image
         uploadBtn.setOnClickListener {
@@ -74,9 +75,10 @@ class SellAnItem : AppCompatActivity() {
         val productDescription = description.text.toString()
         val productCondition = condition.text.toString()
         val productLocation = location.text.toString()
+        val userName = username.text.toString()  // Get username
         val userId = FirebaseAuth.getInstance().currentUser?.uid // Get current user ID
 
-        if (productName.isEmpty() || productPrice.isEmpty() || productDescription.isEmpty() || productCondition.isEmpty() || productLocation.isEmpty() || imageUri == null) {
+        if (productName.isEmpty() || productPrice.isEmpty() || productDescription.isEmpty() || productCondition.isEmpty() || productLocation.isEmpty() || imageUri == null || userName.isEmpty()) {
             Toast.makeText(this, "Please fill all fields and select an image", Toast.LENGTH_SHORT).show()
             return
         }
@@ -94,7 +96,8 @@ class SellAnItem : AppCompatActivity() {
                         "condition" to productCondition,
                         "location" to productLocation,
                         "imageUrl" to downloadUrl.toString(),
-                        "userId" to userId // Store user ID
+                        "userId" to userId, // Store user ID
+                        "username" to userName // Store username
                     )
 
                     firestore.collection("items").add(itemData).addOnSuccessListener {
