@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.capstone.ecorecyc" // Application namespace
-    compileSdk = 34 // Compile SDK version
+    compileSdk = 35 // Update to API level 35 to match dependencies
 
     defaultConfig {
         applicationId = "com.capstone.ecorecyc" // Unique application ID
         minSdk = 30 // Minimum SDK version
-        targetSdk = 34 // Target SDK version
+        targetSdk = 35 // Update to API level 35
         versionCode = 1 // Application version code
         versionName = "1.0" // Application version name
 
