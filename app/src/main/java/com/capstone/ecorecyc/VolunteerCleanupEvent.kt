@@ -22,7 +22,7 @@ class VolunteerCleanupEvent : AppCompatActivity() {
         val imageUrl = intent.getStringExtra("IMAGE_URL")
         val eventId = intent.getStringExtra("EVENT_ID")
 
-        // Check if image URL is passed correctly
+        // Load event image if URL is provided
         if (imageUrl != null && imageUrl.isNotEmpty()) {
             Glide.with(this)
                 .load(imageUrl)
@@ -38,10 +38,10 @@ class VolunteerCleanupEvent : AppCompatActivity() {
             val age = findViewById<EditText>(R.id.age).text.toString().trim()
             val gender = findViewById<EditText>(R.id.gender).text.toString().trim()
 
-            // Check if all fields are filled out
+            // Ensure all fields are filled
             if (volunteerName.isNotEmpty() && location.isNotEmpty() && age.isNotEmpty() && gender.isNotEmpty()) {
                 if (eventId != null) {
-                    addParticipant(eventId, volunteerName, location, age, gender)
+                    addParticipantAndNotifyCreator(eventId, volunteerName, location, age, gender)
                 } else {
                     Toast.makeText(this, "Event ID not found", Toast.LENGTH_SHORT).show()
                 }
@@ -51,7 +51,8 @@ class VolunteerCleanupEvent : AppCompatActivity() {
         }
     }
 
-    private fun addParticipant(eventId: String, name: String, location: String, age: String, gender: String) {
+    private fun addParticipantAndNotifyCreator(eventId: String, name: String, location: String, age: String, gender: String) {
+        // Add participant to the event's participants subcollection
         val participant = hashMapOf(
             "name" to name,
             "location" to location,
@@ -59,24 +60,63 @@ class VolunteerCleanupEvent : AppCompatActivity() {
             "gender" to gender
         )
 
+        val currentUser = FirebaseAuth.getInstance().currentUser
+        if (currentUser == null) {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val userId = currentUser.uid
+
+        // Get the event document to retrieve the creatorId
         firestore.collection("cleanup_events")
             .document(eventId)
-            .collection("participants")
-            .add(participant)
-            .addOnSuccessListener {
-                Toast.makeText(this, "Successfully Joined!", Toast.LENGTH_SHORT).show()
+            .get()
+            .addOnSuccessListener { document ->
+                if (document.exists()) {
+                    val creatorId = document.getString("creatorId")
+                    val eventName = document.getString("name") ?: "Event"
 
-                // Add notification after joining
-                val notificationService = NotificationService()
-                val userId = FirebaseAuth.getInstance().currentUser?.uid
-                userId?.let {
-                    notificationService.addNotification(it, "$name has joined the cleanup event!")
+                    if (creatorId != null) {
+                        // Add participant to Firestore
+                        firestore.collection("cleanup_events")
+                            .document(eventId)
+                            .collection("participants")
+                            .add(participant)
+                            .addOnSuccessListener {
+                                Toast.makeText(this, "Successfully Joined!", Toast.LENGTH_SHORT).show()
+
+                                // Create a notification for the creator
+                                val notification = hashMapOf(
+                                    "message" to "$name has joined your event '$eventName'",
+                                    "timestamp" to System.currentTimeMillis()
+                                )
+
+                                firestore.collection("users")
+                                    .document(creatorId)
+                                    .collection("notifications")
+                                    .add(notification)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this, "The event creator has been notified!", Toast.LENGTH_SHORT).show()
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Toast.makeText(this, "Failed to notify the creator: ${e.message}", Toast.LENGTH_SHORT).show()
+                                    }
+
+                                finish() // Close the activity after success
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                            }
+                    } else {
+                        Toast.makeText(this, "Event creator not found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this, "Event not found.", Toast.LENGTH_SHORT).show()
                 }
-
-                finish()  // Close the activity and return to the previous one
             }
             .addOnFailureListener { e ->
-                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Failed to fetch event: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
 }
