@@ -11,6 +11,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import java.util.*
@@ -95,6 +96,12 @@ class OrganizeCleanupEvent : AppCompatActivity() {
             return
         }
 
+        val currentUserId = FirebaseAuth.getInstance().currentUser?.uid
+        if (currentUserId == null) {
+            Toast.makeText(this, "User not authenticated", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         val storageRef = FirebaseStorage.getInstance().getReference("event_photos/${UUID.randomUUID()}.jpg")
         storageRef.putFile(imageUri!!)
             .addOnSuccessListener {
@@ -105,7 +112,8 @@ class OrganizeCleanupEvent : AppCompatActivity() {
                         "date" to date,
                         "time" to time,
                         "description" to desc,
-                        "imageUrl" to downloadUrl.toString()
+                        "imageUrl" to downloadUrl.toString(),
+                        "creatorId" to currentUserId // Add creator's user ID
                     )
 
                     FirebaseFirestore.getInstance().collection("cleanup_events")

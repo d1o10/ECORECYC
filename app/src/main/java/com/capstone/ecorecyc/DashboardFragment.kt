@@ -33,81 +33,100 @@ class DashboardFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_dashboard, container, false)
 
+        // Initialize views
         greetingTextView = view.findViewById(R.id.hiusername)
         locationTextView = view.findViewById(R.id.locationTextView)
 
+        // Initialize location client
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(requireActivity())
         checkLocationPermission()
 
+        // Setup buttons
         setupButtons(view)
 
         return view
     }
 
     private fun setupButtons(view: View) {
-        val market: ImageButton = view.findViewById(R.id.marketplacebutton)
-        market.setOnClickListener {
-            val intent = Intent(activity, Marketplace::class.java)
-            intent.putExtra("USER_TYPE", "USER")
-            startActivity(intent)
+        // Button navigation setup
+        view.findViewById<ImageButton>(R.id.marketplacebutton).setOnClickListener {
+            navigateToActivity(Marketplace::class.java, "USER")
         }
-
-        val recyclingbtn: ImageButton = view.findViewById(R.id.recylinghubbutton)
-        recyclingbtn.setOnClickListener {
-            val intent = Intent(activity, RecyclingHub::class.java)
-            intent.putExtra("USER_TYPE", "USER")
-            startActivity(intent)
+        view.findViewById<ImageButton>(R.id.recylinghubbutton).setOnClickListener {
+            navigateToActivity(RecyclingHub::class.java, "USER")
         }
-
-        val cleanbtn: ImageButton = view.findViewById(R.id.cleanupbtn)
-        cleanbtn.setOnClickListener {
-            val intent = Intent(activity, CleanupEvents::class.java)
-            intent.putExtra("USER_TYPE", "USER")
-            startActivity(intent)
+        view.findViewById<ImageButton>(R.id.cleanupbtn).setOnClickListener {
+            navigateToActivity(CleanupEvents::class.java, "USER")
         }
-
-        val chatBtn: ImageButton = view.findViewById(R.id.notificationBtn)
-        chatBtn.setOnClickListener {
-            val intent = Intent(activity, Chat::class.java)
-            startActivity(intent)
+        view.findViewById<ImageButton>(R.id.notificationBtn).setOnClickListener {
+            startActivity(Intent(activity, Notifications::class.java)) // Navigates to Notifications
         }
-
-        val locationPinBtn: ImageButton = view.findViewById(R.id.locationpin)
-        locationPinBtn.setOnClickListener {
-            val intent = Intent(activity, Maps::class.java)
-            startActivity(intent)
+        view.findViewById<ImageButton>(R.id.locationpin).setOnClickListener {
+            startActivity(Intent(activity, Maps::class.java)) // Navigates to Maps
         }
     }
 
+    private fun navigateToActivity(activityClass: Class<*>, userType: String) {
+        val intent = Intent(activity, activityClass)
+        intent.putExtra("USER_TYPE", userType)
+        startActivity(intent)
+    }
+
     private fun checkLocationPermission() {
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
-            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.ACCESS_FINE_LOCATION), 1)
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED &&
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
+            // Request location permissions if not granted
+            ActivityCompat.requestPermissions(
+                requireActivity(),
+                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
+                LOCATION_PERMISSION_REQUEST_CODE
+            )
         } else {
+            // Permissions granted; fetch location
             fetchLocation()
         }
     }
 
     private fun fetchLocation() {
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ||
-            ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_FINE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED ||
+            ActivityCompat.checkSelfPermission(
+                requireContext(),
+                Manifest.permission.ACCESS_COARSE_LOCATION
+            ) == PackageManager.PERMISSION_GRANTED
+        ) {
             fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
-                location?.let {
-                    updateLocationUI(it)
+                location?.let { updateLocationUI(it) } ?: run {
+                    locationTextView.text = "Location not available"
                 }
+            }.addOnFailureListener {
+                locationTextView.text = "Failed to fetch location"
             }
         }
     }
 
     private fun updateLocationUI(location: Location) {
         val geocoder = Geocoder(requireContext(), Locale.getDefault())
-        val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
-        if (!addresses.isNullOrEmpty()) {
-            val address = addresses[0]
-            val locationName = address.locality ?: address.subAdminArea ?: "Unknown Location"
-            locationTextView.text = locationName
-        } else {
-            locationTextView.text = "Location not found"
+        try {
+            val addresses = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+            if (!addresses.isNullOrEmpty()) {
+                val address = addresses[0]
+                val locationName = address.locality ?: address.subAdminArea ?: "Unknown Location"
+                locationTextView.text = locationName
+            } else {
+                locationTextView.text = "Location not found"
+            }
+        } catch (e: Exception) {
+            locationTextView.text = "Error retrieving location"
         }
     }
 
@@ -122,14 +141,18 @@ class DashboardFragment : Fragment() {
         userId?.let {
             firestore.collection("users").document(it).get()
                 .addOnSuccessListener { document ->
-                    if (document != null) {
-                        val username = document.getString("displayName") ?: "User"
-                        greetingTextView.text = "Hi, $username!"
-                    }
+                    val username = document?.getString("displayName") ?: "User"
+                    greetingTextView.text = "Hi, $username!"
                 }
                 .addOnFailureListener {
                     greetingTextView.text = "Hi, User!"
                 }
+        } ?: run {
+            greetingTextView.text = "Hi, User!"
         }
+    }
+
+    companion object {
+        private const val LOCATION_PERMISSION_REQUEST_CODE = 1
     }
 }

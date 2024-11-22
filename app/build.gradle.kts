@@ -58,10 +58,15 @@ dependencies {
     implementation(libs.androidx.navigation.fragment.ktx) // Navigation component for fragments
     implementation(libs.androidx.navigation.ui.ktx) // Navigation component for UI
     implementation(libs.androidx.recyclerview) // RecyclerView library
-    implementation(libs.play.services.location) // RecyclerView library
+    implementation(libs.play.services.location)
+    implementation(libs.androidx.datastore.core.android) // RecyclerView library
     kapt(libs.glide.compiler) // Glide annotation processor
     implementation("com.mapbox.maps:android:11.7.2")
     testImplementation(libs.junit) // JUnit for unit testing
     androidTestImplementation(libs.androidx.junit) // JUnit for Android UI testing
     androidTestImplementation(libs.androidx.espresso.core) // Espresso for UI testing
+    implementation(libs.firebase.analytics.ktx)
+    implementation(libs.firebase.messaging.ktx)
+    implementation ("com.squareup.picasso:picasso:2.8")
+    implementation (libs.firebase.messaging)
 }
